@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace DisasterDonationReliefManagementSystem.Entities
+{
+    using System;
+
+    public class DisasterRequest
+    {
+        public int RequestID { get; set; }
+        public int UserID { get; set; }            // Victim
+        public string DisasterType { get; set; }
+        public string Description { get; set; }
+        public string RequestedItems { get; set; }
+        public DateTime RequestDate { get; set; }
+        public string RequestStatus { get; set; }
+    }
+
+}
