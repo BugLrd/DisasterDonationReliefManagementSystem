@@ -38,7 +38,6 @@
             creqbtn = new Button();
             urreqbtn = new Button();
             homebtn = new Button();
-            panel2 = new Panel();
             mainpnl = new Panel();
             headerpnl.SuspendLayout();
             sidepnl.SuspendLayout();
@@ -107,10 +106,9 @@
             sidepnl.Controls.Add(creqbtn);
             sidepnl.Controls.Add(urreqbtn);
             sidepnl.Controls.Add(homebtn);
-            sidepnl.Controls.Add(panel2);
-            sidepnl.Location = new Point(1, 34);
+            sidepnl.Location = new Point(1, 35);
             sidepnl.Name = "sidepnl";
-            sidepnl.Size = new Size(168, 606);
+            sidepnl.Size = new Size(168, 601);
             sidepnl.TabIndex = 1;
             // 
             // creqbtn
@@ -159,13 +157,6 @@
             homebtn.TextAlign = ContentAlignment.MiddleLeft;
             homebtn.UseVisualStyleBackColor = false;
             // 
-            // panel2
-            // 
-            panel2.Location = new Point(176, 3);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(922, 603);
-            panel2.TabIndex = 2;
-            // 
             // mainpnl
             // 
             mainpnl.BorderStyle = BorderStyle.FixedSingle;
@@ -201,7 +192,6 @@
         private FolderBrowserDialog folderBrowserDialog1;
         private Button logoutbtn;
         private Panel sidepnl;
-        private Panel panel2;
         private Button homebtn;
         private Panel mainpnl;
         private Button urreqbtn;
