@@ -34,14 +34,14 @@
             splitterlbl = new Label();
             welcomelbl = new Label();
             folderBrowserDialog1 = new FolderBrowserDialog();
-            panel1 = new Panel();
+            sidepnl = new Panel();
             creqbtn = new Button();
             urreqbtn = new Button();
             homebtn = new Button();
             panel2 = new Panel();
-            panel3 = new Panel();
+            mainpnl = new Panel();
             headerpnl.SuspendLayout();
-            panel1.SuspendLayout();
+            sidepnl.SuspendLayout();
             SuspendLayout();
             // 
             // headerpnl
@@ -55,7 +55,6 @@
             headerpnl.Name = "headerpnl";
             headerpnl.Size = new Size(1098, 34);
             headerpnl.TabIndex = 0;
-            headerpnl.Paint += panel1_Paint;
             // 
             // logoutbtn
             // 
@@ -81,7 +80,6 @@
             headerlbl.Size = new Size(86, 21);
             headerlbl.TabIndex = 0;
             headerlbl.Text = "ReliefHub";
-            headerlbl.Click += label1_Click;
             // 
             // splitterlbl
             // 
@@ -92,7 +90,6 @@
             splitterlbl.Size = new Size(17, 28);
             splitterlbl.TabIndex = 0;
             splitterlbl.Text = "|";
-            splitterlbl.Click += label1_Click;
             // 
             // welcomelbl
             // 
@@ -103,20 +100,18 @@
             welcomelbl.Size = new Size(110, 21);
             welcomelbl.TabIndex = 0;
             welcomelbl.Text = "Welcome User";
-            welcomelbl.Click += label1_Click;
             // 
-            // panel1
+            // sidepnl
             // 
-            panel1.BackColor = SystemColors.ControlDarkDark;
-            panel1.Controls.Add(creqbtn);
-            panel1.Controls.Add(urreqbtn);
-            panel1.Controls.Add(homebtn);
-            panel1.Controls.Add(panel2);
-            panel1.Location = new Point(1, 34);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(168, 606);
-            panel1.TabIndex = 1;
-            panel1.Paint += panel1_Paint_1;
+            sidepnl.BackColor = SystemColors.ControlDarkDark;
+            sidepnl.Controls.Add(creqbtn);
+            sidepnl.Controls.Add(urreqbtn);
+            sidepnl.Controls.Add(homebtn);
+            sidepnl.Controls.Add(panel2);
+            sidepnl.Location = new Point(1, 34);
+            sidepnl.Name = "sidepnl";
+            sidepnl.Size = new Size(168, 606);
+            sidepnl.TabIndex = 1;
             // 
             // creqbtn
             // 
@@ -132,7 +127,6 @@
             creqbtn.Text = "Create New Request";
             creqbtn.TextAlign = ContentAlignment.MiddleLeft;
             creqbtn.UseVisualStyleBackColor = false;
-            creqbtn.Click += button1_Click;
             // 
             // urreqbtn
             // 
@@ -148,7 +142,6 @@
             urreqbtn.Text = "Your Requests";
             urreqbtn.TextAlign = ContentAlignment.MiddleLeft;
             urreqbtn.UseVisualStyleBackColor = false;
-            urreqbtn.Click += button1_Click;
             // 
             // homebtn
             // 
@@ -165,7 +158,6 @@
             homebtn.Text = "Home";
             homebtn.TextAlign = ContentAlignment.MiddleLeft;
             homebtn.UseVisualStyleBackColor = false;
-            homebtn.Click += button1_Click;
             // 
             // panel2
             // 
@@ -174,30 +166,29 @@
             panel2.Size = new Size(922, 603);
             panel2.TabIndex = 2;
             // 
-            // panel3
+            // mainpnl
             // 
-            panel3.BorderStyle = BorderStyle.FixedSingle;
-            panel3.Location = new Point(173, 39);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(923, 597);
-            panel3.TabIndex = 2;
-            panel3.Paint += panel3_Paint;
+            mainpnl.BorderStyle = BorderStyle.FixedSingle;
+            mainpnl.Location = new Point(173, 39);
+            mainpnl.Name = "mainpnl";
+            mainpnl.Size = new Size(923, 597);
+            mainpnl.TabIndex = 2;
             // 
             // HomePage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1100, 642);
-            Controls.Add(panel3);
-            Controls.Add(panel1);
+            Controls.Add(mainpnl);
+            Controls.Add(sidepnl);
             Controls.Add(headerpnl);
             Name = "HomePage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "HomePage";
-            Load += HomePage_Load_3;
+            Load += HomePage_Load;
             headerpnl.ResumeLayout(false);
             headerpnl.PerformLayout();
-            panel1.ResumeLayout(false);
+            sidepnl.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -209,10 +200,10 @@
         private Label splitterlbl;
         private FolderBrowserDialog folderBrowserDialog1;
         private Button logoutbtn;
-        private Panel panel1;
+        private Panel sidepnl;
         private Panel panel2;
         private Button homebtn;
-        private Panel panel3;
+        private Panel mainpnl;
         private Button urreqbtn;
         private Button creqbtn;
     }
