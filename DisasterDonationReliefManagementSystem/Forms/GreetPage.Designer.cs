@@ -41,26 +41,25 @@
             label3 = new Label();
             label2 = new Label();
             panel3 = new Panel();
-            label4 = new Label();
-            label5 = new Label();
             pictureBox3 = new PictureBox();
-            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
             panel2 = new Panel();
-            label7 = new Label();
-            label8 = new Label();
             pictureBox4 = new PictureBox();
+            label8 = new Label();
+            label7 = new Label();
             panel4 = new Panel();
-            panel5 = new Panel();
-            panel6 = new Panel();
-            panel7 = new Panel();
-            pictureBox5 = new PictureBox();
-            pictureBox6 = new PictureBox();
-            pictureBox7 = new PictureBox();
-            pictureBox8 = new PictureBox();
             label9 = new Label();
+            pictureBox5 = new PictureBox();
+            panel5 = new Panel();
             label10 = new Label();
+            pictureBox6 = new PictureBox();
+            panel6 = new Panel();
             label11 = new Label();
+            pictureBox7 = new PictureBox();
+            panel7 = new Panel();
             label12 = new Label();
+            pictureBox8 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)userBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -70,12 +69,12 @@
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel4.SuspendLayout();
-            panel5.SuspendLayout();
-            panel6.SuspendLayout();
-            panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
+            panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             SuspendLayout();
             // 
@@ -90,7 +89,6 @@
             greetlbl.Size = new Size(448, 54);
             greetlbl.TabIndex = 0;
             greetlbl.Text = "Welcome To ReliefHub";
-            
             // 
             // mottolbl
             // 
@@ -118,7 +116,6 @@
             label_1.Size = new Size(130, 25);
             label_1.TabIndex = 3;
             label_1.Text = "Quick Actions :";
-            
             // 
             // label1
             // 
@@ -192,25 +189,6 @@
             panel3.Size = new Size(235, 144);
             panel3.TabIndex = 14;
             // 
-            // label4
-            // 
-            label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(70, 17);
-            label4.Name = "label4";
-            label4.Size = new Size(204, 64);
-            label4.TabIndex = 0;
-            label4.Text = "I WANT TO VOLUNTEER";
-            // 
-            // label5
-            // 
-            label5.Font = new Font("Segoe Fluent Icons", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(13, 71);
-            label5.Name = "label5";
-            label5.Size = new Size(229, 61);
-            label5.TabIndex = 1;
-            label5.Text = "Land a Hand and show your skills";
-            
-            // 
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
@@ -220,16 +198,24 @@
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 2;
             pictureBox3.TabStop = false;
-            
             // 
-            // label6
+            // label5
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(995, 485);
-            label6.Name = "label6";
-            label6.Size = new Size(38, 15);
-            label6.TabIndex = 15;
-            label6.Text = "label6";
+            label5.Font = new Font("Segoe Fluent Icons", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Location = new Point(13, 71);
+            label5.Name = "label5";
+            label5.Size = new Size(229, 61);
+            label5.TabIndex = 1;
+            label5.Text = "Land a Hand and show your skills";
+            // 
+            // label4
+            // 
+            label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(70, 17);
+            label4.Name = "label4";
+            label4.Size = new Size(204, 64);
+            label4.TabIndex = 0;
+            label4.Text = "I WANT TO VOLUNTEER";
             // 
             // panel2
             // 
@@ -242,14 +228,15 @@
             panel2.Size = new Size(268, 146);
             panel2.TabIndex = 16;
             // 
-            // label7
+            // pictureBox4
             // 
-            label7.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(75, 23);
-            label7.Name = "label7";
-            label7.Size = new Size(201, 37);
-            label7.TabIndex = 0;
-            label7.Text = "Give Hope";
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(3, 3);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(66, 71);
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox4.TabIndex = 2;
+            pictureBox4.TabStop = false;
             // 
             // label8
             // 
@@ -260,15 +247,14 @@
             label8.TabIndex = 1;
             label8.Text = "Support those in need";
             // 
-            // pictureBox4
+            // label7
             // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(3, 3);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(66, 71);
-            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox4.TabIndex = 2;
-            pictureBox4.TabStop = false;
+            label7.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(75, 23);
+            label7.Name = "label7";
+            label7.Size = new Size(201, 37);
+            label7.TabIndex = 0;
+            label7.Text = "Give Hope";
             // 
             // panel4
             // 
@@ -280,6 +266,26 @@
             panel4.Size = new Size(155, 103);
             panel4.TabIndex = 17;
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label9.Location = new Point(12, 72);
+            label9.Name = "label9";
+            label9.Size = new Size(112, 17);
+            label9.TabIndex = 1;
+            label9.Text = "Near delivery hub";
+            // 
+            // pictureBox5
+            // 
+            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
+            pictureBox5.Location = new Point(37, 3);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(67, 61);
+            pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox5.TabIndex = 0;
+            pictureBox5.TabStop = false;
+            // 
             // panel5
             // 
             panel5.BackColor = Color.Peru;
@@ -289,6 +295,26 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(164, 103);
             panel5.TabIndex = 18;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label10.Location = new Point(24, 72);
+            label10.Name = "label10";
+            label10.Size = new Size(128, 17);
+            label10.TabIndex = 2;
+            label10.Text = "View Donation Need";
+            // 
+            // pictureBox6
+            // 
+            pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
+            pictureBox6.Location = new Point(38, 2);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(82, 67);
+            pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox6.TabIndex = 1;
+            pictureBox6.TabStop = false;
             // 
             // panel6
             // 
@@ -300,37 +326,15 @@
             panel6.Size = new Size(156, 101);
             panel6.TabIndex = 19;
             // 
-            // panel7
+            // label11
             // 
-            panel7.BackColor = Color.SlateBlue;
-            panel7.Controls.Add(label12);
-            panel7.Controls.Add(pictureBox8);
-            panel7.Location = new Point(671, 446);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(137, 103);
-            panel7.TabIndex = 20;
-            // 
-            // pictureBox5
-            // 
-            pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(37, 3);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(67, 61);
-            pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox5.TabIndex = 0;
-            pictureBox5.TabStop = false;
-            
-            // 
-            // pictureBox6
-            // 
-            pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
-            pictureBox6.Location = new Point(38, 2);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(82, 67);
-            pictureBox6.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox6.TabIndex = 1;
-            pictureBox6.TabStop = false;
-            
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.Location = new Point(32, 70);
+            label11.Name = "label11";
+            label11.Size = new Size(93, 17);
+            label11.TabIndex = 2;
+            label11.Text = "Total Donation";
             // 
             // pictureBox7
             // 
@@ -341,50 +345,16 @@
             pictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox7.TabIndex = 1;
             pictureBox7.TabStop = false;
-            
             // 
-            // pictureBox8
+            // panel7
             // 
-            pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
-            pictureBox8.Location = new Point(40, 3);
-            pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(61, 61);
-            pictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox8.TabIndex = 1;
-            pictureBox8.TabStop = false;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label9.Location = new Point(12, 72);
-            label9.Name = "label9";
-            label9.Size = new Size(112, 17);
-            label9.TabIndex = 1;
-            label9.Text = "Near delivery hub";
-            
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label10.Location = new Point(24, 72);
-            label10.Name = "label10";
-            label10.Size = new Size(128, 17);
-            label10.TabIndex = 2;
-            label10.Text = "View Donation Need";
-            
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(32, 70);
-            label11.Name = "label11";
-            label11.Size = new Size(93, 17);
-            label11.TabIndex = 2;
-            label11.Text = "Total Donation";
-            
+            panel7.BackColor = Color.SlateBlue;
+            panel7.Controls.Add(label12);
+            panel7.Controls.Add(pictureBox8);
+            panel7.Location = new Point(671, 446);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(137, 103);
+            panel7.TabIndex = 20;
             // 
             // label12
             // 
@@ -395,7 +365,16 @@
             label12.Size = new Size(82, 17);
             label12.TabIndex = 2;
             label12.Text = "Latest News ";
-            
+            // 
+            // pictureBox8
+            // 
+            pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
+            pictureBox8.Location = new Point(40, 3);
+            pictureBox8.Name = "pictureBox8";
+            pictureBox8.Size = new Size(61, 61);
+            pictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox8.TabIndex = 1;
+            pictureBox8.TabStop = false;
             // 
             // GreetPage
             // 
@@ -410,7 +389,6 @@
             Controls.Add(panel5);
             Controls.Add(panel4);
             Controls.Add(panel2);
-            Controls.Add(label6);
             Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
@@ -422,7 +400,6 @@
             Name = "GreetPage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "GreetPage";
-            WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)userBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
@@ -433,15 +410,15 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -463,7 +440,6 @@
         private PictureBox pictureBox3;
         private Label label5;
         private Label label4;
-        private Label label6;
         private Panel panel2;
         private Label label8;
         private Label label7;
