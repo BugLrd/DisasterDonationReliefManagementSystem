@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             headerpnl = new Panel();
+            welcomelbl = new Label();
             logoutbtn = new Button();
             headerlbl = new Label();
             splitterlbl = new Label();
-            welcomelbl = new Label();
             folderBrowserDialog1 = new FolderBrowserDialog();
             flpnl = new FlowLayoutPanel();
             homebtn = new Button();
@@ -53,14 +53,24 @@
             // headerpnl
             // 
             headerpnl.BorderStyle = BorderStyle.FixedSingle;
+            headerpnl.Controls.Add(welcomelbl);
             headerpnl.Controls.Add(logoutbtn);
             headerpnl.Controls.Add(headerlbl);
             headerpnl.Controls.Add(splitterlbl);
-            headerpnl.Controls.Add(welcomelbl);
             headerpnl.Location = new Point(1, 0);
             headerpnl.Name = "headerpnl";
             headerpnl.Size = new Size(1098, 34);
             headerpnl.TabIndex = 0;
+            // 
+            // welcomelbl
+            // 
+            welcomelbl.Font = new Font("Segoe UI", 12F);
+            welcomelbl.Location = new Point(594, 6);
+            welcomelbl.Name = "welcomelbl";
+            welcomelbl.Size = new Size(389, 21);
+            welcomelbl.TabIndex = 0;
+            welcomelbl.Text = "Welcome User";
+            welcomelbl.TextAlign = ContentAlignment.MiddleRight;
             // 
             // logoutbtn
             // 
@@ -76,6 +86,7 @@
             logoutbtn.TabIndex = 0;
             logoutbtn.Text = "LogOut";
             logoutbtn.UseVisualStyleBackColor = true;
+            logoutbtn.Click += logoutbtn_Click;
             // 
             // headerlbl
             // 
@@ -96,16 +107,6 @@
             splitterlbl.Size = new Size(17, 28);
             splitterlbl.TabIndex = 0;
             splitterlbl.Text = "|";
-            // 
-            // welcomelbl
-            // 
-            welcomelbl.AutoSize = true;
-            welcomelbl.Font = new Font("Segoe UI", 12F);
-            welcomelbl.Location = new Point(873, 5);
-            welcomelbl.Name = "welcomelbl";
-            welcomelbl.Size = new Size(110, 21);
-            welcomelbl.TabIndex = 0;
-            welcomelbl.Text = "Welcome User";
             // 
             // flpnl
             // 
@@ -284,6 +285,7 @@
             mainpnl.Name = "mainpnl";
             mainpnl.Size = new Size(923, 597);
             mainpnl.TabIndex = 2;
+            mainpnl.Paint += mainpnl_Paint;
             // 
             // HomePage
             // 
