@@ -13,17 +13,16 @@ namespace DisasterDonationReliefManagementSystem.Forms
     {
         private List<Button> sidepnlButtons;
         private User _currentUser;
-        public HomePage()
+        public HomePage(User user)
         {
             InitializeComponent();
-            // For demonstration, creating a sample user. In a real application, this would come from login.
-            _currentUser = new User(1, "John", "Doe", "johndoe@proton.me", "013345435", "uganda", "admin", "active");
+            _currentUser = user;
         }
 
         private void HomePage_Load(object sender, EventArgs e)
         {
-            welcomelbl.Text = $"Welcome, {_currentUser.FirstName}";
-            
+            welcomelbl.Text = $"Welcome, {_currentUser.FullName.Split(" ")[0]}";
+
             // Initialize the list of side panel buttons
             sidepnlButtons = new List<Button>
             {
@@ -77,5 +76,17 @@ namespace DisasterDonationReliefManagementSystem.Forms
             }
         }
 
+        private void mainpnl_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void logoutbtn_Click(object sender, EventArgs e)
+        {
+            LogInPage loginPage = new LogInPage();
+            loginPage.FormClosed += (s, args) => Application.Exit();
+            loginPage.Show();
+            this.Hide();
+        }
     }
 }

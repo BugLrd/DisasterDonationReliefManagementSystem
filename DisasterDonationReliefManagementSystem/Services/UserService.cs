@@ -19,11 +19,11 @@ namespace DisasterDonationReliefManagementSystem.Services
             // Update user info
         }
 
-        public User GetUserById(int userId)
-        {
-            // Fetch user from database
-            return new User();
-        }
+        //public User GetUserById(int userId)
+        //{
+        //    // Fetch user from database
+        //    return new User();
+        //}
     }
 
 }
