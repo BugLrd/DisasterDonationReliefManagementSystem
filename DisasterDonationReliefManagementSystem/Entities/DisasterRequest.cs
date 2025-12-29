@@ -9,11 +9,14 @@ namespace DisasterDonationReliefManagementSystem.Entities
     public class DisasterRequest
     {
         public int RequestID { get; set; }
-        public int UserID { get; set; }            // Victim
+        public int UserID { get; set; }
+        public string DisasterTitle { get; set; }
         public string DisasterType { get; set; }
         public string Description { get; set; }
         public string RequestedItems { get; set; }
+        public int QuantityNeeded { get; set; }
         public DateTime RequestDate { get; set; }
+        public string Location { get; set; }
         public string RequestStatus { get; set; }
     }
 
