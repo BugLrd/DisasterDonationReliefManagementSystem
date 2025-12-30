@@ -1,4 +1,5 @@
 ﻿using DisasterDonationReliefManagementSystem.Entities;
+using DisasterDonationReliefManagementSystem.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -147,6 +148,11 @@ namespace DisasterDonationReliefManagementSystem.Forms
             mainpnl.Controls.Clear();       // remove current view
             view.Dock = DockStyle.Fill;     // fill the panel
             mainpnl.Controls.Add(view);     // add new view
+        }
+
+        private void cReqBtn_Click(object sender, EventArgs e)
+        {
+            ShowView(new create_req_view());
         }
     }
 }

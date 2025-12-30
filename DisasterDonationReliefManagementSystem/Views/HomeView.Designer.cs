@@ -31,17 +31,18 @@
             containerPnl = new Panel();
             mainReqPnl = new FlowLayoutPanel();
             detailsPnl = new Panel();
+            containerPnl.SuspendLayout();
             SuspendLayout();
             // 
             // containerPnl
             // 
+            containerPnl.Controls.Add(mainReqPnl);
+            containerPnl.Controls.Add(detailsPnl);
             containerPnl.Dock = DockStyle.Fill;
             containerPnl.Location = new Point(0, 0);
             containerPnl.Name = "containerPnl";
             containerPnl.Size = new Size(923, 597);
             containerPnl.TabIndex = 0;
-            containerPnl.Controls.Add(mainReqPnl);
-            containerPnl.Controls.Add(detailsPnl);
             // 
             // mainReqPnl
             // 
@@ -73,6 +74,7 @@
             Name = "HomeView";
             Size = new Size(923, 597);
             Load += HomeView_Load;
+            containerPnl.ResumeLayout(false);
             ResumeLayout(false);
         }
 
