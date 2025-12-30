@@ -1,3 +1,4 @@
+using DisasterDonationReliefManagementSystem.Entities;
 using DisasterDonationReliefManagementSystem.Forms;
 
 namespace DisasterDonationReliefManagementSystem
@@ -13,7 +14,7 @@ namespace DisasterDonationReliefManagementSystem
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LogInPage());
+            Application.Run(new HomePage(new Victim(1, 2, "n", true, "n n", "3453", "asdf", "vs")));
         }
     }
 }

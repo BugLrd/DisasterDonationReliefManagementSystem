@@ -33,8 +33,7 @@
             logoutbtn = new Button();
             headerlbl = new Label();
             splitterlbl = new Label();
-            folderBrowserDialog1 = new FolderBrowserDialog();
-            flpnl = new FlowLayoutPanel();
+            sideBarPnl = new FlowLayoutPanel();
             homebtn = new Button();
             urReqBtn = new Button();
             cReqBtn = new Button();
@@ -47,7 +46,7 @@
             delHistBtn = new Button();
             mainpnl = new Panel();
             headerpnl.SuspendLayout();
-            flpnl.SuspendLayout();
+            sideBarPnl.SuspendLayout();
             SuspendLayout();
             // 
             // headerpnl
@@ -108,24 +107,24 @@
             splitterlbl.TabIndex = 0;
             splitterlbl.Text = "|";
             // 
-            // flpnl
+            // sideBarPnl
             // 
-            flpnl.BackColor = SystemColors.ControlDarkDark;
-            flpnl.Controls.Add(homebtn);
-            flpnl.Controls.Add(urReqBtn);
-            flpnl.Controls.Add(cReqBtn);
-            flpnl.Controls.Add(mngUsrsBtn);
-            flpnl.Controls.Add(mngReqBtn);
-            flpnl.Controls.Add(adminBtn);
-            flpnl.Controls.Add(donateBtn);
-            flpnl.Controls.Add(donHistBtn);
-            flpnl.Controls.Add(currDelBtn);
-            flpnl.Controls.Add(delHistBtn);
-            flpnl.Location = new Point(1, 35);
-            flpnl.Name = "flpnl";
-            flpnl.Padding = new Padding(0, 10, 0, 0);
-            flpnl.Size = new Size(168, 601);
-            flpnl.TabIndex = 0;
+            sideBarPnl.BackColor = Color.SlateGray;
+            sideBarPnl.Controls.Add(homebtn);
+            sideBarPnl.Controls.Add(urReqBtn);
+            sideBarPnl.Controls.Add(cReqBtn);
+            sideBarPnl.Controls.Add(mngUsrsBtn);
+            sideBarPnl.Controls.Add(mngReqBtn);
+            sideBarPnl.Controls.Add(adminBtn);
+            sideBarPnl.Controls.Add(donateBtn);
+            sideBarPnl.Controls.Add(donHistBtn);
+            sideBarPnl.Controls.Add(currDelBtn);
+            sideBarPnl.Controls.Add(delHistBtn);
+            sideBarPnl.Location = new Point(1, 35);
+            sideBarPnl.Name = "sideBarPnl";
+            sideBarPnl.Padding = new Padding(0, 10, 0, 0);
+            sideBarPnl.Size = new Size(168, 601);
+            sideBarPnl.TabIndex = 0;
             // 
             // homebtn
             // 
@@ -134,7 +133,7 @@
             homebtn.FlatAppearance.BorderSize = 0;
             homebtn.FlatStyle = FlatStyle.Flat;
             homebtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
-            homebtn.ForeColor = SystemColors.ControlText;
+            homebtn.ForeColor = SystemColors.ButtonFace;
             homebtn.Location = new Point(3, 13);
             homebtn.Name = "homebtn";
             homebtn.Size = new Size(144, 23);
@@ -142,6 +141,7 @@
             homebtn.Text = "Home";
             homebtn.TextAlign = ContentAlignment.MiddleLeft;
             homebtn.UseVisualStyleBackColor = false;
+            homebtn.Click += homebtn_Click;
             // 
             // urReqBtn
             // 
@@ -150,6 +150,7 @@
             urReqBtn.FlatAppearance.BorderSize = 0;
             urReqBtn.FlatStyle = FlatStyle.Flat;
             urReqBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            urReqBtn.ForeColor = SystemColors.ButtonFace;
             urReqBtn.Location = new Point(3, 42);
             urReqBtn.Name = "urReqBtn";
             urReqBtn.Size = new Size(144, 23);
@@ -165,6 +166,7 @@
             cReqBtn.FlatAppearance.BorderSize = 0;
             cReqBtn.FlatStyle = FlatStyle.Flat;
             cReqBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            cReqBtn.ForeColor = SystemColors.ButtonFace;
             cReqBtn.Location = new Point(3, 71);
             cReqBtn.Name = "cReqBtn";
             cReqBtn.Size = new Size(144, 23);
@@ -180,6 +182,7 @@
             mngUsrsBtn.FlatAppearance.BorderSize = 0;
             mngUsrsBtn.FlatStyle = FlatStyle.Flat;
             mngUsrsBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            mngUsrsBtn.ForeColor = SystemColors.ButtonFace;
             mngUsrsBtn.Location = new Point(3, 100);
             mngUsrsBtn.Name = "mngUsrsBtn";
             mngUsrsBtn.Size = new Size(144, 23);
@@ -195,6 +198,7 @@
             mngReqBtn.FlatAppearance.BorderSize = 0;
             mngReqBtn.FlatStyle = FlatStyle.Flat;
             mngReqBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            mngReqBtn.ForeColor = SystemColors.ButtonFace;
             mngReqBtn.Location = new Point(3, 129);
             mngReqBtn.Name = "mngReqBtn";
             mngReqBtn.Size = new Size(144, 23);
@@ -210,6 +214,7 @@
             adminBtn.FlatAppearance.BorderSize = 0;
             adminBtn.FlatStyle = FlatStyle.Flat;
             adminBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            adminBtn.ForeColor = SystemColors.ButtonFace;
             adminBtn.Location = new Point(3, 158);
             adminBtn.Name = "adminBtn";
             adminBtn.Size = new Size(144, 23);
@@ -225,6 +230,7 @@
             donateBtn.FlatAppearance.BorderSize = 0;
             donateBtn.FlatStyle = FlatStyle.Flat;
             donateBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            donateBtn.ForeColor = SystemColors.ButtonFace;
             donateBtn.Location = new Point(3, 187);
             donateBtn.Name = "donateBtn";
             donateBtn.Size = new Size(144, 23);
@@ -240,6 +246,7 @@
             donHistBtn.FlatAppearance.BorderSize = 0;
             donHistBtn.FlatStyle = FlatStyle.Flat;
             donHistBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            donHistBtn.ForeColor = SystemColors.ButtonFace;
             donHistBtn.Location = new Point(3, 216);
             donHistBtn.Name = "donHistBtn";
             donHistBtn.Size = new Size(144, 23);
@@ -255,6 +262,7 @@
             currDelBtn.FlatAppearance.BorderSize = 0;
             currDelBtn.FlatStyle = FlatStyle.Flat;
             currDelBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            currDelBtn.ForeColor = SystemColors.ButtonFace;
             currDelBtn.Location = new Point(3, 245);
             currDelBtn.Name = "currDelBtn";
             currDelBtn.Size = new Size(144, 23);
@@ -270,6 +278,7 @@
             delHistBtn.FlatAppearance.BorderSize = 0;
             delHistBtn.FlatStyle = FlatStyle.Flat;
             delHistBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            delHistBtn.ForeColor = SystemColors.ButtonFace;
             delHistBtn.Location = new Point(3, 274);
             delHistBtn.Name = "delHistBtn";
             delHistBtn.Size = new Size(144, 23);
@@ -281,19 +290,18 @@
             // mainpnl
             // 
             mainpnl.BorderStyle = BorderStyle.FixedSingle;
-            mainpnl.Location = new Point(173, 39);
+            mainpnl.Location = new Point(172, 37);
             mainpnl.Name = "mainpnl";
-            mainpnl.Size = new Size(923, 597);
-            mainpnl.TabIndex = 2;
-            mainpnl.Paint += mainpnl_Paint;
+            mainpnl.Size = new Size(924, 599);
+            mainpnl.TabIndex = 1;
             // 
             // HomePage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1100, 642);
-            Controls.Add(flpnl);
             Controls.Add(mainpnl);
+            Controls.Add(sideBarPnl);
             Controls.Add(headerpnl);
             Name = "HomePage";
             StartPosition = FormStartPosition.CenterScreen;
@@ -301,7 +309,7 @@
             Load += HomePage_Load;
             headerpnl.ResumeLayout(false);
             headerpnl.PerformLayout();
-            flpnl.ResumeLayout(false);
+            sideBarPnl.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -311,13 +319,11 @@
         private Label headerlbl;
         private Label welcomelbl;
         private Label splitterlbl;
-        private FolderBrowserDialog folderBrowserDialog1;
         private Button logoutbtn;
         private Button homebtn;
-        private Panel mainpnl;
         private Button urReqBtn;
         private Button cReqBtn;
-        private FlowLayoutPanel flpnl;
+        private FlowLayoutPanel sideBarPnl;
         private Button mngUsrsBtn;
         private Button mngReqBtn;
         private Button adminBtn;
@@ -325,5 +331,6 @@
         private Button donHistBtn;
         private Button currDelBtn;
         private Button delHistBtn;
+        private Panel mainpnl;
     }
 }

@@ -38,7 +38,59 @@ namespace DisasterDonationReliefManagementSystem.Forms
                 delHistBtn
             };
             ApplyRoleBasedUI();
+            ShowView(new HomeView());
 
+            // set sidebar colors and button foreground for good contrast
+            sideBarPnl.BackColor = Color.FromArgb(43, 47, 51); // #2B2F33
+            var sidebarText = Color.White;
+            var sidebarHoverText = Color.Black;
+
+            foreach (Control c in sideBarPnl.Controls)
+            {
+                if (c is Button btn)
+                {
+                    // base color
+                    btn.ForeColor = sidebarText;
+
+                    // ensure hand cursor
+                    btn.Cursor = Cursors.Hand;
+
+                    // remove possible existing handlers to avoid duplicates if Load is invoked again
+                    btn.MouseEnter -= SideBarButton_MouseEnter;
+                    btn.MouseLeave -= SideBarButton_MouseLeave;
+
+                    // attach handlers that toggle text color on hover
+                    btn.MouseEnter += SideBarButton_MouseEnter;
+                    btn.MouseLeave += SideBarButton_MouseLeave;
+
+                    // local copy for restore color inside static handlers
+                    btn.Tag = new ButtonColorTag { Normal = sidebarText, Hover = sidebarHoverText };
+                }
+            }
+        }
+
+        // centralized hover handlers to avoid capturing outer variables in many lambdas
+        private void SideBarButton_MouseEnter(object? sender, EventArgs e)
+        {
+            if (sender is Button b && b.Tag is ButtonColorTag tag)
+            {
+                b.ForeColor = tag.Hover;
+            }
+        }
+
+        private void SideBarButton_MouseLeave(object? sender, EventArgs e)
+        {
+            if (sender is Button b && b.Tag is ButtonColorTag tag)
+            {
+                b.ForeColor = tag.Normal;
+            }
+        }
+
+        // small helper to store colors per-button (avoids closures)
+        private class ButtonColorTag
+        {
+            public Color Normal { get; set; }
+            public Color Hover { get; set; }
         }
 
         private void ApplyRoleBasedUI()
@@ -76,17 +128,25 @@ namespace DisasterDonationReliefManagementSystem.Forms
             }
         }
 
-        private void mainpnl_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void logoutbtn_Click(object sender, EventArgs e)
         {
             LogInPage loginPage = new LogInPage();
             loginPage.FormClosed += (s, args) => Application.Exit();
             loginPage.Show();
             this.Hide();
+        }
+
+        private void homebtn_Click(object sender, EventArgs e)
+        {
+            ShowView(new HomeView());
+
+        }
+
+        private void ShowView(UserControl view)
+        {
+            mainpnl.Controls.Clear();       // remove current view
+            view.Dock = DockStyle.Fill;     // fill the panel
+            mainpnl.Controls.Add(view);     // add new view
         }
     }
 }
