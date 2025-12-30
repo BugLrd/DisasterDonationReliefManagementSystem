@@ -174,6 +174,7 @@
             cReqBtn.Text = "Create New Request";
             cReqBtn.TextAlign = ContentAlignment.MiddleLeft;
             cReqBtn.UseVisualStyleBackColor = false;
+            cReqBtn.Click += cReqBtn_Click;
             // 
             // mngUsrsBtn
             // 
