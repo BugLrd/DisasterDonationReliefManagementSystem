@@ -81,7 +81,7 @@
 
         #endregion
 
-        private Panel containerPnl;
+        public Panel containerPnl;
         private FlowLayoutPanel mainReqPnl;
         private Panel detailsPnl;
     }
