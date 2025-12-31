@@ -5,6 +5,7 @@ using System;
 using DisasterDonationReliefManagementSystem.Services;
 using DisasterDonationReliefManagementSystem.Entities;
 using System.Windows.Forms;
+using Microsoft.IdentityModel.Tokens;
 
 namespace DisasterDonationReliefManagementSystem
 {
@@ -32,28 +33,14 @@ namespace DisasterDonationReliefManagementSystem
             {
                 // Authenticate against Login table (kept string+con style as requested)
                 string select_query = $"SELECT * FROM Login WHERE Username = '{identifier}' AND Password = '{password}'";
-                SqlDataAdapter sda = new SqlDataAdapter(select_query, con);
-
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
-
-                if (dt.Rows.Count == 0)
+                List<Login> logins = Query.GetLogins(select_query);
+                if (logins == null || logins.Count == 0)
                 {
                     MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                DataRow row = dt.Rows[0];
-
-                // Retrieve login details safely
-                int loginId = row.Table.Columns.Contains("LoginID") && row["LoginID"] != DBNull.Value ? Convert.ToInt32(row["LoginID"]) : 0;
-                string username = row.Table.Columns.Contains("Username") ? row["Username"]?.ToString() ?? string.Empty : string.Empty;
-                string passwordFromDb = row.Table.Columns.Contains("Password") ? row["Password"]?.ToString() ?? string.Empty : string.Empty;
-                bool status = row.Table.Columns.Contains("Status") && row["Status"] != DBNull.Value ? Convert.ToBoolean(row["Status"]) : false;
-                string role = row.Table.Columns.Contains("Role") ? row["Role"]?.ToString()?.Trim() ?? string.Empty : string.Empty;
-
-                // Create Login object
-                login = new Login(loginId, username, passwordFromDb, status, role);
+                login = logins[0];
 
                 // Check account status
                 if (!login.Status)
@@ -65,25 +52,9 @@ namespace DisasterDonationReliefManagementSystem
                 // Admin
                 if (string.Equals(login.Role, "Admin", StringComparison.OrdinalIgnoreCase))
                 {
-                    string adminQuery = $"SELECT * FROM Admin WHERE LoginID = '{login.LoginID}'";
-                    sda = new SqlDataAdapter(adminQuery, con);
-                    DataTable adminDt = new DataTable();
-                    sda.Fill(adminDt);
+                    string adminQuery = $"SELECT a.*, l.Username, l.Status FROM Admin a INNER JOIN Login l ON a.LoginID = l.LoginID and a.LoginID = '{login.LoginID}'";
 
-                    if (adminDt.Rows.Count == 0)
-                    {
-                        MessageBox.Show("Admin record not found. Contact administrator.", "Data error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    DataRow adminRow = adminDt.Rows[0];
-                    int adminID = adminRow.Table.Columns.Contains("AdminID") && adminRow["AdminID"] != DBNull.Value ? Convert.ToInt32(adminRow["AdminID"]) : 0;
-                    string fullName = adminRow.Table.Columns.Contains("FullName") ? adminRow["FullName"]?.ToString() ?? username : username;
-                    string email = adminRow.Table.Columns.Contains("Email") ? adminRow["Email"]?.ToString() ?? string.Empty : string.Empty;
-
-                    Admin adminUser = new Admin(adminID, login.LoginID, username, status, fullName, email);
-
-                    HomePage homePage = new HomePage(adminUser);
+                    HomePage homePage = new HomePage(Query.GetAdmins(adminQuery)[0]);
                     homePage.FormClosed += (s, args) => Application.Exit();
                     this.Hide();
                     homePage.Show();
@@ -93,26 +64,9 @@ namespace DisasterDonationReliefManagementSystem
                 // Donator / Donor
                 if (string.Equals(login.Role, "Donator", StringComparison.OrdinalIgnoreCase))
                 {
-                    string donorQuery = $"SELECT * FROM Donator WHERE LoginID = '{login.LoginID}'";
-                    sda = new SqlDataAdapter(donorQuery, con);
-                    DataTable donorDt = new DataTable();
-                    sda.Fill(donorDt);
+                    string donorQuery = $"SELECT d.*, l.Username, l.Status FROM Donator d INNER JOIN Login l ON d.LoginID = l.LoginID and d.LoginID = '{login.LoginID}'";
 
-                    if (donorDt.Rows.Count == 0)
-                    {
-                        MessageBox.Show("Donator record not found. Contact administrator.", "Data error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    DataRow donorRow = donorDt.Rows[0];
-                    int donatorID = donorRow.Table.Columns.Contains("DonatorID") && donorRow["DonatorID"] != DBNull.Value ? Convert.ToInt32(donorRow["DonatorID"]) : 0;
-                    string donorFullName = donorRow.Table.Columns.Contains("FullName") ? donorRow["FullName"]?.ToString() ?? username : username;
-                    string donorPhone = donorRow.Table.Columns.Contains("Phone") ? donorRow["Phone"]?.ToString() ?? string.Empty : string.Empty;
-                    string donorAddress = donorRow.Table.Columns.Contains("Address") ? donorRow["Address"]?.ToString() ?? string.Empty : string.Empty;
-
-                    Donator donatorUser = new Donator(donatorID, login.LoginID, username, status, donorFullName, donorPhone, donorAddress);
-
-                    HomePage homePage = new HomePage(donatorUser);
+                    HomePage homePage = new HomePage(Query.GetDonators(donorQuery)[0]);
                     homePage.FormClosed += (s, args) => Application.Exit();
                     this.Hide();
                     homePage.Show();
@@ -122,27 +76,9 @@ namespace DisasterDonationReliefManagementSystem
                 // Victim / Recipient
                 if (string.Equals(login.Role, "Victim", StringComparison.OrdinalIgnoreCase))
                 {
-                    string victimQuery = $"SELECT * FROM Victim WHERE LoginID = '{login.LoginID}'";
-                    sda = new SqlDataAdapter(victimQuery, con);
-                    DataTable victimDt = new DataTable();
-                    sda.Fill(victimDt);
+                    string victimQuery = $"SELECT v.*, l.Username, l.Status FROM Victim v INNER JOIN Login l ON v.LoginID = l.LoginID and v.LoginID = '{login.LoginID}'";
 
-                    if (victimDt.Rows.Count == 0)
-                    {
-                        MessageBox.Show("Recipient record not found. Contact administrator.", "Data error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    DataRow victimRow = victimDt.Rows[0];
-                    int victimID = victimRow.Table.Columns.Contains("VictimID") && victimRow["VictimID"] != DBNull.Value ? Convert.ToInt32(victimRow["VictimID"]) : 0;
-                    string victimFullName = victimRow.Table.Columns.Contains("FullName") ? victimRow["FullName"]?.ToString() ?? username : username;
-                    string victimPhone = victimRow.Table.Columns.Contains("Phone") ? victimRow["Phone"]?.ToString() ?? string.Empty : string.Empty;
-                    string victimAddress = victimRow.Table.Columns.Contains("Address") ? victimRow["Address"]?.ToString() ?? string.Empty : string.Empty;
-                    string verificationStatus = victimRow.Table.Columns.Contains("VerificationStatus") ? victimRow["VerificationStatus"]?.ToString() ?? string.Empty : string.Empty;
-
-                    Victim victimUser = new Victim(victimID, login.LoginID, username, status, victimFullName, victimPhone, victimAddress, verificationStatus);
-
-                    HomePage homePage = new HomePage(victimUser);
+                    HomePage homePage = new HomePage(Query.GetVictims(victimQuery)[0]);
                     homePage.FormClosed += (s, args) => Application.Exit();
                     this.Hide();
                     homePage.Show();
@@ -152,27 +88,10 @@ namespace DisasterDonationReliefManagementSystem
                 // Volunteer
                 if (string.Equals(login.Role, "Volunteer", StringComparison.OrdinalIgnoreCase))
                 {
-                    string volQuery = $"SELECT * FROM Volunteer WHERE LoginID = '{login.LoginID}'";
-                    sda = new SqlDataAdapter(volQuery, con);
-                    DataTable volDt = new DataTable();
-                    sda.Fill(volDt);
+                    string volQuery = $"SELECT v.*, l.Username, l.Status FROM Volunteer v INNER JOIN Login l ON v.LoginID = l.LoginID and v.LoginID = '{login.LoginID}'";
 
-                    if (volDt.Rows.Count == 0)
-                    {
-                        MessageBox.Show("Volunteer record not found. Contact administrator.", "Data error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
 
-                    DataRow volRow = volDt.Rows[0];
-                    int volunteerID = volRow.Table.Columns.Contains("VolunteerID") && volRow["VolunteerID"] != DBNull.Value ? Convert.ToInt32(volRow["VolunteerID"]) : 0;
-                    string volFullName = volRow.Table.Columns.Contains("FullName") ? volRow["FullName"]?.ToString() ?? username : username;
-                    string volPhone = volRow.Table.Columns.Contains("Phone") ? volRow["Phone"]?.ToString() ?? string.Empty : string.Empty;
-                    string vehicleType = volRow.Table.Columns.Contains("VehicleType") ? volRow["VehicleType"]?.ToString() ?? string.Empty : string.Empty;
-                    string availabilityStatus = volRow.Table.Columns.Contains("AvailabilityStatus") ? volRow["AvailabilityStatus"]?.ToString() ?? string.Empty : string.Empty;
-
-                    Volunteer volunteerUser = new Volunteer(volunteerID, login.LoginID, username, status, volFullName, volPhone, vehicleType, availabilityStatus);
-
-                    HomePage homePage = new HomePage(volunteerUser);
+                    HomePage homePage = new HomePage(Query.GetVolunteers(volQuery)[0]);
                     homePage.FormClosed += (s, args) => Application.Exit();
                     this.Hide();
                     homePage.Show();

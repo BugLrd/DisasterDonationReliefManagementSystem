@@ -158,6 +158,7 @@
             urReqBtn.Text = "Your Requests";
             urReqBtn.TextAlign = ContentAlignment.MiddleLeft;
             urReqBtn.UseVisualStyleBackColor = false;
+            urReqBtn.Click += urReqBtn_Click;
             // 
             // cReqBtn
             // 
