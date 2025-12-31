@@ -7,7 +7,7 @@ namespace DisasterDonationReliefManagementSystem.Services
 {
     internal class Query
     {
-        static SqlConnection con = new SqlConnection(@"Data Source=SHAYON\SQLEXPRESS;Initial Catalog=DisasterReliefDB;Integrated Security=True;Trust Server Certificate=True");
+        static SqlConnection con = new SqlConnection(@"Data Source=shayon\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Trust Server Certificate=True");
 
         public static SqlConnection GetConnection()
         {

@@ -32,7 +32,7 @@ namespace DisasterDonationReliefManagementSystem
 
         private void HomeView_Load(object sender, EventArgs e)
         {
-            string select_query = "SELECT * FROM DisasterRequests WHERE RequestStatus = 'Approved' ORDER BY RequestDate DESC";
+            string select_query = "SELECT * FROM DisasterRequest WHERE RequestStatus = 'Approved' ORDER BY RequestDate DESC";
             SqlDataAdapter sda = new SqlDataAdapter(select_query, con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
