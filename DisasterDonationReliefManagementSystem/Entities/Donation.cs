@@ -15,6 +15,17 @@ namespace DisasterDonationReliefManagementSystem.Entities
         public string ItemDetails { get; set; }
         public DateTime DonationDate { get; set; }
         public string DonationStatus { get; set; }
+
+        public Donation(int donationID, int donatorID, int requestID, string donationType, string itemDetails, DateTime donationDate, string donationStatus)
+        {
+            DonationID = donationID;
+            DonatorID = donatorID;
+            RequestID = requestID;
+            DonationType = donationType;
+            ItemDetails = itemDetails;
+            DonationDate = donationDate;
+            DonationStatus = donationStatus;
+        }
     }
 
 }

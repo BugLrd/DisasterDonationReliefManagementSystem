@@ -18,6 +18,20 @@ namespace DisasterDonationReliefManagementSystem.Entities
         public DateTime RequestDate { get; set; }
         public string Location { get; set; }
         public string RequestStatus { get; set; }
+
+        public DisasterRequest(int requestID, int victimID, string disasterTitle, string disasterType, string description, string requestedItems, int numberOfMembers, DateTime requestDate, string location, string requestStatus)
+        {
+            RequestID = requestID;
+            VictimID = victimID;
+            DisasterTitle = disasterTitle;
+            DisasterType = disasterType;
+            Description = description;
+            RequestedItems = requestedItems;
+            NumberOfMembers = numberOfMembers;
+            RequestDate = requestDate;
+            Location = location;
+            RequestStatus = requestStatus;
+        }
     }
 
 }

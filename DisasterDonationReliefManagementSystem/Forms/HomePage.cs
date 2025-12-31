@@ -154,5 +154,17 @@ namespace DisasterDonationReliefManagementSystem.Forms
         {
             ShowView(new create_req_view());
         }
+
+        private void urReqBtn_Click(object sender, EventArgs e)
+        {
+            if (_currentUser is Victim victim)
+            {
+                ShowView(new YourRequestsView(victim));
+            }
+            else
+            {
+                MessageBox.Show("Current user is not a Victim. Cannot show your requests.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
