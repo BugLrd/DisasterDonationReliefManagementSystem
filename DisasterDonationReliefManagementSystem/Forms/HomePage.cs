@@ -1,5 +1,6 @@
 ﻿using DisasterDonationReliefManagementSystem.Entities;
 using DisasterDonationReliefManagementSystem.Views;
+using DisasterDonationReliefManagementSystem.Views.Admin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,7 +40,6 @@ namespace DisasterDonationReliefManagementSystem.Forms
                 delHistBtn
             };
             ApplyRoleBasedUI();
-            ShowView(new HomeView());
 
             // set sidebar colors and button foreground for good contrast
             sideBarPnl.BackColor = Color.FromArgb(43, 47, 51); // #2B2F33
@@ -110,11 +110,13 @@ namespace DisasterDonationReliefManagementSystem.Forms
                     mngUsrsBtn.Visible = true;
                     mngReqBtn.Visible = true;
                     adminBtn.Visible = true;
+                    ShowView(new AdminHomeView());
                     break;
 
                 case "victim":
                     urReqBtn.Visible = true;
                     cReqBtn.Visible = true;
+                    ShowView(new VictimHomeView());
                     break;
 
                 case "donator":
@@ -139,7 +141,13 @@ namespace DisasterDonationReliefManagementSystem.Forms
 
         private void homebtn_Click(object sender, EventArgs e)
         {
-            ShowView(new HomeView());
+            if (_currentUser.Role.ToLower() == "admin")
+                ShowView(new AdminHomeView());
+            if (_currentUser.Role.ToLower() == "victim")
+                ShowView(new VictimHomeView());
+            //if (_currentUser.Role == "donator")
+            //    ShowView(new DonatorHomeView());
+            
 
         }
 

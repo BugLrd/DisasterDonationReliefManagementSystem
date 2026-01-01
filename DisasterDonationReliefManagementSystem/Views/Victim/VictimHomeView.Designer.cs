@@ -1,6 +1,6 @@
 ﻿namespace DisasterDonationReliefManagementSystem
 {
-    partial class HomeView
+    partial class VictimHomeView
     {
         /// <summary> 
         /// Required designer variable.
