@@ -9,11 +9,12 @@ namespace DisasterDonationReliefManagementSystem.Services
     internal static class Query
     {
         private static readonly string connectionString = "Data Source=shayon\\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Trust Server Certificate=True";
+        private static SqlConnection con = new SqlConnection(connectionString);
 
+        //---------------------SELECT QUERIES---------------------//
         public static List<Login> GetLogins(string sql)
         {
             List<Login> list = new List<Login>();
-            SqlConnection con = new SqlConnection(connectionString);
             SqlDataAdapter sda = new SqlDataAdapter(sql, con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -35,7 +36,6 @@ namespace DisasterDonationReliefManagementSystem.Services
         public static List<Admin> GetAdmins(string sql) // Gonna need Join query to get the the username and status from Login table
         {
             List<Admin> list = new List<Admin>();
-            SqlConnection con = new SqlConnection(connectionString);
             SqlDataAdapter sda = new SqlDataAdapter(sql, con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -58,7 +58,6 @@ namespace DisasterDonationReliefManagementSystem.Services
         public static List<Victim> GetVictims(string sql) // Gonna need Join query to get the the username and status from Login table
         {
             List<Victim> list = new List<Victim>();
-            SqlConnection con = new SqlConnection(connectionString);
             SqlDataAdapter sda = new SqlDataAdapter(sql, con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -83,7 +82,6 @@ namespace DisasterDonationReliefManagementSystem.Services
         public static List<Donator> GetDonators(string sql) // Gonna need Join query to get the the username and status from Login table
         {
             List<Donator> list = new List<Donator>();
-            SqlConnection con = new SqlConnection(connectionString);
             SqlDataAdapter sda = new SqlDataAdapter(sql, con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -107,7 +105,6 @@ namespace DisasterDonationReliefManagementSystem.Services
         public static List<Volunteer> GetVolunteers(string sql) // Gonna need Join query to get the the username and status from Login table
         {
             List<Volunteer> list = new List<Volunteer>();
-            SqlConnection con = new SqlConnection(connectionString);
             SqlDataAdapter sda = new SqlDataAdapter(sql, con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -132,7 +129,6 @@ namespace DisasterDonationReliefManagementSystem.Services
         public static List<DisasterRequest> GetDisasterRequests(string sql)
         {
             List<DisasterRequest> list = new List<DisasterRequest>();
-            SqlConnection con = new SqlConnection(connectionString);
             SqlDataAdapter sda = new SqlDataAdapter(sql, con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -159,7 +155,6 @@ namespace DisasterDonationReliefManagementSystem.Services
         public static List<Donation> GetDonations(string sql)
         {
             List<Donation> list = new List<Donation>();
-            SqlConnection con = new SqlConnection(connectionString);
             SqlDataAdapter sda = new SqlDataAdapter(sql, con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -183,7 +178,6 @@ namespace DisasterDonationReliefManagementSystem.Services
         public static List<Delivery> GetDeliveries(string sql)
         {
             List<Delivery> list = new List<Delivery>();
-            SqlConnection con = new SqlConnection(connectionString);
             SqlDataAdapter sda = new SqlDataAdapter(sql, con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
@@ -202,10 +196,244 @@ namespace DisasterDonationReliefManagementSystem.Services
 
             return list;
         }
+        //---------------------------------------------------------------//
+
+
+        //-------------------------Insert Queries-------------------------//
+
+        public static int InsertLogin(Login login)
+        {
+            string sql = @"INSERT INTO Login (Username, Password, Status, Role)
+                   VALUES (@Username, @Password, @Status, @Role)";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            cmd.Parameters.AddWithValue("@Username", login.Username);
+            cmd.Parameters.AddWithValue("@Password", login.Password);
+            cmd.Parameters.AddWithValue("@Status", login.Status);
+            cmd.Parameters.AddWithValue("@Role", login.Role);
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            int result = cmd.ExecuteNonQuery();
+            con.Close();
+            return result;
+        }
+
+        public static int InsertAdmin(Admin admin)
+        {
+            string sql = @"INSERT INTO Admin (LoginID, FullName, Email)
+                   VALUES (@LoginID, @FullName, @Email)";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            cmd.Parameters.AddWithValue("@LoginID", admin.LoginID);
+            cmd.Parameters.AddWithValue("@FullName", admin.FullName);
+            cmd.Parameters.AddWithValue("@Email", admin.Email);
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            int result = cmd.ExecuteNonQuery();
+            con.Close();
+            return result;
+        }
+
+        public static int InsertVictim(Victim victim)
+        {
+            string sql = @"INSERT INTO Victim 
+                   (LoginID, FullName, Phone, Address, VerificationStatus)
+                   VALUES 
+                   (@LoginID, @FullName, @Phone, @Address, @VerificationStatus)";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            cmd.Parameters.AddWithValue("@LoginID", victim.LoginID);
+            cmd.Parameters.AddWithValue("@FullName", victim.FullName);
+            cmd.Parameters.AddWithValue("@Phone", victim.Phone);
+            cmd.Parameters.AddWithValue("@Address", victim.Address);
+            cmd.Parameters.AddWithValue("@VerificationStatus", victim.VerificationStatus);
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            int result = cmd.ExecuteNonQuery();
+            con.Close();
+            return result;
+        }
+
+        public static int InsertDonator(Donator donator)
+        {
+            string sql = @"INSERT INTO Donator (LoginID, FullName, Phone, Address)
+                   VALUES (@LoginID, @FullName, @Phone, @Address)";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            cmd.Parameters.AddWithValue("@LoginID", donator.LoginID);
+            cmd.Parameters.AddWithValue("@FullName", donator.FullName);
+            cmd.Parameters.AddWithValue("@Phone", donator.Phone);
+            cmd.Parameters.AddWithValue("@Address", donator.Address);
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            int result = cmd.ExecuteNonQuery();
+            con.Close();
+            return result;
+        }
+
+        public static int InsertVolunteer(Volunteer volunteer)
+        {
+            string sql = @"INSERT INTO Volunteer 
+                   (LoginID, FullName, Phone, VehicleType, AvailabilityStatus)
+                   VALUES 
+                   (@LoginID, @FullName, @Phone, @VehicleType, @AvailabilityStatus)";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            cmd.Parameters.AddWithValue("@LoginID", volunteer.LoginID);
+            cmd.Parameters.AddWithValue("@FullName", volunteer.FullName);
+            cmd.Parameters.AddWithValue("@Phone", volunteer.Phone);
+            cmd.Parameters.AddWithValue("@VehicleType", volunteer.VehicleType);
+            cmd.Parameters.AddWithValue("@AvailabilityStatus", volunteer.AvailabilityStatus);
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            int result = cmd.ExecuteNonQuery();
+            con.Close();
+            return result;
+        }
+
+        public static int InsertDisasterRequest(DisasterRequest req)
+        {
+            string sql = @"INSERT INTO DisasterRequest
+                   (VictimID, DisasterTitle, DisasterType, Description,
+                    RequestedItems, NumberOfMembers, Location)
+                   VALUES
+                   (@VictimID, @DisasterTitle, @DisasterType, @Description,
+                    @RequestedItems, @NumberOfMembers, @Location)";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            cmd.Parameters.AddWithValue("@VictimID", req.VictimID);
+            cmd.Parameters.AddWithValue("@DisasterTitle", req.DisasterTitle);
+            cmd.Parameters.AddWithValue("@DisasterType", req.DisasterType);
+            cmd.Parameters.AddWithValue("@Description", req.Description);
+            cmd.Parameters.AddWithValue("@RequestedItems", req.RequestedItems);
+            cmd.Parameters.AddWithValue("@NumberOfMembers", req.NumberOfMembers);
+            cmd.Parameters.AddWithValue("@Location", req.Location);
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            int result = cmd.ExecuteNonQuery();
+            con.Close();
+            return result;
+        }
+
+        public static int InsertDonation(Donation donation)
+        {
+            string sql = @"INSERT INTO Donation
+                   (DonatorID, RequestID, DonationType, ItemDetails)
+                   VALUES
+                   (@DonatorID, @RequestID, @DonationType, @ItemDetails)";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            cmd.Parameters.AddWithValue("@DonatorID", donation.DonatorID);
+            cmd.Parameters.AddWithValue("@RequestID", donation.RequestID);
+            cmd.Parameters.AddWithValue("@DonationType", donation.DonationType);
+            cmd.Parameters.AddWithValue("@ItemDetails", donation.ItemDetails);
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            int result = cmd.ExecuteNonQuery();
+            con.Close();
+            return result;
+        }
+
+        public static int InsertDelivery(Delivery delivery)
+        {
+            string sql = @"INSERT INTO Delivery
+                   (DonationID, VolunteerID, PickupLocation, DeliveryLocation)
+                   VALUES
+                   (@DonationID, @VolunteerID, @PickupLocation, @DeliveryLocation)";
+
+            SqlCommand cmd = new SqlCommand(sql, con);
+
+            cmd.Parameters.AddWithValue("@DonationID", delivery.DonationID);
+            cmd.Parameters.AddWithValue("@VolunteerID", delivery.VolunteerID);
+            cmd.Parameters.AddWithValue("@PickupLocation", delivery.PickupLocation);
+            cmd.Parameters.AddWithValue("@DeliveryLocation", delivery.DeliveryLocation);
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            int result = cmd.ExecuteNonQuery();
+            con.Close();
+            return result;
+        }
+
+
+        //---------------------------------------------------------------//
+
 
         public static SqlConnection GetConnection()
         {
-            return new SqlConnection(connectionString);
+            return con;
+        }
+
+        internal static int DeleteDisasterRequest(int requestID)
+        {
+            const string sql = @"DELETE FROM DisasterRequest WHERE RequestID = @RequestID";
+
+            var cmd = new SqlCommand(sql, con);
+            
+            cmd.Parameters.AddWithValue("@RequestID", requestID);
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            int affected = cmd.ExecuteNonQuery();
+            con.Close();
+
+            return affected;
+        }
+
+        public static int UpdateDisasterRequest(DisasterRequest req)
+        {
+            const string sql = @"
+UPDATE DisasterRequest
+SET DisasterTitle = @DisasterTitle,
+    DisasterType = @DisasterType,
+    Description = @Description,
+    RequestedItems = @RequestedItems,
+    NumberOfMembers = @NumberOfMembers,
+    Location = @Location,
+    RequestStatus = @RequestStatus
+WHERE RequestID = @RequestID";
+
+            using (var cmd = new SqlCommand(sql, con))
+            {
+                cmd.Parameters.AddWithValue("@RequestID", req.RequestID);
+                cmd.Parameters.AddWithValue("@DisasterTitle", req.DisasterTitle);
+                cmd.Parameters.AddWithValue("@DisasterType", req.DisasterType);
+                cmd.Parameters.AddWithValue("@Description", req.Description);
+                cmd.Parameters.AddWithValue("@RequestedItems", req.RequestedItems);
+                cmd.Parameters.AddWithValue("@NumberOfMembers", req.NumberOfMembers);
+                cmd.Parameters.AddWithValue("@Location", req.Location);
+                cmd.Parameters.AddWithValue("@RequestStatus", req.RequestStatus);
+
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
+                var affected = cmd.ExecuteNonQuery();
+                con.Close();
+                return affected;
+            }
         }
     }
 }

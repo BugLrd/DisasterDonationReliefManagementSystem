@@ -42,6 +42,7 @@
             Description = new Label();
             DescriptionTB = new TextBox();
             ADDbutton = new Button();
+            createBtn = new Button();
             SuspendLayout();
             // 
             // tilte
@@ -57,7 +58,7 @@
             // DisasterTitle
             // 
             DisasterTitle.AutoSize = true;
-            DisasterTitle.Location = new Point(61, 188);
+            DisasterTitle.Location = new Point(64, 132);
             DisasterTitle.Name = "DisasterTitle";
             DisasterTitle.Size = new Size(74, 15);
             DisasterTitle.TabIndex = 1;
@@ -67,7 +68,7 @@
             // DisasterType
             // 
             DisasterType.AutoSize = true;
-            DisasterType.Location = new Point(453, 185);
+            DisasterType.Location = new Point(456, 129);
             DisasterType.Name = "DisasterType";
             DisasterType.Size = new Size(76, 15);
             DisasterType.TabIndex = 2;
@@ -76,7 +77,7 @@
             // 
             // DisasterTitleTB
             // 
-            DisasterTitleTB.Location = new Point(176, 186);
+            DisasterTitleTB.Location = new Point(179, 130);
             DisasterTitleTB.Name = "DisasterTitleTB";
             DisasterTitleTB.Size = new Size(244, 23);
             DisasterTitleTB.TabIndex = 3;
@@ -85,7 +86,7 @@
             // RequestedItems
             // 
             RequestedItems.AutoSize = true;
-            RequestedItems.Location = new Point(453, 337);
+            RequestedItems.Location = new Point(456, 281);
             RequestedItems.Name = "RequestedItems";
             RequestedItems.Size = new Size(94, 15);
             RequestedItems.TabIndex = 5;
@@ -95,7 +96,7 @@
             // NumberOfMembers
             // 
             NumberOfMembers.AutoSize = true;
-            NumberOfMembers.Location = new Point(453, 266);
+            NumberOfMembers.Location = new Point(456, 210);
             NumberOfMembers.Name = "NumberOfMembers";
             NumberOfMembers.Size = new Size(120, 15);
             NumberOfMembers.TabIndex = 6;
@@ -104,14 +105,14 @@
             // 
             // NumberOfMembersTB
             // 
-            NumberOfMembersTB.Location = new Point(587, 263);
+            NumberOfMembersTB.Location = new Point(590, 207);
             NumberOfMembersTB.Name = "NumberOfMembersTB";
             NumberOfMembersTB.Size = new Size(187, 23);
             NumberOfMembersTB.TabIndex = 7;
             // 
             // LocationTB
             // 
-            LocationTB.Location = new Point(176, 264);
+            LocationTB.Location = new Point(179, 208);
             LocationTB.Name = "LocationTB";
             LocationTB.Size = new Size(242, 23);
             LocationTB.TabIndex = 8;
@@ -121,7 +122,7 @@
             // 
             DisastertypeCombox.FormattingEnabled = true;
             DisastertypeCombox.Items.AddRange(new object[] { "Earthquake", "Flood", "Hurricane", "Wildfire", "Drought", "Tsunami" });
-            DisastertypeCombox.Location = new Point(587, 185);
+            DisastertypeCombox.Location = new Point(590, 129);
             DisastertypeCombox.Name = "DisastertypeCombox";
             DisastertypeCombox.Size = new Size(187, 23);
             DisastertypeCombox.TabIndex = 9;
@@ -129,7 +130,7 @@
             // Location
             // 
             Location.AutoSize = true;
-            Location.Location = new Point(61, 266);
+            Location.Location = new Point(64, 210);
             Location.Name = "Location";
             Location.Size = new Size(53, 15);
             Location.TabIndex = 10;
@@ -137,7 +138,7 @@
             // 
             // RequestedItemsTB
             // 
-            RequestedItemsTB.Location = new Point(587, 334);
+            RequestedItemsTB.Location = new Point(590, 278);
             RequestedItemsTB.Multiline = true;
             RequestedItemsTB.Name = "RequestedItemsTB";
             RequestedItemsTB.Size = new Size(237, 132);
@@ -146,7 +147,7 @@
             // Description
             // 
             Description.AutoSize = true;
-            Description.Location = new Point(61, 340);
+            Description.Location = new Point(64, 284);
             Description.Name = "Description";
             Description.Size = new Size(67, 15);
             Description.TabIndex = 12;
@@ -154,7 +155,7 @@
             // 
             // DescriptionTB
             // 
-            DescriptionTB.Location = new Point(176, 337);
+            DescriptionTB.Location = new Point(179, 281);
             DescriptionTB.Multiline = true;
             DescriptionTB.Name = "DescriptionTB";
             DescriptionTB.Size = new Size(238, 132);
@@ -164,7 +165,7 @@
             // 
             ADDbutton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ADDbutton.ImageAlign = ContentAlignment.TopCenter;
-            ADDbutton.Location = new Point(789, 185);
+            ADDbutton.Location = new Point(792, 129);
             ADDbutton.Name = "ADDbutton";
             ADDbutton.Size = new Size(35, 24);
             ADDbutton.TabIndex = 14;
@@ -173,10 +174,22 @@
             ADDbutton.UseVisualStyleBackColor = true;
             ADDbutton.Click += ADDbutton_Click;
             // 
+            // createBtn
+            // 
+            createBtn.BackColor = SystemColors.Highlight;
+            createBtn.Location = new Point(363, 485);
+            createBtn.Name = "createBtn";
+            createBtn.Size = new Size(224, 33);
+            createBtn.TabIndex = 15;
+            createBtn.Text = "Create Request";
+            createBtn.UseVisualStyleBackColor = false;
+            createBtn.Click += createBtn_Click;
+            // 
             // create_req_view
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(createBtn);
             Controls.Add(ADDbutton);
             Controls.Add(DescriptionTB);
             Controls.Add(Description);
@@ -193,6 +206,7 @@
             Controls.Add(tilte);
             Name = "create_req_view";
             Size = new Size(923, 597);
+            Load += create_req_view_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -213,5 +227,6 @@
         private Label Description;
         private TextBox DescriptionTB;
         private Button ADDbutton;
+        private Button createBtn;
     }
 }

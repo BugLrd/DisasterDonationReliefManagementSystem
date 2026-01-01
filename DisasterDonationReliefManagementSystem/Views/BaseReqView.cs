@@ -20,8 +20,13 @@ namespace DisasterDonationReliefManagementSystem.Views
         private readonly Color titleHoverColor = Color.FromArgb(0, 90, 158);    // #005A9E
         private readonly Color descColor = Color.FromArgb(85, 85, 85);    // #555555
 
-        private bool isDetailsPanelOpen = false;
+        public bool isDetailsPanelOpen = false;
         private Panel selectedPanel = null;
+
+        public Panel subReqPnl, contentPnl;
+        public Button closeBtn;
+        Label titleLbl;
+        Label descLbl;
         public BaseReqView()
         {
             InitializeComponent();
@@ -38,12 +43,8 @@ namespace DisasterDonationReliefManagementSystem.Views
 
             foreach (var req in requests)
             {
-                // Only create panel if status is approved
-                if (!req.RequestStatus.Equals("Approved", StringComparison.OrdinalIgnoreCase))
-                    continue;
-
                 // Create title label with hover effects
-                Label titleLbl = new Label
+                titleLbl = new Label
                 {
                     Text = req.DisasterTitle,
                     Location = new Point(15, 15),
@@ -70,7 +71,7 @@ namespace DisasterDonationReliefManagementSystem.Views
                 titleLbl.Click += Title_Click;
 
                 // Create description label
-                Label descLbl = new Label
+                descLbl = new Label
                 {
                     Text = req.Description,
                     Location = new Point(15, 45),
@@ -80,7 +81,7 @@ namespace DisasterDonationReliefManagementSystem.Views
                 };
 
                 // Create request panel with hover effects
-                Panel subReqPnl = new Panel
+                subReqPnl = new Panel
                 {
                     BorderStyle = BorderStyle.FixedSingle,
                     Size = new Size(mainReqPnl.Width - 25, 86),
@@ -116,7 +117,7 @@ namespace DisasterDonationReliefManagementSystem.Views
             mainReqPnl.PerformLayout();
         }
 
-        private void Panel_Click(object sender, EventArgs e)
+        public void Panel_Click(object sender, EventArgs e)
         {
             if (sender is Panel panel)
             {
@@ -166,13 +167,13 @@ namespace DisasterDonationReliefManagementSystem.Views
         {
             detailsPnl.Controls.Clear();
 
-            DisasterRequest? req = reqPanel.Tag as DisasterRequest;
+            DisasterRequest req = reqPanel.Tag as DisasterRequest;
 
             if (req == null)
                 return;
 
             // Create a scrollable panel for details content
-            Panel contentPnl = new Panel
+            contentPnl = new Panel
             {
                 AutoScroll = true,
                 Dock = DockStyle.Fill,
@@ -183,13 +184,13 @@ namespace DisasterDonationReliefManagementSystem.Views
 
             int xPos_heading = 15; // Heading labels X position
             int xPos_info = 20; // Info labels X position
-            int yPosition = 10;
+            int yPosition = 15;
             const int labelHeight = 20; // Standard label height
             const int sectionSpacing = 30; // Space between sections
             const int fieldSpacing = 10; // Space between fields
 
             // Close button
-            Button closeBtn = new Button
+            closeBtn = new Button
             {
                 Text = "✕",
                 Location = new Point(detailsPnl.Width - 30, 5),
@@ -208,7 +209,7 @@ namespace DisasterDonationReliefManagementSystem.Views
             Label mainTitleLbl = new Label
             {
                 Text = req.DisasterTitle,
-                Location = new Point(10, 15),
+                Location = new Point(10, yPosition),
                 AutoSize = true,
                 Font = new Font("Segoe UI", 16F, FontStyle.Bold),
                 ForeColor = titleColor,
@@ -216,12 +217,12 @@ namespace DisasterDonationReliefManagementSystem.Views
             };
             contentPnl.Controls.Add(mainTitleLbl);
 
-            yPosition = 60;
+            yPosition += 40;
             // === Request Information Section ===
             Label requestInfoLbl = new Label
             {
                 Text = "Request Information",
-                Location = new Point(xPos_heading, 60),
+                Location = new Point(xPos_heading, yPosition),
                 AutoSize = true,
                 Font = new Font("Segoe UI", 12F, FontStyle.Bold),
                 ForeColor = titleColor
@@ -394,7 +395,7 @@ namespace DisasterDonationReliefManagementSystem.Views
             detailsPnl.Controls.Add(contentPnl);
         }
 
-        private void CloseDetailsPanel()
+        public virtual void CloseDetailsPanel()
         {
             isDetailsPanelOpen = false;
             detailsPnl.Visible = false;
