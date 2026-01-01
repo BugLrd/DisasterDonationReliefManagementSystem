@@ -167,7 +167,7 @@ namespace DisasterDonationReliefManagementSystem.Views
         {
             detailsPnl.Controls.Clear();
 
-            DisasterRequest? req = reqPanel.Tag as DisasterRequest;
+            DisasterRequest req = reqPanel.Tag as DisasterRequest;
 
             if (req == null)
                 return;
@@ -184,7 +184,7 @@ namespace DisasterDonationReliefManagementSystem.Views
 
             int xPos_heading = 15; // Heading labels X position
             int xPos_info = 20; // Info labels X position
-            int yPosition = 10;
+            int yPosition = 15;
             const int labelHeight = 20; // Standard label height
             const int sectionSpacing = 30; // Space between sections
             const int fieldSpacing = 10; // Space between fields
@@ -209,7 +209,7 @@ namespace DisasterDonationReliefManagementSystem.Views
             Label mainTitleLbl = new Label
             {
                 Text = req.DisasterTitle,
-                Location = new Point(10, 15),
+                Location = new Point(10, yPosition),
                 AutoSize = true,
                 Font = new Font("Segoe UI", 16F, FontStyle.Bold),
                 ForeColor = titleColor,
@@ -217,12 +217,12 @@ namespace DisasterDonationReliefManagementSystem.Views
             };
             contentPnl.Controls.Add(mainTitleLbl);
 
-            yPosition = 60;
+            yPosition += 40;
             // === Request Information Section ===
             Label requestInfoLbl = new Label
             {
                 Text = "Request Information",
-                Location = new Point(xPos_heading, 60),
+                Location = new Point(xPos_heading, yPosition),
                 AutoSize = true,
                 Font = new Font("Segoe UI", 12F, FontStyle.Bold),
                 ForeColor = titleColor

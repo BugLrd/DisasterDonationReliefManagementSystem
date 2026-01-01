@@ -143,7 +143,7 @@ namespace DisasterDonationReliefManagementSystem.Forms
 
         }
 
-        private void ShowView(UserControl view)
+        public void ShowView(UserControl view)
         {
             mainpnl.Controls.Clear();       // remove current view
             view.Dock = DockStyle.Fill;     // fill the panel
@@ -152,7 +152,14 @@ namespace DisasterDonationReliefManagementSystem.Forms
 
         private void cReqBtn_Click(object sender, EventArgs e)
         {
-            ShowView(new create_req_view());
+            if (_currentUser is Victim victim)
+            {
+                ShowView(new create_req_view(victim));
+            }
+            else
+            {
+                MessageBox.Show("Current user is not a Victim. Cannot show your requests.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void urReqBtn_Click(object sender, EventArgs e)
