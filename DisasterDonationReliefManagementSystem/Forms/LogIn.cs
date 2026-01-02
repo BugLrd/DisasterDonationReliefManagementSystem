@@ -31,7 +31,6 @@ namespace DisasterDonationReliefManagementSystem
 
             try
             {
-                // Authenticate against Login table (kept string+con style as requested)
                 string select_query = $"SELECT * FROM Login WHERE Username = '{identifier}' AND Password = '{password}'";
                 List<Login> logins = Query.GetLogins(select_query);
                 if (logins == null || logins.Count == 0)
@@ -42,14 +41,15 @@ namespace DisasterDonationReliefManagementSystem
 
                 login = logins[0];
 
-                // Check account status
                 if (!login.Status)
                 {
-                    MessageBox.Show("Account is inactive. Please contact the administrator.", "Account inactive", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    string msg = string.IsNullOrWhiteSpace(login.Message)
+                        ? "Your account isn't activated yet. Contact administrator to activate."
+                        : login.Message;
+                    MessageBox.Show(msg, "Account inactive", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                // Admin
                 if (string.Equals(login.Role, "Admin", StringComparison.OrdinalIgnoreCase))
                 {
                     string adminQuery = $"SELECT a.*, l.Username, l.Status FROM Admin a INNER JOIN Login l ON a.LoginID = l.LoginID and a.LoginID = '{login.LoginID}'";
@@ -61,7 +61,6 @@ namespace DisasterDonationReliefManagementSystem
                     return;
                 }
 
-                // Donator / Donor
                 if (string.Equals(login.Role, "Donator", StringComparison.OrdinalIgnoreCase))
                 {
                     string donorQuery = $"SELECT d.*, l.Username, l.Status FROM Donator d INNER JOIN Login l ON d.LoginID = l.LoginID and d.LoginID = '{login.LoginID}'";
@@ -73,7 +72,6 @@ namespace DisasterDonationReliefManagementSystem
                     return;
                 }
 
-                // Victim / Recipient
                 if (string.Equals(login.Role, "Victim", StringComparison.OrdinalIgnoreCase))
                 {
                     string victimQuery = $"SELECT v.*, l.Username, l.Status FROM Victim v INNER JOIN Login l ON v.LoginID = l.LoginID and v.LoginID = '{login.LoginID}'";
@@ -85,11 +83,9 @@ namespace DisasterDonationReliefManagementSystem
                     return;
                 }
 
-                // Volunteer
                 if (string.Equals(login.Role, "Volunteer", StringComparison.OrdinalIgnoreCase))
                 {
                     string volQuery = $"SELECT v.*, l.Username, l.Status FROM Volunteer v INNER JOIN Login l ON v.LoginID = l.LoginID and v.LoginID = '{login.LoginID}'";
-
 
                     HomePage homePage = new HomePage(Query.GetVolunteers(volQuery)[0]);
                     homePage.FormClosed += (s, args) => Application.Exit();
@@ -98,7 +94,6 @@ namespace DisasterDonationReliefManagementSystem
                     return;
                 }
 
-                // Unrecognized role
                 MessageBox.Show("User role is not recognized. Please contact the administrator.", "Role error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (SqlException ex)
