@@ -1,5 +1,6 @@
 ﻿using DisasterDonationReliefManagementSystem.Entities;
 using DisasterDonationReliefManagementSystem.Views;
+using DisasterDonationReliefManagementSystem.Views.Admin;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,10 @@ namespace DisasterDonationReliefManagementSystem.Forms
     {
         private List<Button> sidepnlButtons;
         private User _currentUser;
+
+        // Track active (pressed) button
+        private Button? activeBtn;
+
         public HomePage(User user)
         {
             InitializeComponent();
@@ -39,59 +44,56 @@ namespace DisasterDonationReliefManagementSystem.Forms
                 delHistBtn
             };
             ApplyRoleBasedUI();
-            ShowView(new HomeView());
-
-            // set sidebar colors and button foreground for good contrast
-            sideBarPnl.BackColor = Color.FromArgb(43, 47, 51); // #2B2F33
-            var sidebarText = Color.White;
-            var sidebarHoverText = Color.Black;
 
             foreach (Control c in sideBarPnl.Controls)
             {
                 if (c is Button btn)
                 {
-                    // base color
-                    btn.ForeColor = sidebarText;
-
-                    // ensure hand cursor
-                    btn.Cursor = Cursors.Hand;
-
-                    // remove possible existing handlers to avoid duplicates if Load is invoked again
+                    // remove existing handlers (if any) to avoid duplicates
                     btn.MouseEnter -= SideBarButton_MouseEnter;
                     btn.MouseLeave -= SideBarButton_MouseLeave;
+                    btn.Click -= SideBarButton_ClickHighlight;
 
-                    // attach handlers that toggle text color on hover
+                    // attach handlers
                     btn.MouseEnter += SideBarButton_MouseEnter;
                     btn.MouseLeave += SideBarButton_MouseLeave;
-
-                    // local copy for restore color inside static handlers
-                    btn.Tag = new ButtonColorTag { Normal = sidebarText, Hover = sidebarHoverText };
+                    btn.Click += SideBarButton_ClickHighlight;
                 }
             }
+
+            // Default active button highlight
+            if (homebtn.Visible)
+            {
+                HighlightActiveButton(homebtn);
+            }
         }
 
-        // centralized hover handlers to avoid capturing outer variables in many lambdas
+        // centralized hover handlers (no Tag usage; hard-coded colors)
         private void SideBarButton_MouseEnter(object? sender, EventArgs e)
         {
-            if (sender is Button b && b.Tag is ButtonColorTag tag)
+            if (sender is Button b)
             {
-                b.ForeColor = tag.Hover;
+                // On hover, text should be black regardless of active state
+                b.ForeColor = Color.Black;
             }
         }
-
+            
         private void SideBarButton_MouseLeave(object? sender, EventArgs e)
         {
-            if (sender is Button b && b.Tag is ButtonColorTag tag)
+            if (sender is Button b)
             {
-                b.ForeColor = tag.Normal;
+                // Active stays black; others revert to white
+                b.ForeColor = activeBtn == b ? Color.Black : Color.White;
             }
         }
 
-        // small helper to store colors per-button (avoids closures)
-        private class ButtonColorTag
+        // generic click handler to highlight the clicked button
+        private void SideBarButton_ClickHighlight(object? sender, EventArgs e)
         {
-            public Color Normal { get; set; }
-            public Color Hover { get; set; }
+            if (sender is Button btn)
+            {
+                HighlightActiveButton(btn);
+            }
         }
 
         private void ApplyRoleBasedUI()
@@ -110,11 +112,13 @@ namespace DisasterDonationReliefManagementSystem.Forms
                     mngUsrsBtn.Visible = true;
                     mngReqBtn.Visible = true;
                     adminBtn.Visible = true;
+                    ShowView(new AdminHomeView());
                     break;
 
                 case "victim":
                     urReqBtn.Visible = true;
                     cReqBtn.Visible = true;
+                    ShowView(new VictimHomeView());
                     break;
 
                 case "donator":
@@ -129,6 +133,21 @@ namespace DisasterDonationReliefManagementSystem.Forms
             }
         }
 
+        private void HighlightActiveButton(Button btn)
+        {
+            // reset all buttons to sidebar scheme
+            foreach (var b in sidepnlButtons)
+            {
+                b.BackColor = Color.Transparent;
+                b.ForeColor = Color.White;
+            }
+
+            // make pressed button BG white and FG black
+            btn.BackColor = Color.White;
+            btn.ForeColor = Color.Black;
+            activeBtn = btn;
+        }
+
         private void logoutbtn_Click(object sender, EventArgs e)
         {
             LogInPage loginPage = new LogInPage();
@@ -139,8 +158,12 @@ namespace DisasterDonationReliefManagementSystem.Forms
 
         private void homebtn_Click(object sender, EventArgs e)
         {
-            ShowView(new HomeView());
-
+            if (_currentUser.Role.ToLower() == "admin")
+                ShowView(new AdminHomeView());
+            if (_currentUser.Role.ToLower() == "victim")
+                ShowView(new VictimHomeView());
+            //if (_currentUser.Role == "donator")
+            //    ShowView(new DonatorHomeView());
         }
 
         public void ShowView(UserControl view)
@@ -172,6 +195,11 @@ namespace DisasterDonationReliefManagementSystem.Forms
             {
                 MessageBox.Show("Current user is not a Victim. Cannot show your requests.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void mngUsrsBtn_Click(object sender, EventArgs e)
+        {
+            ShowView(new ManageUserView());
         }
     }
 }

@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace DisasterDonationReliefManagementSystem
 {
-    public partial class HomeView : BaseReqView
+    public partial class VictimHomeView : BaseReqView
     {
 
-        public HomeView()
+        public VictimHomeView()
         {
             InitializeComponent();
         }

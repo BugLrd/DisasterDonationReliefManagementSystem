@@ -15,42 +15,12 @@ namespace DisasterDonationReliefManagementSystem.Forms
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton5_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void SignUp_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void backbtn_Click(object sender, EventArgs e)
+        protected virtual void backbtn_Click(object sender, EventArgs e)
         {
             LogInPage l = new LogInPage();
             l.FormClosed += (s, args) => Application.Exit();
@@ -58,7 +28,7 @@ namespace DisasterDonationReliefManagementSystem.Forms
             this.Hide();
         }
 
-        private void signupbtn_Click(object sender, EventArgs e)
+        protected virtual void signupbtn_Click(object sender, EventArgs e)
         {
 
         }

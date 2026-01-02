@@ -109,7 +109,7 @@
             // 
             // sideBarPnl
             // 
-            sideBarPnl.BackColor = Color.SlateGray;
+            sideBarPnl.BackColor = Color.FromArgb(43, 47, 51);
             sideBarPnl.Controls.Add(homebtn);
             sideBarPnl.Controls.Add(urReqBtn);
             sideBarPnl.Controls.Add(cReqBtn);
@@ -192,6 +192,7 @@
             mngUsrsBtn.Text = "Manage Users";
             mngUsrsBtn.TextAlign = ContentAlignment.MiddleLeft;
             mngUsrsBtn.UseVisualStyleBackColor = false;
+            mngUsrsBtn.Click += mngUsrsBtn_Click;
             // 
             // mngReqBtn
             // 

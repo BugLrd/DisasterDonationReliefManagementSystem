@@ -26,8 +26,12 @@ namespace DisasterDonationReliefManagementSystem.Services
                     row["Username"].ToString(),
                     row["Password"].ToString(),
                     Convert.ToBoolean(row["Status"]),
-                    row["Role"].ToString()
+                    row["Role"].ToString(),
+                    row["Message"].ToString()
                 ));
+                //{
+                //    Message = row.Table.Columns.Contains("Message") ? row["Message"].ToString() : null
+                //});
             }
 
             return list;
@@ -203,8 +207,8 @@ namespace DisasterDonationReliefManagementSystem.Services
 
         public static int InsertLogin(Login login)
         {
-            string sql = @"INSERT INTO Login (Username, Password, Status, Role)
-                   VALUES (@Username, @Password, @Status, @Role)";
+            string sql = @"INSERT INTO Login (Username, Password, Status, Role, Message)
+                   VALUES (@Username, @Password, @Status, @Role, @Message)";
 
             SqlCommand cmd = new SqlCommand(sql, con);
 
@@ -212,6 +216,9 @@ namespace DisasterDonationReliefManagementSystem.Services
             cmd.Parameters.AddWithValue("@Password", login.Password);
             cmd.Parameters.AddWithValue("@Status", login.Status);
             cmd.Parameters.AddWithValue("@Role", login.Role);
+            cmd.Parameters.AddWithValue("@Message", string.IsNullOrWhiteSpace(login.Message)
+                ? "Your account isn't activated yet. Contact administrator to activate."
+                : login.Message);
 
             if (con.State == ConnectionState.Closed)
                 con.Open();
@@ -431,6 +438,25 @@ WHERE RequestID = @RequestID";
                     con.Open();
 
                 var affected = cmd.ExecuteNonQuery();
+                con.Close();
+                return affected;
+            }
+        }
+
+        public static int UpdateLoginStatusAndMessage(int loginID, bool status, string message)
+        {
+            const string sql = @"UPDATE Login SET Status = @Status, Message = @Message WHERE LoginID = @LoginID";
+
+            using (var cmd = new SqlCommand(sql, con))
+            {
+                cmd.Parameters.AddWithValue("@LoginID", loginID);
+                cmd.Parameters.AddWithValue("@Status", status);
+                cmd.Parameters.AddWithValue("@Message", message ?? string.Empty);
+
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
+                int affected = cmd.ExecuteNonQuery();
                 con.Close();
                 return affected;
             }
