@@ -224,6 +224,7 @@ namespace DisasterDonationReliefManagementSystem.Services
                 con.Open();
 
             int result = cmd.ExecuteNonQuery();
+            
             con.Close();
             return result;
         }
@@ -285,9 +286,13 @@ namespace DisasterDonationReliefManagementSystem.Services
             if (con.State == ConnectionState.Closed)
                 con.Open();
 
+
+
+
             int result = cmd.ExecuteNonQuery();
             con.Close();
             return result;
+
         }
 
         public static int InsertVolunteer(Volunteer volunteer)
@@ -392,6 +397,7 @@ namespace DisasterDonationReliefManagementSystem.Services
         {
             return con;
         }
+        
 
         internal static int DeleteDisasterRequest(int requestID)
         {

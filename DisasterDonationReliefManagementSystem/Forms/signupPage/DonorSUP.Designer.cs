@@ -73,6 +73,7 @@
             signupbtn.TabIndex = 10;
             signupbtn.Text = "SignUp";
             signupbtn.UseVisualStyleBackColor = false;
+            signupbtn.Click += signupbtn_Click;
             // 
             // Username
             // 
@@ -121,6 +122,7 @@
             usertxtbx.Name = "usertxtbx";
             usertxtbx.Size = new Size(230, 23);
             usertxtbx.TabIndex = 16;
+            usertxtbx.TextChanged += usertxtbx_TextChanged;
             // 
             // nametxtbx
             // 
@@ -128,6 +130,7 @@
             nametxtbx.Name = "nametxtbx";
             nametxtbx.Size = new Size(230, 23);
             nametxtbx.TabIndex = 17;
+            nametxtbx.TextChanged += nametxtbx_TextChanged;
             // 
             // phone
             // 

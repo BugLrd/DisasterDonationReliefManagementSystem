@@ -1,5 +1,6 @@
 using DisasterDonationReliefManagementSystem.Entities;
 using DisasterDonationReliefManagementSystem.Forms;
+using DisasterDonationReliefManagementSystem.Forms.signupPage;
 
 namespace DisasterDonationReliefManagementSystem
 {
@@ -14,7 +15,7 @@ namespace DisasterDonationReliefManagementSystem
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LogInPage());
+            Application.Run(new DonorSUP());
         }
     }
 }

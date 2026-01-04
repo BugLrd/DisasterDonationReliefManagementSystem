@@ -64,6 +64,7 @@ namespace DisasterDonationReliefManagementSystem.Entities
 
     public class Donator : User
     {
+        public int LoginID { get; set; }
         public int DonatorID { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
