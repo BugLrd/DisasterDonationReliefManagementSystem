@@ -35,10 +35,12 @@
             Address = new Label();
             name = new Label();
             AddressTxtbx = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            usertxtbx = new TextBox();
+            nametxtbx = new TextBox();
             phone = new Label();
-            textBox3 = new TextBox();
+            phntxtbx = new TextBox();
+            passlb = new Label();
+            passtxtbx = new TextBox();
             SuspendLayout();
             // 
             // textlbl
@@ -76,11 +78,12 @@
             // 
             Username.AutoSize = true;
             Username.BackColor = Color.Transparent;
-            Username.Location = new Point(95, 253);
+            Username.Location = new Point(95, 250);
             Username.Name = "Username";
             Username.Size = new Size(60, 15);
             Username.TabIndex = 11;
             Username.Text = "Username";
+            Username.Click += Username_Click;
             // 
             // Address
             // 
@@ -112,36 +115,53 @@
             AddressTxtbx.Size = new Size(230, 95);
             AddressTxtbx.TabIndex = 15;
             // 
-            // textBox2
+            // usertxtbx
             // 
-            textBox2.Location = new Point(210, 250);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(230, 23);
-            textBox2.TabIndex = 16;
+            usertxtbx.Location = new Point(210, 247);
+            usertxtbx.Name = "usertxtbx";
+            usertxtbx.Size = new Size(230, 23);
+            usertxtbx.TabIndex = 16;
             // 
-            // textBox1
+            // nametxtbx
             // 
-            textBox1.Location = new Point(210, 177);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(230, 23);
-            textBox1.TabIndex = 17;
+            nametxtbx.Location = new Point(210, 177);
+            nametxtbx.Name = "nametxtbx";
+            nametxtbx.Size = new Size(230, 23);
+            nametxtbx.TabIndex = 17;
             // 
             // phone
             // 
             phone.AutoSize = true;
             phone.BackColor = Color.Transparent;
-            phone.Location = new Point(95, 333);
+            phone.Location = new Point(95, 361);
             phone.Name = "phone";
             phone.Size = new Size(41, 15);
             phone.TabIndex = 18;
             phone.Text = "Phone";
             // 
-            // textBox3
+            // phntxtbx
             // 
-            textBox3.Location = new Point(210, 330);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(230, 23);
-            textBox3.TabIndex = 19;
+            phntxtbx.Location = new Point(210, 358);
+            phntxtbx.Name = "phntxtbx";
+            phntxtbx.Size = new Size(230, 23);
+            phntxtbx.TabIndex = 19;
+            // 
+            // passlb
+            // 
+            passlb.AutoSize = true;
+            passlb.BackColor = Color.Transparent;
+            passlb.Location = new Point(95, 307);
+            passlb.Name = "passlb";
+            passlb.Size = new Size(57, 15);
+            passlb.TabIndex = 20;
+            passlb.Text = "Password";
+            // 
+            // passtxtbx
+            // 
+            passtxtbx.Location = new Point(210, 304);
+            passtxtbx.Name = "passtxtbx";
+            passtxtbx.Size = new Size(230, 23);
+            passtxtbx.TabIndex = 21;
             // 
             // DonorSUP
             // 
@@ -149,10 +169,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.SignUpBg;
             ClientSize = new Size(1140, 720);
-            Controls.Add(textBox3);
+            Controls.Add(passtxtbx);
+            Controls.Add(passlb);
+            Controls.Add(phntxtbx);
             Controls.Add(phone);
-            Controls.Add(textBox1);
-            Controls.Add(textBox2);
+            Controls.Add(nametxtbx);
+            Controls.Add(usertxtbx);
             Controls.Add(AddressTxtbx);
             Controls.Add(name);
             Controls.Add(Address);
@@ -175,9 +197,11 @@
         private Label Address;
         private Label name;
         private TextBox AddressTxtbx;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox usertxtbx;
+        private TextBox nametxtbx;
         private Label phone;
-        private TextBox textBox3;
+        private TextBox phntxtbx;
+        private Label passlb;
+        private TextBox passtxtbx;
     }
 }
