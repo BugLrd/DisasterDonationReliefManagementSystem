@@ -8,7 +8,7 @@ namespace DisasterDonationReliefManagementSystem.Services
 {
     internal static class Query
     {
-        private static readonly string connectionString = "Data Source=shayon\\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Trust Server Certificate=True";
+        private static readonly string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         private static SqlConnection con = new SqlConnection(connectionString);
 
         //---------------------SELECT QUERIES---------------------//
