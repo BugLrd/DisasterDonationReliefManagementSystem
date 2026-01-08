@@ -15,6 +15,26 @@ namespace DisasterDonationReliefManagementSystem.Forms
             InitializeComponent();
         }
 
+        public TextBox FnameTb()
+        {
+            return fnametb;
+        }
+        public TextBox LnameTb()
+        {
+            return lnametb;
+        }
+        public TextBox UnameTb()
+        {
+            return unametb;
+        }
+        public TextBox PassTb()
+        {
+            return passtb;
+        }
+        public TextBox ConfirmPassTb()
+        {
+            return confirmPasstb;
+        }
         private void SignUp_Load(object sender, EventArgs e)
         {
 
@@ -29,6 +49,11 @@ namespace DisasterDonationReliefManagementSystem.Forms
         }
 
         protected virtual void signupbtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lnametb_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -21,16 +21,17 @@ namespace DisasterDonationReliefManagementSystem.Forms
         {
 
         }
-        
+
         protected override void signupbtn_Click(object sender, EventArgs e)
         {
-            string firstName = fnametb.Text?.Trim() ?? string.Empty;
-            string lastName = lnametb.Text?.Trim() ?? string.Empty;
-            string phone = phonetb.Text?.Trim() ?? string.Empty;
+            string firstName = FnameTb().Text?.Trim() ?? string.Empty;
+            string lastName = LnameTb().Text?.Trim() ?? string.Empty;
+            string username = UnameTb().Text?.Trim() ?? string.Empty;
+            string password = PassTb().Text ?? string.Empty;
+            string confirmPassword = ConfirmPassTb().Text ?? string.Empty;
             string address = addresstb.Text?.Trim() ?? string.Empty;
-            string username = unametb.Text?.Trim() ?? string.Empty;
-            string password = passtb.Text ?? string.Empty;
-            string confirmPassword = confirmPasstb.Text ?? string.Empty;
+            string phone = phonetb.Text?.Trim() ?? string.Empty;
+            
 
             // Basic validation
             if (string.IsNullOrEmpty(firstName) ||
@@ -113,6 +114,11 @@ namespace DisasterDonationReliefManagementSystem.Forms
             {
                 MessageBox.Show($"An error occurred while signing up: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void VictimSignUp_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

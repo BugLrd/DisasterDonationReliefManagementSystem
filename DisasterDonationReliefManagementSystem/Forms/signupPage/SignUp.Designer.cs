@@ -31,6 +31,11 @@
             textlbl = new Label();
             backbtn = new Button();
             signupbtn = new Button();
+            lnametb = new TextBox();
+            fnametb = new TextBox();
+            unametb = new TextBox();
+            confirmPasstb = new TextBox();
+            passtb = new TextBox();
             SuspendLayout();
             // 
             // textlbl
@@ -50,7 +55,7 @@
             backbtn.Location = new Point(40, 488);
             backbtn.Name = "backbtn";
             backbtn.Size = new Size(194, 31);
-            backbtn.TabIndex = 8;
+            backbtn.TabIndex = 1;
             backbtn.Text = "Back";
             backbtn.UseVisualStyleBackColor = false;
             backbtn.Click += backbtn_Click;
@@ -61,18 +66,71 @@
             signupbtn.Location = new Point(354, 488);
             signupbtn.Name = "signupbtn";
             signupbtn.Size = new Size(196, 31);
-            signupbtn.TabIndex = 7;
+            signupbtn.TabIndex = 9;
             signupbtn.Text = "SignUp";
             signupbtn.UseVisualStyleBackColor = false;
             signupbtn.Click += signupbtn_Click;
             // 
+            // lnametb
+            // 
+            lnametb.Font = new Font("Segoe UI", 11F);
+            lnametb.Location = new Point(127, 155);
+            lnametb.Name = "lnametb";
+            lnametb.PlaceholderText = "Last Name";
+            lnametb.Size = new Size(292, 27);
+            lnametb.TabIndex = 3;
+            lnametb.TextChanged += lnametb_TextChanged;
+            // 
+            // fnametb
+            // 
+            fnametb.CausesValidation = false;
+            fnametb.Font = new Font("Segoe UI", 11F);
+            fnametb.Location = new Point(127, 108);
+            fnametb.Name = "fnametb";
+            fnametb.PlaceholderText = "First Name";
+            fnametb.Size = new Size(292, 27);
+            fnametb.TabIndex = 2;
+            // 
+            // unametb
+            // 
+            unametb.Font = new Font("Segoe UI", 11F);
+            unametb.Location = new Point(127, 202);
+            unametb.Name = "unametb";
+            unametb.PlaceholderText = "Username";
+            unametb.Size = new Size(292, 27);
+            unametb.TabIndex = 4;
+            // 
+            // confirmPasstb
+            // 
+            confirmPasstb.Font = new Font("Segoe UI", 11F);
+            confirmPasstb.Location = new Point(127, 296);
+            confirmPasstb.Name = "confirmPasstb";
+            confirmPasstb.PlaceholderText = "Confirm Password";
+            confirmPasstb.Size = new Size(292, 27);
+            confirmPasstb.TabIndex = 11;
+            // 
+            // passtb
+            // 
+            passtb.Font = new Font("Segoe UI", 11F);
+            passtb.Location = new Point(127, 249);
+            passtb.Name = "passtb";
+            passtb.PlaceholderText = "Password";
+            passtb.Size = new Size(292, 27);
+            passtb.TabIndex = 10;
+            // 
             // SignUp
             // 
+            AcceptButton = signupbtn;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.SignUpBg;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1044, 582);
+            Controls.Add(confirmPasstb);
+            Controls.Add(passtb);
+            Controls.Add(unametb);
+            Controls.Add(lnametb);
+            Controls.Add(fnametb);
             Controls.Add(signupbtn);
             Controls.Add(backbtn);
             Controls.Add(textlbl);
@@ -88,5 +146,10 @@
         private Label textlbl;
         private Button backbtn;
         private Button signupbtn;
+        private TextBox lnametb;
+        private TextBox fnametb;
+        private TextBox unametb;
+        private TextBox confirmPasstb;
+        private TextBox passtb;
     }
 }
