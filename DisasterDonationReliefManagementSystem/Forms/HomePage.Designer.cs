@@ -297,6 +297,7 @@
             mainpnl.Name = "mainpnl";
             mainpnl.Size = new Size(924, 599);
             mainpnl.TabIndex = 1;
+            mainpnl.Paint += mainpnl_Paint;
             // 
             // HomePage
             // 
