@@ -8,7 +8,7 @@ namespace DisasterDonationReliefManagementSystem.Services
 {
     internal static class Query
     {
-        private static readonly string connectionString = "Data Source=shayon\\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Trust Server Certificate=True";
+        private static readonly string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         private static SqlConnection con = new SqlConnection(connectionString);
 
         //---------------------SELECT QUERIES---------------------//
@@ -224,6 +224,7 @@ namespace DisasterDonationReliefManagementSystem.Services
                 con.Open();
 
             int result = cmd.ExecuteNonQuery();
+            
             con.Close();
             return result;
         }
@@ -285,9 +286,13 @@ namespace DisasterDonationReliefManagementSystem.Services
             if (con.State == ConnectionState.Closed)
                 con.Open();
 
+
+
+
             int result = cmd.ExecuteNonQuery();
             con.Close();
             return result;
+
         }
 
         public static int InsertVolunteer(Volunteer volunteer)
@@ -392,6 +397,7 @@ namespace DisasterDonationReliefManagementSystem.Services
         {
             return con;
         }
+        
 
         internal static int DeleteDisasterRequest(int requestID)
         {
