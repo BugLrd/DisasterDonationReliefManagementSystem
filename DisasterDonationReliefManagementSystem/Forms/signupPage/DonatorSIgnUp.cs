@@ -73,10 +73,10 @@ namespace DisasterDonationReliefManagementSystem.Forms.signupPage
                     MessageBox.Show("Login record created but could not be retrieved.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                int loginId = createdLogins[0].LoginID;
+                Login createdLogin = createdLogins[0];
 
                 // Create Donator profile
-                Donator newDonator = new Donator(0, loginId, username, false, name, phone, address);
+                Donator newDonator = new Donator(0, createdLogin.LoginID, username, false, name, phone, address, createdLogin.Message);
                 int donorResult = Query.InsertDonator(newDonator);
 
                 if (donorResult > 0)

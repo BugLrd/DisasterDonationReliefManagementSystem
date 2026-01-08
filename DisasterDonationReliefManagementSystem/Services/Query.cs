@@ -52,7 +52,8 @@ namespace DisasterDonationReliefManagementSystem.Services
                     row["Username"].ToString(),
                     Convert.ToBoolean(row["Status"]),
                     row["FullName"].ToString(),
-                    row["Email"].ToString()
+                    row["Email"].ToString(),
+                    row["Message"].ToString()
                 ));
             }
 
@@ -76,7 +77,9 @@ namespace DisasterDonationReliefManagementSystem.Services
                     row["FullName"].ToString(),
                     row["Phone"].ToString(),
                     row["Address"].ToString(),
-                    row["VerificationStatus"].ToString()
+                    row["VerificationStatus"].ToString(),
+                    row["Message"].ToString()
+
                 ));
             }
 
@@ -99,7 +102,8 @@ namespace DisasterDonationReliefManagementSystem.Services
                     Convert.ToBoolean(row["Status"]),
                     row["FullName"].ToString(),
                     row["Phone"].ToString(),
-                    row["Address"].ToString()
+                    row["Address"].ToString(),
+                    row["Message"].ToString()
                 ));
             }
 
@@ -123,7 +127,8 @@ namespace DisasterDonationReliefManagementSystem.Services
                     row["FullName"].ToString(),
                     row["Phone"].ToString(),
                     row["VehicleType"].ToString(),
-                    row["AvailabilityStatus"].ToString()
+                    row["AvailabilityStatus"].ToString(),
+                    row["Message"].ToString()
                 ));
             }
 
@@ -392,7 +397,7 @@ namespace DisasterDonationReliefManagementSystem.Services
 
         //---------------------------------------------------------------//
 
-
+            
         public static SqlConnection GetConnection()
         {
             return con;

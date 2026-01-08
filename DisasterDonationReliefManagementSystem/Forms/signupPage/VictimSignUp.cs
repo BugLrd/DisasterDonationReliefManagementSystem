@@ -92,6 +92,7 @@ namespace DisasterDonationReliefManagementSystem.Forms
                     fullName: fullName,
                     phone: phone,
                     address: address,
+                    message: createdLogin.Message,
                     verificationStatus: "Pending"
                 );
 

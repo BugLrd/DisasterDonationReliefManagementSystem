@@ -77,7 +77,7 @@ namespace DisasterDonationReliefManagementSystem.Forms
                 b.ForeColor = Color.Black;
             }
         }
-            
+
         private void SideBarButton_MouseLeave(object? sender, EventArgs e)
         {
             if (sender is Button b)
@@ -200,6 +200,11 @@ namespace DisasterDonationReliefManagementSystem.Forms
         private void mngUsrsBtn_Click(object sender, EventArgs e)
         {
             ShowView(new ManageUserView());
+        }
+
+        private void mainpnl_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
