@@ -120,7 +120,8 @@ namespace DisasterDonationReliefManagementSystem.Forms.signupPage
                     fullName,
                     phone,
                     vehicle,
-                    availability
+                    availability,
+                    ""
                 );
 
                 int result = Query.InsertVolunteer(newVolunteer);
