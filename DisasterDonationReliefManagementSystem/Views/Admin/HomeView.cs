@@ -56,38 +56,35 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
 
         void LoadUserDistribution()
         {
-            string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-
-            using (SqlConnection con = new SqlConnection(connectionString))
+            try
             {
-                SqlCommand cmd = new SqlCommand("GetUserDistribution", con);
-                cmd.CommandType = CommandType.StoredProcedure;
+                // Get all data from Query.GetInfos()
+                Dictionary<string, int> infos = Query.GetInfos();
 
-                con.Open();
-                SqlDataReader r = cmd.ExecuteReader();
+                // Get user type counts
+                int volunteers = infos["Volunteers"];
+                int donors = infos["Donors"];
+                int victims = infos["Victims"];
 
-                if (r.Read())
-                {
-                    int volunteers = Convert.ToInt32(r["Volunteers"]);
-                    int donors = Convert.ToInt32(r["Donors"]);
-                    int victims = Convert.ToInt32(r["Victims"]);
+                int total = volunteers + donors + victims;
 
-                    int total = volunteers + donors + victims;
+                if (total == 0) return;
 
-                    if (total == 0) return; // safety
+                int vPct = (volunteers * 100) / total;
+                int dPct = (donors * 100) / total;
+                int viPct = (victims * 100) / total;
 
-                    int vPct = (volunteers * 100) / total;
-                    int dPct = (donors * 100) / total;
-                    int viPct = (victims * 100) / total;
+                progressBarvolun.Value = vPct;
+                progressBardonor.Value = dPct;
+                progressBarvictim.Value = viPct;
 
-                    progressBarvolun.Value = vPct;
-                    progressBardonor.Value = dPct;
-                    progressBarvictim.Value = viPct;
-
-                    lbVolonP.Text = $"Volunteer ({vPct}%)";
-                    lbdonorP.Text = $"Donor ({dPct}%)";
-                    lbvictimP.Text = $"Victim ({viPct}%)";
-                }
+                lbVolonP.Text = $"Volunteer ({vPct}%)";
+                lbdonorP.Text = $"Donor ({dPct}%)";
+                lbvictimP.Text = $"Victim ({viPct}%)";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading user distribution: {ex.Message}");
             }
         }
 
@@ -112,36 +109,30 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
         {
             try
             {
-                string sql = "SELECT * FROM DisasterRequest WHERE RequestStatus = 'Pending'";
+                // Get data from Query.GetInfos()
+                Dictionary<string, int> infos = Query.GetInfos();
 
-                List<DisasterRequest> requests = Query.GetDisasterRequests(sql);
+                int pendingCount = infos["PendingRequests"];
 
                 listBoxDisasterReq.Items.Clear();
 
-                // Check if there are no pending requests
-                if (requests.Count == 0)
+                if (pendingCount == 0)
                 {
-
                     listBoxDisasterReq.Items.Add("✅ NO PENDING REQUESTS");
                     listBoxDisasterReq.Items.Add("");
                     listBoxDisasterReq.Items.Add("All disaster requests are");
                     listBoxDisasterReq.Items.Add("currently processed!");
                     listBoxDisasterReq.Items.Add("");
                     listBoxDisasterReq.Items.Add("🎉 Great job!");
-
-
-
-
                     return;
                 }
 
-                // If we get here, there ARE pending requests
-
-
-
-                // Add header
-                listBoxDisasterReq.Items.Add($"🚨 PENDING REQUESTS: {requests.Count}");
+                listBoxDisasterReq.Items.Add($"🚨 PENDING REQUESTS: {pendingCount}");
                 listBoxDisasterReq.Items.Add("");
+
+                // Get detailed requests
+                string sql = "SELECT * FROM DisasterRequest WHERE RequestStatus = 'Pending'";
+                List<DisasterRequest> requests = Query.GetDisasterRequests(sql);
 
                 foreach (DisasterRequest req in requests)
                 {
@@ -186,6 +177,7 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
                 if (infos.ContainsKey("InactiveUsers"))
                 {
                     lbinactive.Text = infos["InactiveUsers"].ToString();
+                    
                 }
             }
             catch (Exception ex)

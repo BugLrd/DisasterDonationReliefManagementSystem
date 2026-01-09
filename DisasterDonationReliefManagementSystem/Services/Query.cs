@@ -8,7 +8,7 @@ namespace DisasterDonationReliefManagementSystem.Services
 {
     internal static class Query
     {
-        private static readonly string connectionString = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private static readonly string connectionString = "Data Source=Raiden\\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Trust Server Certificate=True";
         private static SqlConnection con = new SqlConnection(connectionString);
 
         //---------------------SELECT QUERIES---------------------//
@@ -212,12 +212,21 @@ namespace DisasterDonationReliefManagementSystem.Services
 
             string sql = @"
             SELECT
-                (SELECT COUNT(*) FROM Login) AS TotalUsers,
-                (SELECT COUNT(*) FROM Login WHERE Status = 1) AS ActiveUsers,
-                (SELECT COUNT(*) FROM Login WHERE Status = 0) AS InactiveUsers,
-                (SELECT COUNT(*) FROM DisasterRequest) AS TotalRequests,
-                (SELECT COUNT(*) FROM DisasterRequest WHERE RequestStatus = 'Pending') AS PendingRequests;
-            ";
+            -- User counts from Login table
+            (SELECT COUNT(*) FROM Login) AS TotalUsers,
+            (SELECT COUNT(*) FROM Login WHERE Status = 1) AS ActiveUsers,
+            (SELECT COUNT(*) FROM Login WHERE Status = 0) AS InactiveUsers,
+        
+            -- Disaster request counts
+            (SELECT COUNT(*) FROM DisasterRequest) AS TotalRequests,
+            (SELECT COUNT(*) FROM DisasterRequest WHERE RequestStatus = 'Pending') AS PendingRequests,
+        
+            -- User type counts - CHANGE THESE BASED ON YOUR ACTUAL TABLE
+            -- Option 1: If user types are in Login table with a Role column
+            (SELECT COUNT(*) FROM Login WHERE Role = 'Volunteer') AS Volunteers,
+            (SELECT COUNT(*) FROM Login WHERE Role = 'Donor') AS Donors,
+            (SELECT COUNT(*) FROM Login WHERE Role = 'Victim') AS Victims;
+                ";
 
             SqlDataAdapter sda = new SqlDataAdapter(sql, con);
             DataTable dt = new DataTable();
@@ -227,11 +236,19 @@ namespace DisasterDonationReliefManagementSystem.Services
             {
                 DataRow row = dt.Rows[0];
 
+                // User statistics
                 infos["TotalUsers"] = Convert.ToInt32(row["TotalUsers"]);
                 infos["ActiveUsers"] = Convert.ToInt32(row["ActiveUsers"]);
                 infos["InactiveUsers"] = Convert.ToInt32(row["InactiveUsers"]);
+
+                // Request statistics
                 infos["TotalRequests"] = Convert.ToInt32(row["TotalRequests"]);
                 infos["PendingRequests"] = Convert.ToInt32(row["PendingRequests"]);
+
+                // User type distribution
+                infos["Volunteers"] = Convert.ToInt32(row["Volunteers"]);
+                infos["Donors"] = Convert.ToInt32(row["Donors"]);
+                infos["Victims"] = Convert.ToInt32(row["Victims"]);
             }
 
             return infos;

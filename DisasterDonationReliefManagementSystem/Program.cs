@@ -15,7 +15,7 @@ namespace DisasterDonationReliefManagementSystem
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new HomePage(new Admin(1, 1, "Admin", true, "ghjkhgfd", "sdfghj", "")));
+            Application.Run(new DonatorSIgnUp());
         }
     }
 }
