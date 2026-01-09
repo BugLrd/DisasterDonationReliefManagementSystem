@@ -37,6 +37,7 @@ namespace DisasterDonationReliefManagementSystem.Forms
                 cReqBtn,
                 mngUsrsBtn,
                 mngReqBtn,
+                penReqBtn,
                 adminBtn,
                 donateBtn,
                 donHistBtn,
@@ -112,7 +113,8 @@ namespace DisasterDonationReliefManagementSystem.Forms
                     mngUsrsBtn.Visible = true;
                     mngReqBtn.Visible = true;
                     adminBtn.Visible = true;
-                    ShowView(new AdminHomeView());
+                    penReqBtn.Visible = true;
+                    ShowView(new HomeView());
                     break;
 
                 case "victim":
@@ -159,7 +161,7 @@ namespace DisasterDonationReliefManagementSystem.Forms
         private void homebtn_Click(object sender, EventArgs e)
         {
             if (_currentUser.Role.ToLower() == "admin")
-                ShowView(new AdminHomeView());
+                ShowView(new HomeView());
             if (_currentUser.Role.ToLower() == "victim")
                 ShowView(new VictimHomeView());
             //if (_currentUser.Role == "donator")
@@ -205,6 +207,16 @@ namespace DisasterDonationReliefManagementSystem.Forms
         private void mainpnl_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void mngReqBtn_Click(object sender, EventArgs e)
+        {
+            ShowView(new ManageReqView());
+        }
+
+        private void penReqBtn_Click(object sender, EventArgs e)
+        {
+            ShowView(new PendingReqView());
         }
     }
 }

@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace DisasterDonationReliefManagementSystem.Views.Admin
 {
-    public partial class AdminHomeView : BaseReqView
+    public partial class PendingReqView : BaseReqView
     {
         private DisasterRequest currReq;
-        public AdminHomeView()
+        public PendingReqView()
         {
             InitializeComponent();
         }
@@ -77,7 +77,7 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
                     // Refresh the view
                     if (FindForm() is Forms.HomePage home)
                     {
-                        home.ShowView(new AdminHomeView());
+                        home.ShowView(new PendingReqView());
                     }
                 }
                 else
@@ -102,7 +102,7 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
                     // Refresh the view
                     if (FindForm() is Forms.HomePage home)
                     {
-                        home.ShowView(new AdminHomeView());
+                        home.ShowView(new PendingReqView());
                     }
                 }
                 else

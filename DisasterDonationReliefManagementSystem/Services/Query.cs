@@ -205,6 +205,38 @@ namespace DisasterDonationReliefManagementSystem.Services
 
             return list;
         }
+
+        public static Dictionary<string, int> GetInfos()
+        {
+            Dictionary<string, int> infos = new Dictionary<string, int>();
+
+            string sql = @"
+            SELECT
+                (SELECT COUNT(*) FROM Login) AS TotalUsers,
+                (SELECT COUNT(*) FROM Login WHERE Status = 1) AS ActiveUsers,
+                (SELECT COUNT(*) FROM Login WHERE Status = 0) AS InactiveUsers,
+                (SELECT COUNT(*) FROM DisasterRequest) AS TotalRequests,
+                (SELECT COUNT(*) FROM DisasterRequest WHERE RequestStatus = 'Pending') AS PendingRequests;
+            ";
+
+            SqlDataAdapter sda = new SqlDataAdapter(sql, con);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+
+                infos["TotalUsers"] = Convert.ToInt32(row["TotalUsers"]);
+                infos["ActiveUsers"] = Convert.ToInt32(row["ActiveUsers"]);
+                infos["InactiveUsers"] = Convert.ToInt32(row["InactiveUsers"]);
+                infos["TotalRequests"] = Convert.ToInt32(row["TotalRequests"]);
+                infos["PendingRequests"] = Convert.ToInt32(row["PendingRequests"]);
+            }
+
+            return infos;
+        }
+
         //---------------------------------------------------------------//
 
 
@@ -423,16 +455,7 @@ namespace DisasterDonationReliefManagementSystem.Services
 
         public static int UpdateDisasterRequest(DisasterRequest req)
         {
-            const string sql = @"
-UPDATE DisasterRequest
-SET DisasterTitle = @DisasterTitle,
-    DisasterType = @DisasterType,
-    Description = @Description,
-    RequestedItems = @RequestedItems,
-    NumberOfMembers = @NumberOfMembers,
-    Location = @Location,
-    RequestStatus = @RequestStatus
-WHERE RequestID = @RequestID";
+            const string sql = @"UPDATE DisasterRequest SET DisasterTitle = @DisasterTitle, DisasterType = @DisasterType, Description = @Description, RequestedItems = @RequestedItems, NumberOfMembers = @NumberOfMembers, Location = @Location, RequestStatus = @RequestStatus WHERE RequestID = @RequestID";
 
             using (var cmd = new SqlCommand(sql, con))
             {
@@ -472,5 +495,7 @@ WHERE RequestID = @RequestID";
                 return affected;
             }
         }
+
+
     }
 }
