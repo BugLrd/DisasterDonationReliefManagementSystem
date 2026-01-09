@@ -1,6 +1,6 @@
 ﻿namespace DisasterDonationReliefManagementSystem.Views.Donator
 {
-    partial class HomeView
+    partial class DonatorHomeView
     {
         /// <summary> 
         /// Required designer variable.

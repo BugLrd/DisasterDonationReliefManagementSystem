@@ -1,6 +1,7 @@
 ﻿using DisasterDonationReliefManagementSystem.Entities;
 using DisasterDonationReliefManagementSystem.Views;
 using DisasterDonationReliefManagementSystem.Views.Admin;
+using DisasterDonationReliefManagementSystem.Views.Donator;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -126,6 +127,7 @@ namespace DisasterDonationReliefManagementSystem.Forms
                 case "donator":
                     donateBtn.Visible = true;
                     donHistBtn.Visible = true;
+                    ShowView(new DonatorHomeView(_currentUser as Donator));
                     break;
 
                 case "volunteer":
@@ -164,8 +166,8 @@ namespace DisasterDonationReliefManagementSystem.Forms
                 ShowView(new HomeView());
             if (_currentUser.Role.ToLower() == "victim")
                 ShowView(new VictimHomeView());
-            //if (_currentUser.Role == "donator")
-            //    ShowView(new DonatorHomeView());
+            if (_currentUser.Role.ToLower() == "donator")
+                ShowView(new DonatorHomeView(_currentUser as Donator));
         }
 
         public void ShowView(UserControl view)

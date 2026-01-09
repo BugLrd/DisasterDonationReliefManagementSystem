@@ -407,14 +407,13 @@ namespace DisasterDonationReliefManagementSystem.Services
         public static int InsertDelivery(Delivery delivery)
         {
             string sql = @"INSERT INTO Delivery
-                   (DonationID, VolunteerID, PickupLocation, DeliveryLocation)
+                   (DonationID, PickupLocation, DeliveryLocation)
                    VALUES
-                   (@DonationID, @VolunteerID, @PickupLocation, @DeliveryLocation)";
+                   (@DonationID, @PickupLocation, @DeliveryLocation)";
 
             SqlCommand cmd = new SqlCommand(sql, con);
 
             cmd.Parameters.AddWithValue("@DonationID", delivery.DonationID);
-            cmd.Parameters.AddWithValue("@VolunteerID", delivery.VolunteerID);
             cmd.Parameters.AddWithValue("@PickupLocation", delivery.PickupLocation);
             cmd.Parameters.AddWithValue("@DeliveryLocation", delivery.DeliveryLocation);
 
