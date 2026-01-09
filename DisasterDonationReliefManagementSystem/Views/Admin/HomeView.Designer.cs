@@ -28,47 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             mainPnl = new Panel();
+            listBoxDisasterReq = new ListBox();
             groupBoxuserdis = new GroupBox();
-            lblvolunteer = new Label();
+            lbdonorP = new Label();
+            lbVolonP = new Label();
+            lbvictimP = new Label();
             progressBardonor = new ProgressBar();
             progressBarvictim = new ProgressBar();
-            progressBarvolon = new ProgressBar();
-            groupBoxalrt = new GroupBox();
-            listBox1 = new ListBox();
+            progressBarvolun = new ProgressBar();
             panel6 = new Panel();
-            label8 = new Label();
+            lbinactive = new Label();
             inactive = new Label();
             panel7 = new Panel();
             panel3 = new Panel();
-            label6 = new Label();
+            rlbreqpending = new Label();
             totalreq = new Label();
             panel5 = new Panel();
             panel2 = new Panel();
-            label4 = new Label();
+            lbactiveuser = new Label();
             activeuser = new Label();
             panel4 = new Panel();
             panel1 = new Panel();
             lbpendingtitle = new Label();
-            valuepending = new Label();
+            lbvaluepending = new Label();
             dashBLbl = new Label();
-            volunteerBindingSource = new BindingSource(components);
             mainPnl.SuspendLayout();
             groupBoxuserdis.SuspendLayout();
-            groupBoxalrt.SuspendLayout();
             panel6.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)volunteerBindingSource).BeginInit();
             SuspendLayout();
             // 
             // mainPnl
             // 
             mainPnl.BackColor = SystemColors.Info;
+            mainPnl.Controls.Add(listBoxDisasterReq);
             mainPnl.Controls.Add(groupBoxuserdis);
-            mainPnl.Controls.Add(groupBoxalrt);
             mainPnl.Controls.Add(panel6);
             mainPnl.Controls.Add(panel3);
             mainPnl.Controls.Add(panel2);
@@ -80,12 +77,24 @@
             mainPnl.Size = new Size(923, 597);
             mainPnl.TabIndex = 0;
             // 
+            // listBoxDisasterReq
+            // 
+            listBoxDisasterReq.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            listBoxDisasterReq.FormattingEnabled = true;
+            listBoxDisasterReq.Location = new Point(51, 220);
+            listBoxDisasterReq.Name = "listBoxDisasterReq";
+            listBoxDisasterReq.Size = new Size(442, 276);
+            listBoxDisasterReq.TabIndex = 7;
+            listBoxDisasterReq.SelectedIndexChanged += listBoxDisasterReq_SelectedIndexChanged;
+            // 
             // groupBoxuserdis
             // 
-            groupBoxuserdis.Controls.Add(lblvolunteer);
+            groupBoxuserdis.Controls.Add(lbdonorP);
+            groupBoxuserdis.Controls.Add(lbVolonP);
+            groupBoxuserdis.Controls.Add(lbvictimP);
             groupBoxuserdis.Controls.Add(progressBardonor);
             groupBoxuserdis.Controls.Add(progressBarvictim);
-            groupBoxuserdis.Controls.Add(progressBarvolon);
+            groupBoxuserdis.Controls.Add(progressBarvolun);
             groupBoxuserdis.Location = new Point(527, 217);
             groupBoxuserdis.Name = "groupBoxuserdis";
             groupBoxuserdis.Size = new Size(363, 287);
@@ -93,65 +102,59 @@
             groupBoxuserdis.TabStop = false;
             groupBoxuserdis.Text = "USER DRISTRIBUTION";
             // 
-            // lblvolunteer
+            // lbdonorP
             // 
-            lblvolunteer.BackColor = Color.Transparent;
-            lblvolunteer.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblvolunteer.Location = new Point(106, 39);
-            lblvolunteer.Name = "lblvolunteer";
-            lblvolunteer.Size = new Size(162, 38);
-            lblvolunteer.TabIndex = 3;
-            lblvolunteer.TextAlign = ContentAlignment.MiddleCenter;
+            lbdonorP.Location = new Point(6, 39);
+            lbdonorP.Name = "lbdonorP";
+            lbdonorP.Size = new Size(56, 33);
+            lbdonorP.TabIndex = 6;
+            lbdonorP.Text = "DONOR 0%";
+            // 
+            // lbVolonP
+            // 
+            lbVolonP.Location = new Point(6, 203);
+            lbVolonP.Name = "lbVolonP";
+            lbVolonP.Size = new Size(84, 33);
+            lbVolonP.TabIndex = 5;
+            lbVolonP.Text = "VOLUNTEER 0%";
+            lbVolonP.Click += label2_Click;
+            // 
+            // lbvictimP
+            // 
+            lbvictimP.Location = new Point(6, 123);
+            lbvictimP.Name = "lbvictimP";
+            lbvictimP.Size = new Size(57, 35);
+            lbvictimP.TabIndex = 4;
+            lbvictimP.Text = "VICTIM 0%";
             // 
             // progressBardonor
             // 
-            progressBardonor.Location = new Point(106, 123);
+            progressBardonor.Location = new Point(106, 37);
             progressBardonor.Name = "progressBardonor";
             progressBardonor.Size = new Size(162, 35);
-            progressBardonor.Style = ProgressBarStyle.Continuous;
             progressBardonor.TabIndex = 2;
+            progressBardonor.Click += progressBardonor_Click;
             // 
             // progressBarvictim
             // 
-            progressBarvictim.Location = new Point(106, 209);
+            progressBarvictim.Location = new Point(106, 122);
             progressBarvictim.Name = "progressBarvictim";
-            progressBarvictim.Size = new Size(162, 27);
-            progressBarvictim.Style = ProgressBarStyle.Continuous;
+            progressBarvictim.Size = new Size(162, 33);
             progressBarvictim.TabIndex = 1;
             // 
-            // progressBarvolon
+            // progressBarvolun
             // 
-            progressBarvolon.Location = new Point(106, 39);
-            progressBarvolon.Name = "progressBarvolon";
-            progressBarvolon.Size = new Size(162, 38);
-            progressBarvolon.Style = ProgressBarStyle.Continuous;
-            progressBarvolon.TabIndex = 0;
-            progressBarvolon.Click += progressBar1_Click;
-            // 
-            // groupBoxalrt
-            // 
-            groupBoxalrt.BackColor = Color.Bisque;
-            groupBoxalrt.Controls.Add(listBox1);
-            groupBoxalrt.Location = new Point(19, 217);
-            groupBoxalrt.Name = "groupBoxalrt";
-            groupBoxalrt.Size = new Size(445, 287);
-            groupBoxalrt.TabIndex = 5;
-            groupBoxalrt.TabStop = false;
-            groupBoxalrt.Text = "RECENT DESASTER ALERTS ";
-            // 
-            // listBox1
-            // 
-            listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(31, 39);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(369, 199);
-            listBox1.TabIndex = 0;
+            progressBarvolun.Location = new Point(106, 203);
+            progressBarvolun.Name = "progressBarvolun";
+            progressBarvolun.Size = new Size(162, 33);
+            progressBarvolun.TabIndex = 0;
+            progressBarvolun.Click += progressBar1_Click;
             // 
             // panel6
             // 
             panel6.BackColor = Color.Gray;
             panel6.BorderStyle = BorderStyle.FixedSingle;
-            panel6.Controls.Add(label8);
+            panel6.Controls.Add(lbinactive);
             panel6.Controls.Add(inactive);
             panel6.Controls.Add(panel7);
             panel6.Location = new Point(735, 73);
@@ -159,14 +162,15 @@
             panel6.Size = new Size(155, 100);
             panel6.TabIndex = 3;
             // 
-            // label8
+            // lbinactive
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(58, 56);
-            label8.Name = "label8";
-            label8.Size = new Size(38, 15);
-            label8.TabIndex = 5;
-            label8.Text = "label8";
+            lbinactive.AutoSize = true;
+            lbinactive.Location = new Point(70, 56);
+            lbinactive.Name = "lbinactive";
+            lbinactive.Size = new Size(13, 15);
+            lbinactive.TabIndex = 5;
+            lbinactive.Text = "0";
+            lbinactive.Click += lbinactive_Click;
             // 
             // inactive
             // 
@@ -189,7 +193,7 @@
             // 
             panel3.BackColor = SystemColors.HotTrack;
             panel3.BorderStyle = BorderStyle.FixedSingle;
-            panel3.Controls.Add(label6);
+            panel3.Controls.Add(rlbreqpending);
             panel3.Controls.Add(totalreq);
             panel3.Controls.Add(panel5);
             panel3.Location = new Point(517, 73);
@@ -197,14 +201,15 @@
             panel3.Size = new Size(155, 100);
             panel3.TabIndex = 3;
             // 
-            // label6
+            // rlbreqpending
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(61, 56);
-            label6.Name = "label6";
-            label6.Size = new Size(38, 15);
-            label6.TabIndex = 5;
-            label6.Text = "label6";
+            rlbreqpending.AutoSize = true;
+            rlbreqpending.Location = new Point(69, 56);
+            rlbreqpending.Name = "rlbreqpending";
+            rlbreqpending.Size = new Size(13, 15);
+            rlbreqpending.TabIndex = 5;
+            rlbreqpending.Text = "0";
+            rlbreqpending.Click += rlbreqpending_Click;
             // 
             // totalreq
             // 
@@ -227,22 +232,23 @@
             // 
             panel2.BackColor = Color.LimeGreen;
             panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(label4);
+            panel2.Controls.Add(lbactiveuser);
             panel2.Controls.Add(activeuser);
             panel2.Controls.Add(panel4);
             panel2.Location = new Point(304, 73);
             panel2.Name = "panel2";
             panel2.Size = new Size(155, 100);
             panel2.TabIndex = 2;
+            panel2.Paint += panel2_Paint;
             // 
-            // label4
+            // lbactiveuser
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(59, 56);
-            label4.Name = "label4";
-            label4.Size = new Size(38, 15);
-            label4.TabIndex = 4;
-            label4.Text = "label4";
+            lbactiveuser.AutoSize = true;
+            lbactiveuser.Location = new Point(66, 56);
+            lbactiveuser.Name = "lbactiveuser";
+            lbactiveuser.Size = new Size(16, 15);
+            lbactiveuser.TabIndex = 4;
+            lbactiveuser.Text = " 0";
             // 
             // activeuser
             // 
@@ -266,7 +272,7 @@
             panel1.BackColor = Color.Red;
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(lbpendingtitle);
-            panel1.Controls.Add(valuepending);
+            panel1.Controls.Add(lbvaluepending);
             panel1.Location = new Point(83, 73);
             panel1.Name = "panel1";
             panel1.Size = new Size(167, 100);
@@ -284,14 +290,14 @@
             lbpendingtitle.Text = "PENDING";
             lbpendingtitle.Click += lbpendingtitle_Click;
             // 
-            // valuepending
+            // lbvaluepending
             // 
-            valuepending.AutoSize = true;
-            valuepending.Location = new Point(64, 56);
-            valuepending.Name = "valuepending";
-            valuepending.Size = new Size(13, 15);
-            valuepending.TabIndex = 4;
-            valuepending.Text = "0";
+            lbvaluepending.AutoSize = true;
+            lbvaluepending.Location = new Point(71, 56);
+            lbvaluepending.Name = "lbvaluepending";
+            lbvaluepending.Size = new Size(13, 15);
+            lbvaluepending.TabIndex = 4;
+            lbvaluepending.Text = "0";
             // 
             // dashBLbl
             // 
@@ -304,10 +310,6 @@
             dashBLbl.Text = "Dash Board";
             dashBLbl.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // volunteerBindingSource
-            // 
-            volunteerBindingSource.DataSource = typeof(Entities.Volunteer);
-            // 
             // HomeView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -317,7 +319,6 @@
             Size = new Size(923, 597);
             mainPnl.ResumeLayout(false);
             groupBoxuserdis.ResumeLayout(false);
-            groupBoxalrt.ResumeLayout(false);
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panel3.ResumeLayout(false);
@@ -326,7 +327,6 @@
             panel2.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)volunteerBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -335,30 +335,30 @@
         private Panel mainPnl;
         private Label dashBLbl;
         private Panel panel6;
-        private Label label8;
+        private Label lbinactive;
         private Label inactive;
         private Panel panel7;
         private Panel panel3;
-        private Label label6;
+        private Label rlbreqpending;
         private Label totalreq;
         private Panel panel5;
         private Panel panel2;
-        private Label label4;
+        private Label lbactiveuser;
         private Label activeuser;
         private Panel panel4;
         private Panel panel1;
         private Label lbpendingtitle;
-        private Label valuepending;
+        private Label lbvaluepending;
         private GroupBox groupBoxuserdis;
         private ProgressBar progressBar3;
         private ProgressBar progressBar2;
         private ProgressBar progressBar1;
-        private GroupBox groupBoxalrt;
-        private ListBox listBox1;
-        private BindingSource volunteerBindingSource;
         private ProgressBar progressBardonor;
         private ProgressBar progressBarvictim;
-        private ProgressBar progressBarvolon;
-        private Label lblvolunteer;
+        private ProgressBar progressBarvolun;
+        private Label lbVolonP;
+        private Label lbvictimP;
+        private Label lbdonorP;
+        private ListBox listBoxDisasterReq;
     }
 }
