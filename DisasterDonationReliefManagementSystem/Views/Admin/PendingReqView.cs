@@ -23,7 +23,7 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
         {
             string select_query = "SELECT * FROM DisasterRequest WHERE RequestStatus = 'Pending'";
             List<DisasterRequest> requests = Query.GetDisasterRequests(select_query);
-            LoadRequest(requests);
+            SetRequests(requests);
 
             foreach (Panel ReqPanel in mainReqPnl.Controls)
             {

@@ -38,7 +38,7 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
                 containerPnl.Controls.Add(noReqLbl);
                 return;
             }
-            LoadRequest(disasterRequests);
+            SetRequests(disasterRequests);
 
             foreach (Panel ReqPnl in mainReqPnl.Controls)
             {

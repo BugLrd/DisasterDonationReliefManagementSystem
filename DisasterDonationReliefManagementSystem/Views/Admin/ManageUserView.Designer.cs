@@ -68,6 +68,7 @@
             userListPnl.Size = new Size(911, 544);
             userListPnl.TabIndex = 0;
             userListPnl.WrapContents = false;
+            userListPnl.Paint += userListPnl_Paint;
             // 
             // roleFilter
             // 

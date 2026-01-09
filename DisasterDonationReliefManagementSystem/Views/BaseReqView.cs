@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -16,105 +17,169 @@ namespace DisasterDonationReliefManagementSystem.Views
         // Color palette for the request panels
         private readonly Color reqNormalColor = Color.FromArgb(243, 246, 249); // #F3F6F9
         private readonly Color reqHoverColor = Color.FromArgb(232, 239, 246); // #E8EFF6
-        private readonly Color titleColor = Color.FromArgb(0, 120, 215);   // #0078D7
-        private readonly Color titleHoverColor = Color.FromArgb(0, 90, 158);    // #005A9E
-        private readonly Color descColor = Color.FromArgb(85, 85, 85);    // #555555
+        private readonly Color titleColor = Color.FromArgb(0, 120, 215);       // #0078D7
+        private readonly Color titleHoverColor = Color.FromArgb(0, 90, 158);   // #005A9E
+        private readonly Color descColor = Color.FromArgb(85, 85, 85);         // #555555
 
         public bool isDetailsPanelOpen = false;
         private Panel selectedPanel = null;
 
-        public Panel subReqPnl, contentPnl;
+        public Panel subReqPnl, contentPnl; 
         public Button closeBtn;
-        Label titleLbl;
-        Label descLbl;
+
+        // Data and events
+        private List<DisasterRequest> _allRequests = new List<DisasterRequest>();
+        private EventHandler _searchChangedHandler;
+        private EventHandler _filterChangedHandler;
+
         public BaseReqView()
         {
             InitializeComponent();
+
+            // Subscribe to search/filter events ONCE
+            _searchChangedHandler = (s, e) => ApplyFilters();
+            _filterChangedHandler = (s, e) => ApplyFilters();
+
+            // These controls are created by the designer
+            if (searchBox != null) searchBox.TextChanged += _searchChangedHandler;
+            if (filter != null) filter.SelectedIndexChanged += _filterChangedHandler;
         }
 
         private void BaseReqView_Load(object sender, EventArgs e)
         {
-
         }
 
-        public void LoadRequest(List<DisasterRequest> requests)
+        // Public entry to set/refresh the data source
+        public void SetRequests(List<DisasterRequest> requests)
         {
-            mainReqPnl.SuspendLayout();
+            _allRequests = requests ?? new List<DisasterRequest>();
+            ApplyFilters();
+        }
 
-            foreach (var req in requests)
+        // Kept for compatibility if existing callers use this name/signature
+        public void LoadRequest(IEnumerable<DisasterRequest> requests)
+        {
+            SetRequests(requests?.ToList() ?? new List<DisasterRequest>());
+        }
+
+        // Apply current UI filters and redraw
+        public void ApplyFilters()
+        {
+            string search = (searchBox?.Text ?? string.Empty).Trim();
+            string statusFilter = filter?.SelectedItem?.ToString() ?? "All";
+
+            IEnumerable<DisasterRequest> q = _allRequests;
+
+            // Optional: interpret sorting values if your ComboBox uses them
+            if (string.Equals(statusFilter, "Most Recent", StringComparison.OrdinalIgnoreCase))
             {
-                // Create title label with hover effects
-                titleLbl = new Label
-                {
-                    Text = req.DisasterTitle,
-                    Location = new Point(15, 15),
-                    AutoSize = true,
-                    Font = new Font("Segoe UI", 14F, FontStyle.Bold),
-                    ForeColor = titleColor,
-                    Cursor = Cursors.Hand,
-                    Tag = req.RequestID // Store request ID
-                };
+                q = q.OrderByDescending(r => r.RequestDate);
+                statusFilter = "All"; // treat as no status filter after sorting
+            }
+            else if (string.Equals(statusFilter, "Oldest", StringComparison.OrdinalIgnoreCase))
+            {
+                q = q.OrderBy(r => r.RequestDate);
+                statusFilter = "All";
+            }
 
-                // Title hover events
-                titleLbl.MouseEnter += (s, ev) =>
-                {
-                    titleLbl.ForeColor = titleHoverColor;
-                    titleLbl.Font = new Font(titleLbl.Font, FontStyle.Bold | FontStyle.Underline);
-                };
+            // Status filter (only if not "All")
+            if (!string.Equals(statusFilter, "All", StringComparison.OrdinalIgnoreCase))
+            {
+                q = q.Where(r => string.Equals(r.RequestStatus, statusFilter, StringComparison.OrdinalIgnoreCase));
+            }
 
-                titleLbl.MouseLeave += (s, ev) =>
-                {
-                    titleLbl.ForeColor = titleColor;
-                    titleLbl.Font = new Font(titleLbl.Font.FontFamily, titleLbl.Font.Size, FontStyle.Bold);
-                };
+            // Text search across selected fields
+            if (!string.IsNullOrEmpty(search))
+            {
+                q = q.Where(u =>
+                    (!string.IsNullOrEmpty(u.DisasterTitle) && u.DisasterTitle.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                    (!string.IsNullOrEmpty(u.Description) && u.Description.IndexOf(search, StringComparison.OrdinalIgnoreCase) >= 0));
+            }
 
-                titleLbl.Click += Title_Click;
+            // Rebuild UI: clear previous, then add filtered ones
+            CloseDetailsPanel();
+            mainReqPnl.SuspendLayout();
+            mainReqPnl.Controls.Clear();
 
-                // Create description label
-                descLbl = new Label
-                {
-                    Text = req.Description,
-                    Location = new Point(15, 45),
-                    AutoSize = true,
-                    Font = new Font("Segoe UI", 10F),
-                    ForeColor = descColor
-                };
-
-                // Create request panel with hover effects
-                subReqPnl = new Panel
-                {
-                    BorderStyle = BorderStyle.FixedSingle,
-                    Size = new Size(mainReqPnl.Width - 25, 86),
-                    BackColor = reqNormalColor,
-                    Margin = new Padding(5, 5, 5, 3),
-                    Name = $"ReqPnl_{req.RequestID}",
-                    Cursor = Cursors.Hand,
-                    Tag = req,
-                    AutoSize = false
-                };
-
-                // Panel hover events
-                subReqPnl.MouseEnter += (s, ev) =>
-                {
-                    if (s is Panel p) p.BackColor = reqHoverColor;
-                };
-                subReqPnl.MouseLeave += (s, ev) =>
-                {
-                    if (s is Panel p && p != selectedPanel)
-                        p.BackColor = reqNormalColor;
-                };
-                subReqPnl.Click += Panel_Click;
-
-                // Add labels to panel
-                subReqPnl.Controls.Add(titleLbl);
-                subReqPnl.Controls.Add(descLbl);
-
-                // Add panel to main container
-                mainReqPnl.Controls.Add(subReqPnl);
+            foreach (var req in q)
+            {
+                var panel = CreateRequestPanel(req);
+                mainReqPnl.Controls.Add(panel);
             }
 
             mainReqPnl.ResumeLayout(false);
             mainReqPnl.PerformLayout();
+        }
+
+        private Panel CreateRequestPanel(DisasterRequest req)
+        {
+            // Title label (local variable to avoid closure issues on fields)
+            var titleLbl = new Label
+            {
+                Text = req.DisasterTitle,
+                Location = new Point(15, 15),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 14F, FontStyle.Bold),
+                ForeColor = titleColor,
+                Cursor = Cursors.Hand,
+                Tag = req.RequestID // Store request ID
+            };
+
+            // Title hover events
+            titleLbl.MouseEnter += (s, ev) =>
+            {
+                titleLbl.ForeColor = titleHoverColor;
+                titleLbl.Font = new Font(titleLbl.Font, FontStyle.Bold | FontStyle.Underline);
+            };
+
+            titleLbl.MouseLeave += (s, ev) =>
+            {
+                titleLbl.ForeColor = titleColor;
+                titleLbl.Font = new Font(titleLbl.Font.FontFamily, titleLbl.Font.Size, FontStyle.Bold);
+            };
+
+            titleLbl.Click += Title_Click;
+
+            // Description label
+            var descLbl = new Label
+            {
+                Text = req.Description,
+                Location = new Point(15, 45),
+                AutoSize = true,
+                Font = new Font("Segoe UI", 10F),
+                ForeColor = descColor
+            };
+
+            // Request panel
+            var panel = new Panel
+            {
+                BorderStyle = BorderStyle.FixedSingle,
+                Size = new Size(mainReqPnl.Width - 25, 86),
+                BackColor = reqNormalColor,
+                Margin = new Padding(5, 5, 5, 3),
+                Name = $"ReqPnl_{req.RequestID}",
+                Cursor = Cursors.Hand,
+                Tag = req,
+                AutoSize = false
+            };
+
+            // Panel hover events
+            panel.MouseEnter += (s, ev) =>
+            {
+                if (s is Panel p) p.BackColor = reqHoverColor;
+            };
+            panel.MouseLeave += (s, ev) =>
+            {
+                if (s is Panel p && p != selectedPanel)
+                    p.BackColor = reqNormalColor;
+            };
+            panel.Click += Panel_Click;
+
+            // Add labels to panel
+            panel.Controls.Add(titleLbl);
+            panel.Controls.Add(descLbl);
+
+            return panel;
         }
 
         public void Panel_Click(object sender, EventArgs e)
@@ -413,7 +478,10 @@ namespace DisasterDonationReliefManagementSystem.Views
 
         private void mainReqPnl_Paint(object sender, PaintEventArgs e)
         {
+        }
 
+        private void containerPnl_Paint(object sender, PaintEventArgs e)
+        {
         }
     }
 }
