@@ -212,19 +212,14 @@ namespace DisasterDonationReliefManagementSystem.Services
 
             string sql = @"
             SELECT
-            -- User counts from Login table
+            
             (SELECT COUNT(*) FROM Login) AS TotalUsers,
             (SELECT COUNT(*) FROM Login WHERE Status = 1) AS ActiveUsers,
             (SELECT COUNT(*) FROM Login WHERE Status = 0) AS InactiveUsers,
-        
-            -- Disaster request counts
             (SELECT COUNT(*) FROM DisasterRequest) AS TotalRequests,
             (SELECT COUNT(*) FROM DisasterRequest WHERE RequestStatus = 'Pending') AS PendingRequests,
-        
-            -- User type counts - CHANGE THESE BASED ON YOUR ACTUAL TABLE
-            -- Option 1: If user types are in Login table with a Role column
             (SELECT COUNT(*) FROM Login WHERE Role = 'Volunteer') AS Volunteers,
-            (SELECT COUNT(*) FROM Login WHERE Role = 'Donor') AS Donors,
+            (SELECT COUNT(*) FROM Login WHERE Role = 'Donator') AS Donors,
             (SELECT COUNT(*) FROM Login WHERE Role = 'Victim') AS Victims;
                 ";
 
@@ -250,7 +245,7 @@ namespace DisasterDonationReliefManagementSystem.Services
                 infos["Donors"] = Convert.ToInt32(row["Donors"]);
                 infos["Victims"] = Convert.ToInt32(row["Victims"]);
             }
-
+            
             return infos;
         }
 
