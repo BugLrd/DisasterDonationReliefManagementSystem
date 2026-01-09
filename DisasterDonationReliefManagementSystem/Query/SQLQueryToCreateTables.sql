@@ -72,7 +72,7 @@ CREATE TABLE DisasterRequest (
     NumberOfMembers INT NOT NULL,
     RequestDate DATETIME NOT NULL DEFAULT GETDATE(),
     Location VARCHAR(255) NOT NULL,
-    RequestStatus VARCHAR(20) NOT NULL
+    RequestStatus VARCHAR(20) NOT NULL Default 'Pending'
         CHECK (RequestStatus IN ('Pending', 'Approved', 'Rejected', 'Completed')),
 
     CONSTRAINT FK_Request_Victim

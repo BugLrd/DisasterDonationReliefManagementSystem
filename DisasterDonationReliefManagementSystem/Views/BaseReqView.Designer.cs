@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             containerPnl = new Panel();
+            filter = new ComboBox();
+            searchBox = new TextBox();
             mainReqPnl = new FlowLayoutPanel();
             detailsPnl = new Panel();
             containerPnl.SuspendLayout();
@@ -36,6 +38,8 @@
             // 
             // containerPnl
             // 
+            containerPnl.Controls.Add(filter);
+            containerPnl.Controls.Add(searchBox);
             containerPnl.Controls.Add(mainReqPnl);
             containerPnl.Controls.Add(detailsPnl);
             containerPnl.Dock = DockStyle.Fill;
@@ -43,15 +47,36 @@
             containerPnl.Name = "containerPnl";
             containerPnl.Size = new Size(923, 597);
             containerPnl.TabIndex = 0;
+            containerPnl.Paint += containerPnl_Paint;
+            // 
+            // filter
+            // 
+            filter.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            filter.DropDownStyle = ComboBoxStyle.DropDownList;
+            filter.Font = new Font("Segoe UI", 10F);
+            filter.Items.AddRange(new object[] { "Most Recent", "Oldest" });
+            filter.Location = new Point(501, 11);
+            filter.Name = "filter";
+            filter.Size = new Size(176, 25);
+            filter.TabIndex = 3;
+            // 
+            // searchBox
+            // 
+            searchBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            searchBox.Font = new Font("Segoe UI", 10F);
+            searchBox.Location = new Point(10, 11);
+            searchBox.Name = "searchBox";
+            searchBox.PlaceholderText = "Search by title or type";
+            searchBox.Size = new Size(472, 25);
+            searchBox.TabIndex = 4;
             // 
             // mainReqPnl
             // 
             mainReqPnl.AutoScroll = true;
-            mainReqPnl.Dock = DockStyle.Left;
             mainReqPnl.FlowDirection = FlowDirection.TopDown;
-            mainReqPnl.Location = new Point(0, 0);
+            mainReqPnl.Location = new Point(3, 48);
             mainReqPnl.Name = "mainReqPnl";
-            mainReqPnl.Size = new Size(923, 597);
+            mainReqPnl.Size = new Size(917, 549);
             mainReqPnl.TabIndex = 0;
             mainReqPnl.WrapContents = false;
             mainReqPnl.Paint += mainReqPnl_Paint;
@@ -76,6 +101,7 @@
             Size = new Size(923, 597);
             Load += BaseReqView_Load;
             containerPnl.ResumeLayout(false);
+            containerPnl.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -84,5 +110,7 @@
         public Panel containerPnl;
         public FlowLayoutPanel mainReqPnl;
         public Panel detailsPnl;
+        private ComboBox filter;
+        private TextBox searchBox;
     }
 }

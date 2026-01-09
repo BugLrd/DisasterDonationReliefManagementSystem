@@ -42,7 +42,9 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
                     };
                 }
 
-                set {                     switch (index)
+                set
+                {
+                    switch (index)
                     {
                         case 0:
                             LoginID = (int)value;
@@ -424,6 +426,11 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
             {
                 MessageBox.Show($"Failed to update status: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void userListPnl_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

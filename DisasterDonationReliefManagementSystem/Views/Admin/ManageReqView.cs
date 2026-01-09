@@ -1,32 +1,28 @@
 ﻿using DisasterDonationReliefManagementSystem.Entities;
 using DisasterDonationReliefManagementSystem.Services;
-using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace DisasterDonationReliefManagementSystem.Views
+namespace DisasterDonationReliefManagementSystem.Views.Admin
 {
-    public partial class YourRequestsView : BaseReqView
+    public partial class ManageReqView : BaseReqView
     {
-        Victim victim;
         private DisasterRequest currReq;
 
         Button editBtn, deleteBtn;
-        public YourRequestsView(Victim victim)
+        public ManageReqView()
         {
             InitializeComponent();
-            this.victim = victim;
         }
 
-        private void YourRequestsView_Load(object sender, EventArgs e)
+        private void ManageReqView_Load(object sender, EventArgs e)
         {
-            string select_query = $"SELECT * FROM DisasterRequest WHERE VictimID = {victim.VictimID} ORDER BY RequestDate DESC";
+            string select_query = $"SELECT * FROM DisasterRequest WHERE RequestStatus != 'Pending' ORDER BY RequestDate DESC";
             List<DisasterRequest> disasterRequests = Query.GetDisasterRequests(select_query);
             if (disasterRequests == null || disasterRequests.Count == 0)
             {
@@ -46,44 +42,6 @@ namespace DisasterDonationReliefManagementSystem.Views
 
             foreach (Panel ReqPnl in mainReqPnl.Controls)
             {
-                // Get the request from the panel's Tag
-                var req = ReqPnl.Tag as DisasterRequest;
-                if (req == null) continue;
-
-                // Normalize status and choose color
-                string status = req.RequestStatus.Trim();
-                Color statusColor;
-                switch (status.ToLowerInvariant())
-                {
-                    case "pending":
-                        statusColor = Color.DarkOrange;
-                        break;
-                    case "approved":
-                        statusColor = Color.SeaGreen;
-                        break;
-                    case "completed":
-                        statusColor = Color.SteelBlue;
-                        break;
-                    case "rejected":
-                        statusColor = Color.Firebrick;
-                        break;
-                    default:
-                        statusColor = Color.DarkBlue;
-                        break;
-                }
-
-                // Add status label to the request panel
-                var statusLbl = new Label
-                {
-                    Text = status,
-                    AutoSize = true,
-                    Font = new Font("Arial", 10, FontStyle.Bold),
-                    ForeColor = statusColor,
-                    Location = new Point(780, 35)
-                };
-                ReqPnl.Controls.Add(statusLbl);
-
-                // Keep currReq in sync when the panel is clicked and add action buttons
                 ReqPnl.Click += AddButtonsToDetailsPanel;
             }
         }
@@ -278,7 +236,7 @@ namespace DisasterDonationReliefManagementSystem.Views
 
             // save clicked
             // check if number of members input is valid
-            if (!int.TryParse(tbMembers.Text,out int members) || members <= 0)
+            if (!int.TryParse(tbMembers.Text, out int members) || members <= 0)
             {
                 MessageBox.Show("Please enter a valid number of members.",
                     "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -310,7 +268,7 @@ namespace DisasterDonationReliefManagementSystem.Views
                         "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     if (FindForm() is Forms.HomePage home)
-                        home.ShowView(new YourRequestsView(victim));
+                        home.ShowView(new ManageReqView());
                 }
                 else
                 {
@@ -361,7 +319,7 @@ namespace DisasterDonationReliefManagementSystem.Views
                     Form parentForm = FindForm();
                     if (parentForm is Forms.HomePage homePage)
                     {
-                        homePage.ShowView(new YourRequestsView(victim));
+                        homePage.ShowView(new ManageReqView());
                     }
                     return;
                 }

@@ -23,7 +23,7 @@ namespace DisasterDonationReliefManagementSystem
         private void HomeView_Load(object sender, EventArgs e)
         {
             string select_query = "SELECT * FROM DisasterRequest WHERE RequestStatus = 'Approved' ORDER BY RequestDate DESC";
-            LoadRequest(Query.GetDisasterRequests(select_query));
+            SetRequests(Query.GetDisasterRequests(select_query));
         }
 
         
