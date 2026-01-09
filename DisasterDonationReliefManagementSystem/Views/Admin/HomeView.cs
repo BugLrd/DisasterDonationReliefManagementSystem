@@ -23,6 +23,14 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
 
         }
 
+        private void lbpendingtitle_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
