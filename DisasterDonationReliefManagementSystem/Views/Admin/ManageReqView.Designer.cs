@@ -1,6 +1,6 @@
 ﻿namespace DisasterDonationReliefManagementSystem.Views.Admin
 {
-    partial class AdminHomeView
+    partial class ManageReqView
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,16 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            containerPnl.SuspendLayout();
             SuspendLayout();
             // 
-            // AdminHomeView
+            // ManageReqView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Name = "AdminHomeView";
-            Load += AdminHomeView_Load;
-            containerPnl.ResumeLayout(false);
+            Name = "ManageReqView";
+            Load += ManageReqView_Load;
             ResumeLayout(false);
         }
 

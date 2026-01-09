@@ -52,7 +52,7 @@ namespace DisasterDonationReliefManagementSystem
 
                 if (string.Equals(login.Role, "Admin", StringComparison.OrdinalIgnoreCase))
                 {
-                    string adminQuery = $"SELECT a.*, l.Username, l.Status FROM Admin a INNER JOIN Login l ON a.LoginID = l.LoginID and a.LoginID = '{login.LoginID}'";
+                    string adminQuery = $"SELECT a.*, l.Username, l.Status, l.Message FROM Admin a INNER JOIN Login l ON a.LoginID = l.LoginID and a.LoginID = '{login.LoginID}'";
 
                     HomePage homePage = new HomePage(Query.GetAdmins(adminQuery)[0]);
                     homePage.FormClosed += (s, args) => Application.Exit();
@@ -63,7 +63,7 @@ namespace DisasterDonationReliefManagementSystem
 
                 if (string.Equals(login.Role, "Donator", StringComparison.OrdinalIgnoreCase))
                 {
-                    string donorQuery = $"SELECT d.*, l.Username, l.Status FROM Donator d INNER JOIN Login l ON d.LoginID = l.LoginID and d.LoginID = '{login.LoginID}'";
+                    string donorQuery = $"SELECT d.*, l.Username, l.Status, l.Message FROM Donator d INNER JOIN Login l ON d.LoginID = l.LoginID and d.LoginID = '{login.LoginID}'";
 
                     HomePage homePage = new HomePage(Query.GetDonators(donorQuery)[0]);
                     homePage.FormClosed += (s, args) => Application.Exit();
@@ -74,7 +74,7 @@ namespace DisasterDonationReliefManagementSystem
 
                 if (string.Equals(login.Role, "Victim", StringComparison.OrdinalIgnoreCase))
                 {
-                    string victimQuery = $"SELECT v.*, l.Username, l.Status FROM Victim v INNER JOIN Login l ON v.LoginID = l.LoginID and v.LoginID = '{login.LoginID}'";
+                    string victimQuery = $"SELECT v.*, l.Username, l.Status, l.Message FROM Victim v INNER JOIN Login l ON v.LoginID = l.LoginID and v.LoginID = '{login.LoginID}'";
 
                     HomePage homePage = new HomePage(Query.GetVictims(victimQuery)[0]);
                     homePage.FormClosed += (s, args) => Application.Exit();
@@ -85,7 +85,7 @@ namespace DisasterDonationReliefManagementSystem
 
                 if (string.Equals(login.Role, "Volunteer", StringComparison.OrdinalIgnoreCase))
                 {
-                    string volQuery = $"SELECT v.*, l.Username, l.Status FROM Volunteer v INNER JOIN Login l ON v.LoginID = l.LoginID and v.LoginID = '{login.LoginID}'";
+                    string volQuery = $"SELECT v.*, l.Username, l.Status, l.Message FROM Volunteer v INNER JOIN Login l ON v.LoginID = l.LoginID and v.LoginID = '{login.LoginID}'";
 
                     HomePage homePage = new HomePage(Query.GetVolunteers(volQuery)[0]);
                     homePage.FormClosed += (s, args) => Application.Exit();

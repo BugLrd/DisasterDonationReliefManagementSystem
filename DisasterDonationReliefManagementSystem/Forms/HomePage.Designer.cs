@@ -36,14 +36,15 @@
             sideBarPnl = new FlowLayoutPanel();
             homebtn = new Button();
             urReqBtn = new Button();
-            cReqBtn = new Button();
             mngUsrsBtn = new Button();
             mngReqBtn = new Button();
-            adminBtn = new Button();
+            penReqBtn = new Button();
+            cReqBtn = new Button();
             donateBtn = new Button();
             donHistBtn = new Button();
             currDelBtn = new Button();
             delHistBtn = new Button();
+            adminBtn = new Button();
             mainpnl = new Panel();
             headerpnl.SuspendLayout();
             sideBarPnl.SuspendLayout();
@@ -112,14 +113,15 @@
             sideBarPnl.BackColor = Color.FromArgb(43, 47, 51);
             sideBarPnl.Controls.Add(homebtn);
             sideBarPnl.Controls.Add(urReqBtn);
-            sideBarPnl.Controls.Add(cReqBtn);
             sideBarPnl.Controls.Add(mngUsrsBtn);
             sideBarPnl.Controls.Add(mngReqBtn);
-            sideBarPnl.Controls.Add(adminBtn);
+            sideBarPnl.Controls.Add(penReqBtn);
+            sideBarPnl.Controls.Add(cReqBtn);
             sideBarPnl.Controls.Add(donateBtn);
             sideBarPnl.Controls.Add(donHistBtn);
             sideBarPnl.Controls.Add(currDelBtn);
             sideBarPnl.Controls.Add(delHistBtn);
+            sideBarPnl.Controls.Add(adminBtn);
             sideBarPnl.Location = new Point(1, 35);
             sideBarPnl.Name = "sideBarPnl";
             sideBarPnl.Padding = new Padding(0, 10, 0, 0);
@@ -160,23 +162,6 @@
             urReqBtn.UseVisualStyleBackColor = false;
             urReqBtn.Click += urReqBtn_Click;
             // 
-            // cReqBtn
-            // 
-            cReqBtn.BackColor = Color.Transparent;
-            cReqBtn.Cursor = Cursors.Hand;
-            cReqBtn.FlatAppearance.BorderSize = 0;
-            cReqBtn.FlatStyle = FlatStyle.Flat;
-            cReqBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
-            cReqBtn.ForeColor = SystemColors.ButtonFace;
-            cReqBtn.Location = new Point(3, 71);
-            cReqBtn.Name = "cReqBtn";
-            cReqBtn.Size = new Size(144, 23);
-            cReqBtn.TabIndex = 3;
-            cReqBtn.Text = "Create New Request";
-            cReqBtn.TextAlign = ContentAlignment.MiddleLeft;
-            cReqBtn.UseVisualStyleBackColor = false;
-            cReqBtn.Click += cReqBtn_Click;
-            // 
             // mngUsrsBtn
             // 
             mngUsrsBtn.BackColor = Color.Transparent;
@@ -185,7 +170,7 @@
             mngUsrsBtn.FlatStyle = FlatStyle.Flat;
             mngUsrsBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
             mngUsrsBtn.ForeColor = SystemColors.ButtonFace;
-            mngUsrsBtn.Location = new Point(3, 100);
+            mngUsrsBtn.Location = new Point(3, 71);
             mngUsrsBtn.Name = "mngUsrsBtn";
             mngUsrsBtn.Size = new Size(144, 23);
             mngUsrsBtn.TabIndex = 3;
@@ -202,29 +187,48 @@
             mngReqBtn.FlatStyle = FlatStyle.Flat;
             mngReqBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
             mngReqBtn.ForeColor = SystemColors.ButtonFace;
-            mngReqBtn.Location = new Point(3, 129);
+            mngReqBtn.Location = new Point(3, 100);
             mngReqBtn.Name = "mngReqBtn";
             mngReqBtn.Size = new Size(144, 23);
             mngReqBtn.TabIndex = 3;
             mngReqBtn.Text = "Manage Requests";
             mngReqBtn.TextAlign = ContentAlignment.MiddleLeft;
             mngReqBtn.UseVisualStyleBackColor = false;
+            mngReqBtn.Click += mngReqBtn_Click;
             // 
-            // adminBtn
+            // penReqBtn
             // 
-            adminBtn.BackColor = Color.Transparent;
-            adminBtn.Cursor = Cursors.Hand;
-            adminBtn.FlatAppearance.BorderSize = 0;
-            adminBtn.FlatStyle = FlatStyle.Flat;
-            adminBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
-            adminBtn.ForeColor = SystemColors.ButtonFace;
-            adminBtn.Location = new Point(3, 158);
-            adminBtn.Name = "adminBtn";
-            adminBtn.Size = new Size(144, 23);
-            adminBtn.TabIndex = 3;
-            adminBtn.Text = "Create New Admin";
-            adminBtn.TextAlign = ContentAlignment.MiddleLeft;
-            adminBtn.UseVisualStyleBackColor = false;
+            penReqBtn.BackColor = Color.Transparent;
+            penReqBtn.Cursor = Cursors.Hand;
+            penReqBtn.FlatAppearance.BorderSize = 0;
+            penReqBtn.FlatStyle = FlatStyle.Flat;
+            penReqBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            penReqBtn.ForeColor = SystemColors.ButtonFace;
+            penReqBtn.Location = new Point(3, 129);
+            penReqBtn.Name = "penReqBtn";
+            penReqBtn.Size = new Size(144, 23);
+            penReqBtn.TabIndex = 3;
+            penReqBtn.Text = "Pending Requests";
+            penReqBtn.TextAlign = ContentAlignment.MiddleLeft;
+            penReqBtn.UseVisualStyleBackColor = false;
+            penReqBtn.Click += penReqBtn_Click;
+            // 
+            // cReqBtn
+            // 
+            cReqBtn.BackColor = Color.Transparent;
+            cReqBtn.Cursor = Cursors.Hand;
+            cReqBtn.FlatAppearance.BorderSize = 0;
+            cReqBtn.FlatStyle = FlatStyle.Flat;
+            cReqBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            cReqBtn.ForeColor = SystemColors.ButtonFace;
+            cReqBtn.Location = new Point(3, 158);
+            cReqBtn.Name = "cReqBtn";
+            cReqBtn.Size = new Size(144, 23);
+            cReqBtn.TabIndex = 3;
+            cReqBtn.Text = "Create New Request";
+            cReqBtn.TextAlign = ContentAlignment.MiddleLeft;
+            cReqBtn.UseVisualStyleBackColor = false;
+            cReqBtn.Click += cReqBtn_Click;
             // 
             // donateBtn
             // 
@@ -290,6 +294,22 @@
             delHistBtn.TextAlign = ContentAlignment.MiddleLeft;
             delHistBtn.UseVisualStyleBackColor = false;
             // 
+            // adminBtn
+            // 
+            adminBtn.BackColor = Color.Transparent;
+            adminBtn.Cursor = Cursors.Hand;
+            adminBtn.FlatAppearance.BorderSize = 0;
+            adminBtn.FlatStyle = FlatStyle.Flat;
+            adminBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            adminBtn.ForeColor = SystemColors.ButtonFace;
+            adminBtn.Location = new Point(3, 303);
+            adminBtn.Name = "adminBtn";
+            adminBtn.Size = new Size(144, 23);
+            adminBtn.TabIndex = 3;
+            adminBtn.Text = "Create New Admin";
+            adminBtn.TextAlign = ContentAlignment.MiddleLeft;
+            adminBtn.UseVisualStyleBackColor = false;
+            // 
             // mainpnl
             // 
             mainpnl.BorderStyle = BorderStyle.FixedSingle;
@@ -297,6 +317,7 @@
             mainpnl.Name = "mainpnl";
             mainpnl.Size = new Size(924, 599);
             mainpnl.TabIndex = 1;
+            mainpnl.Paint += mainpnl_Paint;
             // 
             // HomePage
             // 
@@ -335,5 +356,6 @@
         private Button currDelBtn;
         private Button delHistBtn;
         private Panel mainpnl;
+        private Button penReqBtn;
     }
 }

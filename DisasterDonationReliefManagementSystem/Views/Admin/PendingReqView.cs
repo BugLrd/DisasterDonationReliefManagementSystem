@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace DisasterDonationReliefManagementSystem.Views.Admin
 {
-    public partial class AdminHomeView : BaseReqView
+    public partial class PendingReqView : BaseReqView
     {
         private DisasterRequest currReq;
-        public AdminHomeView()
+        public PendingReqView()
         {
             InitializeComponent();
         }
@@ -23,7 +23,7 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
         {
             string select_query = "SELECT * FROM DisasterRequest WHERE RequestStatus = 'Pending'";
             List<DisasterRequest> requests = Query.GetDisasterRequests(select_query);
-            LoadRequest(requests);
+            SetRequests(requests);
 
             foreach (Panel ReqPanel in mainReqPnl.Controls)
             {
@@ -77,7 +77,7 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
                     // Refresh the view
                     if (FindForm() is Forms.HomePage home)
                     {
-                        home.ShowView(new AdminHomeView());
+                        home.ShowView(new PendingReqView());
                     }
                 }
                 else
@@ -102,7 +102,7 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
                     // Refresh the view
                     if (FindForm() is Forms.HomePage home)
                     {
-                        home.ShowView(new AdminHomeView());
+                        home.ShowView(new PendingReqView());
                     }
                 }
                 else
