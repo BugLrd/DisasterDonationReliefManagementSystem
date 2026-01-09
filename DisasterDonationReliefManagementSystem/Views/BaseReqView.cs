@@ -151,7 +151,7 @@ namespace DisasterDonationReliefManagementSystem.Views
             };
 
             // Request panel
-            var panel = new Panel
+            subReqPnl = new Panel
             {
                 BorderStyle = BorderStyle.FixedSingle,
                 Size = new Size(mainReqPnl.Width - 25, 86),
@@ -164,22 +164,22 @@ namespace DisasterDonationReliefManagementSystem.Views
             };
 
             // Panel hover events
-            panel.MouseEnter += (s, ev) =>
+            subReqPnl.MouseEnter += (s, ev) =>
             {
                 if (s is Panel p) p.BackColor = reqHoverColor;
             };
-            panel.MouseLeave += (s, ev) =>
+            subReqPnl.MouseLeave += (s, ev) =>
             {
                 if (s is Panel p && p != selectedPanel)
                     p.BackColor = reqNormalColor;
             };
-            panel.Click += Panel_Click;
+            subReqPnl.Click += Panel_Click;
 
             // Add labels to panel
-            panel.Controls.Add(titleLbl);
-            panel.Controls.Add(descLbl);
+            subReqPnl.Controls.Add(titleLbl);
+            subReqPnl.Controls.Add(descLbl);
 
-            return panel;
+            return subReqPnl;
         }
 
         public void Panel_Click(object sender, EventArgs e)
