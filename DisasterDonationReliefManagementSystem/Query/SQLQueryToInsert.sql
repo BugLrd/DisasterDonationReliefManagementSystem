@@ -31,10 +31,10 @@ VALUES
 
 
 INSERT INTO Donation
-(DonatorID, RequestID, DonationType, ItemDetails, DonationStatus)
+(DonatorID, RequestID, DonationType, ItemDetails)
 VALUES
-(1, 1, 'Goods', 'Rice 10kg, Water 20L', 'Assigned'),
-(1, 2, 'Goods', 'First Aid Kit x2', 'Pending');
+(1, 1, 'Goods', 'Rice 10kg, Water 20L'),
+(1, 2, 'Goods', 'First Aid Kit x2');
 
 
 INSERT INTO Delivery
