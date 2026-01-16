@@ -215,7 +215,7 @@ namespace DisasterDonationReliefManagementSystem.Views.Donator
                     pickupLocation = tbPickup.Text.Trim();
                 }
 
-                var donation = new Donation(0, _donator.DonatorID, _currentReq.RequestID, donationType, itemDetails, DateTime.Now, "Pending");
+                var donation = new Donation(0, _donator.DonatorID, _currentReq.RequestID, donationType, itemDetails, DateTime.Now);
 
                 try
                 {
@@ -235,26 +235,37 @@ namespace DisasterDonationReliefManagementSystem.Views.Donator
                     return;
                 }
 
-                if (cbVolunteer.Checked && donation != null) {
-                    List<Donation> donations = Query.GetDonations($"SELECT * FROM Donation WHERE DonatorID = {_donator.DonatorID} AND RequestID = {_currentReq.RequestID} ORDER BY DonationDate");
-                    var delivery = new Delivery(0, donations[0].DonationID, 0, pickupLocation, _currentReq.Location, "Pending");
-                    try                     {
-                        if (Query.InsertDelivery(delivery) > 0)
-                        {
-                            MessageBox.Show("Delivery request created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to create delivery request.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                    }
-                    catch (Exception ex)
+                List<Donation> donations = Query.GetDonations($"SELECT * FROM Donation WHERE DonatorID = {_donator.DonatorID} AND RequestID = {_currentReq.RequestID} ORDER BY DonationDate");
+
+                
+                var delivery = new Delivery(0, donations[0].DonationID, 0, pickupLocation, _currentReq.Location, "Self Delivered");
+                if (cbVolunteer.Checked && donation != null)
+                {
+                    delivery.DeliveryStatus = "Pending"; // Volunteer to be assigned later
+                }
+                try
+                {
+                    int r = Query.InsertDelivery(delivery);
+                    if (r > 0 && delivery.DeliveryStatus == "Pending")
                     {
-                        MessageBox.Show($"Error creating delivery request: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Delivery request created successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (r > 0 && delivery.DeliveryStatus == "Self Delivered")
+                    {
+                        MessageBox.Show("Donation has been added! Please deliver it on time.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to create delivery request.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error creating delivery request: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                
 
                 dlg.DialogResult = DialogResult.OK;
                 dlg.Close();

@@ -220,5 +220,10 @@ namespace DisasterDonationReliefManagementSystem.Forms
         {
             ShowView(new PendingReqView());
         }
+
+        private void donHistBtn_Click(object sender, EventArgs e)
+        {
+            ShowView(new DonationHistoryView(_currentUser as Donator));
+        }
     }
 }
