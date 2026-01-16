@@ -1,4 +1,5 @@
 ﻿using DisasterDonationReliefManagementSystem.Entities;
+using DisasterDonationReliefManagementSystem.Views.Donator;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ namespace DisasterDonationReliefManagementSystem.Services
 {
     internal static class Query
     {
-        private static readonly string connectionString = "Data Source=Raiden\\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Trust Server Certificate=True";
+        private static readonly string connectionString = "Data Source=SHAYON\\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         private static SqlConnection con = new SqlConnection(connectionString);
 
         //---------------------SELECT QUERIES---------------------//
@@ -176,8 +177,7 @@ namespace DisasterDonationReliefManagementSystem.Services
                     Convert.ToInt32(row["RequestID"]),
                     row["DonationType"].ToString(),
                     row["ItemDetails"].ToString(),
-                    Convert.ToDateTime(row["DonationDate"]),
-                    row["DonationStatus"].ToString()
+                    Convert.ToDateTime(row["DonationDate"])
                 ));
             }
 
@@ -205,6 +205,50 @@ namespace DisasterDonationReliefManagementSystem.Services
 
             return list;
         }
+
+        public static DataTable GetDataTable(string sql)
+        {
+            SqlDataAdapter sda = new SqlDataAdapter(sql, con);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            return dt;
+        }
+
+        public static List<DonationInfo> GetDonationInfos(int donatorID)
+        {
+            List<DonationInfo> donations = new List<DonationInfo>();
+
+            string sql = @"
+        SELECT d.DonationID, r.DisasterTitle, v.FullName AS VictimName, d.DonationDate,
+               ISNULL(dl.DeliveryStatus, 'Not Assigned') AS DeliveryStatus
+        FROM Donation d
+        INNER JOIN DisasterRequest r ON d.RequestID = r.RequestID
+        INNER JOIN Victim v ON r.VictimID = v.VictimID
+        LEFT JOIN Delivery dl ON d.DonationID = dl.DonationID
+        WHERE d.DonatorID = @DonatorID
+    ";
+
+            SqlDataAdapter sda = new SqlDataAdapter(sql, con);
+            sda.SelectCommand.Parameters.AddWithValue("@DonatorID", donatorID);
+
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                donations.Add(new DonationInfo
+                {
+                    DonationID = Convert.ToInt32(row["DonationID"]),
+                    DisasterTitle = row["DisasterTitle"].ToString(),
+                    VictimName = row["VictimName"].ToString(),
+                    DonationDate = Convert.ToDateTime(row["DonationDate"]),
+                    DeliveryStatus = row["DeliveryStatus"].ToString() == "Self Delivered" ? "Pending" : row["DeliveryStatus"].ToString()
+                });
+            }
+
+            return donations;
+        }
+
 
         public static Dictionary<string, int> GetInfos()
         {
@@ -419,15 +463,16 @@ namespace DisasterDonationReliefManagementSystem.Services
         public static int InsertDelivery(Delivery delivery)
         {
             string sql = @"INSERT INTO Delivery
-                   (DonationID, PickupLocation, DeliveryLocation)
+                   (DonationID, PickupLocation, DeliveryLocation, DeliveryStatus)
                    VALUES
-                   (@DonationID, @PickupLocation, @DeliveryLocation)";
+                   (@DonationID, @PickupLocation, @DeliveryLocation, @DeliveryStatus)";
 
             SqlCommand cmd = new SqlCommand(sql, con);
 
             cmd.Parameters.AddWithValue("@DonationID", delivery.DonationID);
             cmd.Parameters.AddWithValue("@PickupLocation", delivery.PickupLocation);
             cmd.Parameters.AddWithValue("@DeliveryLocation", delivery.DeliveryLocation);
+            cmd.Parameters.AddWithValue("@DeliveryStatus", delivery.DeliveryStatus);
 
             if (con.State == ConnectionState.Closed)
                 con.Open();

@@ -261,6 +261,7 @@
             donHistBtn.Text = "Donation History";
             donHistBtn.TextAlign = ContentAlignment.MiddleLeft;
             donHistBtn.UseVisualStyleBackColor = false;
+            donHistBtn.Click += donHistBtn_Click;
             // 
             // currDelBtn
             // 

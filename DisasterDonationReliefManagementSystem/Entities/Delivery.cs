@@ -8,7 +8,7 @@ namespace DisasterDonationReliefManagementSystem.Entities
     {
         public int DeliveryID { get; set; }
         public int DonationID { get; set; }
-        public int VolunteerID { get; set; }
+        public int? VolunteerID { get; set; }
         public string PickupLocation { get; set; }
         public string DeliveryLocation { get; set; }
         public string DeliveryStatus { get; set; }

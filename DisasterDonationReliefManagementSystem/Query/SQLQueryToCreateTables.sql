@@ -86,8 +86,6 @@ CREATE TABLE Donation (
     DonationType VARCHAR(50) NOT NULL,
     ItemDetails TEXT NOT NULL,
     DonationDate DATETIME NOT NULL DEFAULT GETDATE(),
-    DonationStatus VARCHAR(20) NOT NULL Default 'Pending'
-        CHECK (DonationStatus IN ('Pending', 'Assigned', 'Delivered')),
 
     CONSTRAINT FK_Donation_Donator
         FOREIGN KEY (DonatorID) REFERENCES Donator(DonatorID),
@@ -99,11 +97,11 @@ CREATE TABLE Donation (
 CREATE TABLE Delivery (
     DeliveryID INT IDENTITY(1,1) PRIMARY KEY,
     DonationID INT NOT NULL,
-    VolunteerID INT NOT NULL,
+    VolunteerID INT NULL,
     PickupLocation VARCHAR(255) NOT NULL,
     DeliveryLocation VARCHAR(255) NOT NULL,
     DeliveryStatus VARCHAR(20) NOT NULL Default 'Pending'
-        CHECK (DeliveryStatus IN ('Pending', 'In Transit', 'Delivered')),
+        CHECK (DeliveryStatus IN ('Pending', 'Assigned', 'In Transit', 'Delivered', 'Self Delivered')),
 
     CONSTRAINT FK_Delivery_Donation
         FOREIGN KEY (DonationID) REFERENCES Donation(DonationID),
