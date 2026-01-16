@@ -10,15 +10,6 @@ using System.Windows.Forms;
 
 namespace DisasterDonationReliefManagementSystem.Views.Donator
 {
-    public class DonationInfo
-    {
-        public int DonationID { get; set; }
-        public string DisasterTitle { get; set; }
-        public string VictimName { get; set; }
-        public DateTime DonationDate { get; set; }
-        public string DeliveryStatus { get; set; }
-    }
-
     public partial class DonationHistoryView : UserControl
     {
         private Entities.Donator _donator;
