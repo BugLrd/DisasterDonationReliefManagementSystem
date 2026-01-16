@@ -225,5 +225,15 @@ namespace DisasterDonationReliefManagementSystem.Forms
         {
             ShowView(new DonationHistoryView(_currentUser as Donator));
         }
+
+        private void delHistBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void donateBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

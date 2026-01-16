@@ -245,6 +245,7 @@
             donateBtn.Text = "Donate";
             donateBtn.TextAlign = ContentAlignment.MiddleLeft;
             donateBtn.UseVisualStyleBackColor = false;
+            donateBtn.Click += donateBtn_Click;
             // 
             // donHistBtn
             // 
@@ -294,6 +295,7 @@
             delHistBtn.Text = "Delivey History";
             delHistBtn.TextAlign = ContentAlignment.MiddleLeft;
             delHistBtn.UseVisualStyleBackColor = false;
+            delHistBtn.Click += delHistBtn_Click;
             // 
             // adminBtn
             // 

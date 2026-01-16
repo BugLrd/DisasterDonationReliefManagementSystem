@@ -1,4 +1,5 @@
 ﻿using DisasterDonationReliefManagementSystem.Entities;
+using DisasterDonationReliefManagementSystem.Forms.cards;
 using DisasterDonationReliefManagementSystem.Services;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,13 @@ namespace DisasterDonationReliefManagementSystem.Views.Donator
             }
 
         }
+        private void Card_Click(DonationInfo info)
+        {
+            Donation_details detailsForm = new Donation_details(info.DonationID);
+            detailsForm.ShowDialog(); 
+        }
+
+
 
         private Panel CreateDonationCard(DonationInfo info)
         {
@@ -98,6 +106,18 @@ namespace DisasterDonationReliefManagementSystem.Views.Donator
             card.Controls.Add(nameLbl);
             card.Controls.Add(subLbl);
             card.Controls.Add(statusLbl);
+
+
+            
+            card.Click += (s, e) => Card_Click(info);
+
+            
+            foreach (Control ctrl in card.Controls)
+            {
+                ctrl.Click += (s, e) => Card_Click(info);
+            }
+
+
 
             return card;
         }

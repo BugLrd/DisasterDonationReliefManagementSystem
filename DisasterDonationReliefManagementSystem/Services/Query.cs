@@ -293,6 +293,116 @@ namespace DisasterDonationReliefManagementSystem.Services
             return infos;
         }
 
+
+        public static DonationDetailsView GetDonationDetailsByDonationID(int donationID)
+        {
+            string sql = @"
+        SELECT 
+            r.DisasterType,
+            d.RequestID,
+            d.DonationType,
+            d.ItemDetails,
+            dl.DeliveryLocation,
+            dl.PickupLocation,
+            v.FullName AS VictimName
+        FROM Donation d
+        INNER JOIN DisasterRequest r ON d.RequestID = r.RequestID
+        LEFT JOIN Delivery dl ON dl.DonationID = d.DonationID
+        INNER JOIN Victim v ON r.VictimID = v.VictimID
+        WHERE d.DonationID = @DonationID
+    ";
+
+            using (SqlCommand cmd = new SqlCommand(sql, con))
+            {
+                cmd.Parameters.AddWithValue("@DonationID", donationID);
+
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        DonationDetailsView details = new DonationDetailsView
+                        {
+                            RequestID = Convert.ToInt32(reader["RequestID"]),
+                            DisasterType = Convert.ToString(reader["DisasterType"]),
+                            DonationType = Convert.ToString(reader["DonationType"]),
+                            ItemDetails = Convert.ToString(reader["ItemDetails"]),
+                            DeliveryLocation = Convert.ToString(reader["DeliveryLocation"]),
+                            PickupLocation = Convert.ToString(reader["PickupLocation"]),
+
+
+                        };
+
+                        con.Close();
+                        return details;
+                    }
+                }
+
+                con.Close();
+            }
+
+            return null;
+        }
+        public static VictimDisasterDetails GetVictimDisasterDetailsByRequestID(int requestID)
+        {
+            string sql = @"
+        SELECT 
+            v.FullName,
+            v.Phone,
+            v.Address,
+            r.DisasterTitle,
+            r.DisasterType,
+            r.RequestedItems,
+            r.RequestDate,
+            r.Location,
+            r.NumberOfMembers
+        FROM DisasterRequest r
+        INNER JOIN Victim v ON r.VictimID = v.VictimID
+        WHERE r.RequestID = @RequestID
+    ";
+
+            using (SqlCommand cmd = new SqlCommand(sql, con))
+            {
+                cmd.Parameters.AddWithValue("@RequestID", requestID);
+
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        var details = new VictimDisasterDetails
+                        {
+                            FullName = reader["FullName"].ToString(),
+                            Phone = reader["Phone"].ToString(),
+                            Address = reader["Address"].ToString(),
+                            DisasterTitle = reader["DisasterTitle"].ToString(),
+                            DisasterType = reader["DisasterType"].ToString(),
+                            RequestedItems = reader["RequestedItems"].ToString(),
+                            RequestDate = Convert.ToDateTime(reader["RequestDate"]),
+                            Location = reader["Location"].ToString(),
+                            NumberOfMembers = Convert.ToInt32(reader["NumberOfMembers"])
+                        };
+
+                        con.Close();
+                        return details;
+                    }
+                }
+
+                con.Close();
+            }
+
+            return null;
+        }
+
+
+
+
+
+
         //---------------------------------------------------------------//
 
 
