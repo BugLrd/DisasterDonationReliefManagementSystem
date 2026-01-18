@@ -245,6 +245,7 @@
             donateBtn.Text = "Donate";
             donateBtn.TextAlign = ContentAlignment.MiddleLeft;
             donateBtn.UseVisualStyleBackColor = false;
+            donateBtn.Click += donateBtn_Click;
             // 
             // donHistBtn
             // 

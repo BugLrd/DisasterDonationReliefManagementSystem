@@ -29,10 +29,13 @@ namespace DisasterDonationReliefManagementSystem.Entities
     public class DonationInfo
     {
         public int DonationID { get; set; }
+        public int RequestID { get; set; }
         public string DisasterTitle { get; set; }
         public string VictimName { get; set; }
         public DateTime DonationDate { get; set; }
         public string DeliveryStatus { get; set; }
     }
+
+   
 
 }

@@ -4,12 +4,13 @@ using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 
 namespace DisasterDonationReliefManagementSystem.Services
 {
     internal static class Query
     {
-        private static readonly string connectionString = "Data Source=SHAYON\\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private static readonly string connectionString = "Data Source=Raiden\\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         private static SqlConnection con = new SqlConnection(connectionString);
 
         //---------------------SELECT QUERIES---------------------//
@@ -296,6 +297,119 @@ namespace DisasterDonationReliefManagementSystem.Services
             
             return infos;
         }
+
+
+        public static DataRow GetDonationCardRow(int deliveryID)
+        {
+            string sql = @"
+        SELECT
+            dr.DisasterTitle   AS DisasterName,
+            d.DonationType     AS DonationType,
+            d.ItemDetails      AS ItemDetails,
+            d.DonationDate     AS DonationDate,
+            del.DeliveryStatus AS VolunteerStatus,
+            lv.LoginID         AS VictimLoginID,
+            lv.Username        AS VictimUsername,
+            v.Phone            AS VictimPhone,
+            ld.Username        AS DonatorUsername,
+            dn.Phone           AS DonatorPhone,
+            ld.LoginID         AS DonatorLoginID,
+            dr.RequestID       AS DisasterRequestID
+        FROM Delivery del
+        INNER JOIN Donation d ON del.DonationID = d.DonationID
+        INNER JOIN DisasterRequest dr ON d.RequestID = dr.RequestID
+        INNER JOIN Victim v ON dr.VictimID = v.VictimID
+        INNER JOIN Login lv ON v.LoginID = lv.LoginID
+        INNER JOIN Donator dn ON d.DonatorID = dn.DonatorID
+        INNER JOIN Login ld ON dn.LoginID = ld.LoginID
+        WHERE del.DeliveryID = @DeliveryID;
+    ";
+
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, con))
+            {
+                da.SelectCommand.Parameters.AddWithValue("@DeliveryID", deliveryID);
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                if (dt.Rows.Count == 0)
+                    return null;
+
+                return dt.Rows[0];
+            }
+        }
+
+        public static DataRow GetUserCardInfo(int loginID)
+        {
+            string sql = @"
+                SELECT 
+                    l.Username,
+                    l.Status,
+                    l.Role,
+                    
+                    v.FullName    AS VictimFullName,
+                    v.Phone       AS VictimPhone,
+                    v.Address     AS VictimAddress,
+                    
+                    d.FullName    AS DonatorFullName,
+                    d.Phone       AS DonatorPhone,
+                    d.Address     AS DonatorAddress,
+
+                    vol.FullName  AS VolunteerFullName,
+                    vol.Phone     AS VolunteerPhone,
+                    vol.VehicleType
+
+                FROM Login l
+                LEFT JOIN Victim v ON l.LoginID = v.LoginID
+                LEFT JOIN Donator d ON l.LoginID = d.LoginID
+                LEFT JOIN Volunteer vol ON l.LoginID = vol.LoginID
+
+                WHERE l.LoginID = @LoginID;
+            ";
+
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, con))
+            {
+                da.SelectCommand.Parameters.AddWithValue("@LoginID", loginID);
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                return dt.Rows.Count > 0 ? dt.Rows[0] : null;
+            }
+        }
+        public static DataRow GetDisasterRequestInfo(int requestID)
+        {
+            string sql = @"
+        SELECT 
+            dr.DisasterTitle,
+            dr.DisasterType,
+            dr.Description,
+            dr.RequestedItems,
+            dr.NumberOfMembers,
+            dr.RequestDate,
+            dr.Location,
+            dr.RequestStatus,
+            v.FullName AS VictimFullName
+        FROM DisasterRequest dr
+        INNER JOIN Victim v ON dr.VictimID = v.VictimID
+        WHERE dr.RequestID = @RequestID;
+        ";
+
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, con))
+            {
+                da.SelectCommand.Parameters.AddWithValue("@RequestID", requestID);
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                return dt.Rows.Count > 0 ? dt.Rows[0] : null;
+            }
+        }
+
+
+
+
+
 
         //---------------------------------------------------------------//
 
