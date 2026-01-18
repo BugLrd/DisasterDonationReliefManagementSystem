@@ -31,7 +31,6 @@
             disastereqcard = new Label();
             disastertile = new Label();
             disastertype = new Label();
-            victimname = new Label();
             reqiteam = new Label();
             numberofmem = new Label();
             requestedDate = new Label();
@@ -47,6 +46,7 @@
             label7 = new Label();
             label8 = new Label();
             label9 = new Label();
+            victimname = new Label();
             SuspendLayout();
             // 
             // disastereqcard
@@ -76,17 +76,6 @@
             disastertype.Size = new Size(76, 15);
             disastertype.TabIndex = 2;
             disastertype.Text = "Disaster Type";
-            // 
-            // victimname
-            // 
-            victimname.AutoSize = true;
-            victimname.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            victimname.Location = new Point(312, 258);
-            victimname.Name = "victimname";
-            victimname.Size = new Size(76, 15);
-            victimname.TabIndex = 3;
-            victimname.Text = "Victim Name";
-            victimname.Click += label4_Click;
             // 
             // reqiteam
             // 
@@ -243,11 +232,23 @@
             label9.TabIndex = 10;
             label9.Text = "Disaster Title ";
             // 
+            // victimname
+            // 
+            victimname.AutoSize = true;
+            victimname.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            victimname.Location = new Point(312, 263);
+            victimname.Name = "victimname";
+            victimname.Size = new Size(73, 15);
+            victimname.TabIndex = 19;
+            victimname.Text = "victim name";
+            victimname.Click += victimname_Click;
+            // 
             // disaster_request_card
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(548, 728);
+            Controls.Add(victimname);
             Controls.Add(label1);
             Controls.Add(label2);
             Controls.Add(label3);
@@ -263,7 +264,6 @@
             Controls.Add(requestedDate);
             Controls.Add(numberofmem);
             Controls.Add(reqiteam);
-            Controls.Add(victimname);
             Controls.Add(disastertype);
             Controls.Add(disastertile);
             Controls.Add(disastereqcard);
@@ -279,7 +279,6 @@
         private Label disastereqcard;
         private Label disastertile;
         private Label disastertype;
-        private Label victimname;
         private Label reqiteam;
         private Label numberofmem;
         private Label requestedDate;
@@ -295,5 +294,6 @@
         private Label label7;
         private Label label8;
         private Label label9;
+        private Label victimname;
     }
 }

@@ -389,7 +389,8 @@ namespace DisasterDonationReliefManagementSystem.Services
             dr.RequestDate,
             dr.Location,
             dr.RequestStatus,
-            v.FullName AS VictimFullName
+            v.FullName AS VictimFullName,
+            v.loginID AS VictimLoginID
         FROM DisasterRequest dr
         INNER JOIN Victim v ON dr.VictimID = v.VictimID
         WHERE dr.RequestID = @RequestID;
