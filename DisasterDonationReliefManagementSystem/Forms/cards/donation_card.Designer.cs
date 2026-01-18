@@ -41,12 +41,12 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            Donator_username = new Button();
-            victim_username = new Button();
             label9 = new Label();
             Donator_nunber = new Label();
             label8 = new Label();
             vphone = new Label();
+            victim_username = new Label();
+            Donator_username = new Label();
             SuspendLayout();
             // 
             // DonationType
@@ -57,6 +57,7 @@
             DonationType.Size = new Size(84, 15);
             DonationType.TabIndex = 1;
             DonationType.Text = "Donation Type";
+            DonationType.Click += DonationType_Click;
             // 
             // Iteam_details
             // 
@@ -79,7 +80,7 @@
             // VolunterUpdate
             // 
             VolunterUpdate.AutoSize = true;
-            VolunterUpdate.Location = new Point(379, 382);
+            VolunterUpdate.Location = new Point(379, 372);
             VolunterUpdate.Name = "VolunterUpdate";
             VolunterUpdate.Size = new Size(95, 15);
             VolunterUpdate.TabIndex = 4;
@@ -88,11 +89,14 @@
             // Disaster_name
             // 
             Disaster_name.AutoSize = true;
+            Disaster_name.Cursor = Cursors.Hand;
+            Disaster_name.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
             Disaster_name.Location = new Point(379, 135);
             Disaster_name.Name = "Disaster_name";
             Disaster_name.Size = new Size(77, 15);
             Disaster_name.TabIndex = 5;
             Disaster_name.Text = "disastername";
+            Disaster_name.Click += Disaster_name_Click;
             // 
             // doantiondetails
             // 
@@ -142,7 +146,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.HotTrack;
-            label4.Location = new Point(89, 310);
+            label4.Location = new Point(85, 311);
             label4.Name = "label4";
             label4.Size = new Size(111, 20);
             label4.TabIndex = 11;
@@ -153,7 +157,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = SystemColors.HotTrack;
-            label5.Location = new Point(86, 377);
+            label5.Location = new Point(85, 367);
             label5.Name = "label5";
             label5.Size = new Size(120, 20);
             label5.TabIndex = 12;
@@ -164,7 +168,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = SystemColors.HotTrack;
-            label6.Location = new Point(89, 434);
+            label6.Location = new Point(88, 434);
             label6.Name = "label6";
             label6.Size = new Size(99, 20);
             label6.TabIndex = 13;
@@ -175,47 +179,18 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = SystemColors.HotTrack;
-            label7.Location = new Point(88, 532);
+            label7.Location = new Point(84, 537);
             label7.Name = "label7";
             label7.Size = new Size(108, 20);
             label7.TabIndex = 14;
             label7.Text = "Donator Name";
-            // 
-            // Donator_username
-            // 
-            Donator_username.FlatAppearance.BorderSize = 0;
-            Donator_username.FlatStyle = FlatStyle.Flat;
-            Donator_username.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            Donator_username.Location = new Point(372, 532);
-            Donator_username.Name = "Donator_username";
-            Donator_username.Size = new Size(117, 29);
-            Donator_username.TabIndex = 15;
-            Donator_username.Text = "Donator username ";
-            Donator_username.TextAlign = ContentAlignment.MiddleLeft;
-            Donator_username.UseVisualStyleBackColor = true;
-            Donator_username.Click += Donator_username_Click;
-            // 
-            // victim_username
-            // 
-            victim_username.AutoSize = true;
-            victim_username.FlatAppearance.BorderSize = 0;
-            victim_username.FlatStyle = FlatStyle.Flat;
-            victim_username.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            victim_username.Location = new Point(375, 434);
-            victim_username.Name = "victim_username";
-            victim_username.Size = new Size(114, 29);
-            victim_username.TabIndex = 16;
-            victim_username.Text = "Victim  username ";
-            victim_username.TextAlign = ContentAlignment.MiddleLeft;
-            victim_username.UseVisualStyleBackColor = true;
-            victim_username.Click += victim_username_Click;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label9.ForeColor = SystemColors.HotTrack;
-            label9.Location = new Point(89, 485);
+            label9.Location = new Point(86, 485);
             label9.Name = "label9";
             label9.Size = new Size(64, 20);
             label9.TabIndex = 18;
@@ -224,7 +199,7 @@
             // Donator_nunber
             // 
             Donator_nunber.AutoSize = true;
-            Donator_nunber.Location = new Point(379, 580);
+            Donator_nunber.Location = new Point(379, 599);
             Donator_nunber.Name = "Donator_nunber";
             Donator_nunber.Size = new Size(49, 15);
             Donator_nunber.TabIndex = 19;
@@ -235,7 +210,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.ForeColor = SystemColors.HotTrack;
-            label8.Location = new Point(89, 580);
+            label8.Location = new Point(86, 595);
             label8.Name = "label8";
             label8.Size = new Size(64, 20);
             label8.TabIndex = 20;
@@ -250,17 +225,41 @@
             vphone.TabIndex = 21;
             vphone.Text = "Vphone";
             // 
+            // victim_username
+            // 
+            victim_username.AutoSize = true;
+            victim_username.Cursor = Cursors.Hand;
+            victim_username.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            victim_username.Location = new Point(379, 434);
+            victim_username.Name = "victim_username";
+            victim_username.Size = new Size(96, 15);
+            victim_username.TabIndex = 22;
+            victim_username.Text = "Victim username";
+            victim_username.Click += victim_username_Click_1;
+            // 
+            // Donator_username
+            // 
+            Donator_username.AutoSize = true;
+            Donator_username.Cursor = Cursors.Hand;
+            Donator_username.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            Donator_username.Location = new Point(379, 537);
+            Donator_username.Name = "Donator_username";
+            Donator_username.Size = new Size(105, 15);
+            Donator_username.TabIndex = 23;
+            Donator_username.Text = "Donator username";
+            Donator_username.Click += Donator_username_Click_1;
+            // 
             // donation_card
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(589, 657);
+            ClientSize = new Size(598, 691);
+            Controls.Add(Donator_username);
+            Controls.Add(victim_username);
             Controls.Add(vphone);
             Controls.Add(label8);
             Controls.Add(Donator_nunber);
             Controls.Add(label9);
-            Controls.Add(victim_username);
-            Controls.Add(Donator_username);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -275,7 +274,7 @@
             Controls.Add(Iteam_details);
             Controls.Add(DonationType);
             Name = "donation_card";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "donation_card";
             ResumeLayout(false);
             PerformLayout();
@@ -297,11 +296,11 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private Button Donator_username;
-        private Button victim_username;
         private Label label9;
         private Label Donator_nunber;
         private Label label8;
         private Label vphone;
+        private Label victim_username;
+        private Label Donator_username;
     }
 }

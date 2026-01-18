@@ -309,7 +309,8 @@ namespace DisasterDonationReliefManagementSystem.Services
             v.Phone            AS VictimPhone,
             ld.Username        AS DonatorUsername,
             dn.Phone           AS DonatorPhone,
-            ld.LoginID         AS DonatorLoginID
+            ld.LoginID         AS DonatorLoginID,
+            dr.RequestID       AS DisasterRequestID
         FROM Delivery del
         INNER JOIN Donation d ON del.DonationID = d.DonationID
         INNER JOIN DisasterRequest dr ON d.RequestID = dr.RequestID
@@ -372,7 +373,34 @@ namespace DisasterDonationReliefManagementSystem.Services
                 return dt.Rows.Count > 0 ? dt.Rows[0] : null;
             }
         }
+        public static DataRow GetDisasterRequestInfo(int requestID)
+        {
+            string sql = @"
+        SELECT 
+            dr.DisasterTitle,
+            dr.DisasterType,
+            dr.Description,
+            dr.RequestedItems,
+            dr.NumberOfMembers,
+            dr.RequestDate,
+            dr.Location,
+            dr.RequestStatus,
+            v.FullName AS VictimFullName
+        FROM DisasterRequest dr
+        INNER JOIN Victim v ON dr.VictimID = v.VictimID
+        WHERE dr.RequestID = @RequestID;
+        ";
 
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, con))
+            {
+                da.SelectCommand.Parameters.AddWithValue("@RequestID", requestID);
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                return dt.Rows.Count > 0 ? dt.Rows[0] : null;
+            }
+        }
 
 
 

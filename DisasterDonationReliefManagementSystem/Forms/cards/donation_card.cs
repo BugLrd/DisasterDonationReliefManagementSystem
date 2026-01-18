@@ -15,6 +15,7 @@ namespace DisasterDonationReliefManagementSystem.Forms.cards
 
         public static int victimLoginID;
         public static int donatorLoginID;
+        public static int RequestID;
 
         public donation_card(int deliveryID)
         {
@@ -41,6 +42,7 @@ namespace DisasterDonationReliefManagementSystem.Forms.cards
 
             victimLoginID = Convert.ToInt32(row["VictimLoginID"]);
             donatorLoginID = Convert.ToInt32(row["DonatorLoginID"]);
+            RequestID = Convert.ToInt32(row["DisasterRequestID"]);
         }
 
         private void DisasterType_Click(object sender, EventArgs e)
@@ -48,12 +50,24 @@ namespace DisasterDonationReliefManagementSystem.Forms.cards
 
         }
 
-        private void Donator_username_Click(object sender, EventArgs e)
+        
+
+        private void DonationType_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Disaster_name_Click(object sender, EventArgs e)
+        {
+            new disaster_request_card(RequestID).Show();
+        }
+
+        private void Donator_username_Click_1(object sender, EventArgs e)
         {
             new User_card(donatorLoginID).Show();
         }
 
-        private void victim_username_Click(object sender, EventArgs e)
+        private void victim_username_Click_1(object sender, EventArgs e)
         {
             new User_card(victimLoginID).Show();
         }
