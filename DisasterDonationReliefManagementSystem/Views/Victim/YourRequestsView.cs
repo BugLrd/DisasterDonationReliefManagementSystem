@@ -14,11 +14,11 @@ namespace DisasterDonationReliefManagementSystem.Views
 {
     public partial class YourRequestsView : BaseReqView
     {
-        Victim victim;
+        Entities.Victim victim;
         private DisasterRequest currReq;
 
         Button editBtn, deleteBtn;
-        public YourRequestsView(Victim victim)
+        public YourRequestsView(Entities.Victim victim)
         {
             InitializeComponent();
             this.victim = victim;
