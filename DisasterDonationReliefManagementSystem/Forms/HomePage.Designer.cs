@@ -279,6 +279,7 @@
             currDelBtn.Text = "Current Deliveries";
             currDelBtn.TextAlign = ContentAlignment.MiddleLeft;
             currDelBtn.UseVisualStyleBackColor = false;
+            currDelBtn.Click += currDelBtn_Click;
             // 
             // delHistBtn
             // 
