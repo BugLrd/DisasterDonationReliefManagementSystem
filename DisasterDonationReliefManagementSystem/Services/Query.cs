@@ -184,6 +184,7 @@ namespace DisasterDonationReliefManagementSystem.Services
             return list;
         }
 
+        //Join query needed with Donation Table for the Date
         public static List<Delivery> GetDeliveries(string sql)
         {
             List<Delivery> list = new List<Delivery>();
@@ -196,11 +197,14 @@ namespace DisasterDonationReliefManagementSystem.Services
                 list.Add(new Delivery(
                     Convert.ToInt32(row["DeliveryID"]),
                     Convert.ToInt32(row["DonationID"]),
-                    Convert.ToInt32(row["VolunteerID"]),
+                    row["VolunteerID"] == DBNull.Value ? 0 : Convert.ToInt32(row["VolunteerID"]),
                     row["PickupLocation"].ToString(),
                     row["DeliveryLocation"].ToString(),
                     row["DeliveryStatus"].ToString()
-                ));
+                )
+                {
+                    RequestDate = Convert.ToDateTime(row["RequestDate"])
+                });
             }
 
             return list;
@@ -546,6 +550,18 @@ namespace DisasterDonationReliefManagementSystem.Services
                 if (con.State == ConnectionState.Closed)
                     con.Open();
 
+                int affected = cmd.ExecuteNonQuery();
+                con.Close();
+                return affected;
+            }
+        }
+
+        public static int UpdateDeliveryStatus(string query)
+        {
+            using (var cmd = new SqlCommand(query, con))
+            {
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
                 int affected = cmd.ExecuteNonQuery();
                 con.Close();
                 return affected;

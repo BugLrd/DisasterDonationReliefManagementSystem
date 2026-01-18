@@ -11,6 +11,7 @@ namespace DisasterDonationReliefManagementSystem.Entities
         public int? VolunteerID { get; set; }
         public string PickupLocation { get; set; }
         public string DeliveryLocation { get; set; }
+        public DateTime RequestDate { get; set; }
         public string DeliveryStatus { get; set; }
 
         public Delivery(int deliveryID, int donationID, int volID, string pickupLocation, string deliveryLocation, string deliveryStatus)
@@ -23,5 +24,10 @@ namespace DisasterDonationReliefManagementSystem.Entities
             DeliveryStatus = deliveryStatus;
 
         }
+    }
+
+    public class DeliveryInfo
+    {
+
     }
 }

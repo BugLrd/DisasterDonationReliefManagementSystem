@@ -278,6 +278,7 @@
             currDelBtn.Text = "Current Deliveries";
             currDelBtn.TextAlign = ContentAlignment.MiddleLeft;
             currDelBtn.UseVisualStyleBackColor = false;
+            currDelBtn.Click += currDelBtn_Click;
             // 
             // delHistBtn
             // 
@@ -294,6 +295,7 @@
             delHistBtn.Text = "Delivey History";
             delHistBtn.TextAlign = ContentAlignment.MiddleLeft;
             delHistBtn.UseVisualStyleBackColor = false;
+            delHistBtn.Click += delHistBtn_Click;
             // 
             // adminBtn
             // 
