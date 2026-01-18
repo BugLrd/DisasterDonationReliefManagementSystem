@@ -80,6 +80,7 @@
             // victimname
             // 
             victimname.AutoSize = true;
+            victimname.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
             victimname.Location = new Point(312, 258);
             victimname.Name = "victimname";
             victimname.Size = new Size(76, 15);

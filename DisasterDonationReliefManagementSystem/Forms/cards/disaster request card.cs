@@ -20,7 +20,7 @@ namespace DisasterDonationReliefManagementSystem.Forms.cards
 
         private void label4_Click(object sender, EventArgs e)
         {
-
+            new User_card(1);
         }
 
         private void label6_Click(object sender, EventArgs e)
