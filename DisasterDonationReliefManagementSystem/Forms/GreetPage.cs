@@ -1,11 +1,13 @@
-﻿using System;
+﻿using DisasterDonationReliefManagementSystem.Forms;
+using DisasterDonationReliefManagementSystem.Forms.signupPage;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-
 
 namespace DisasterDonationReliefManagementSystem
 {
@@ -14,72 +16,108 @@ namespace DisasterDonationReliefManagementSystem
         public GreetPage()
         {
             InitializeComponent();
-           
 
-            MakePanelActLikeButton(panel1);
-            MakePanelActLikeButton(panel2);
-            MakePanelActLikeButton(panel3);
-            MakePanelActLikeButton(panel4);
-            MakePanelActLikeButton(panel5);
-            MakePanelActLikeButton(panel6);
-            MakePanelActLikeButton(panel7);
+
+            SetupPanelClickEvents();
         }
 
-        
-
-        private void nextbtn_click(object sender, EventArgs e)
+        private void SetupPanelClickEvents()
         {
-            LogInPage l = new LogInPage();
-            l.FormClosed += (s, args) => Application.Exit();
-            l.Show();
-            this.Hide();
+
+            victim_panel.Click += panel_Click;
+            Donator_panel.Click += panel_Click;
+            volun_panel.Click += panel_Click;
+            nearhub.Click += panel_Click;
+            donation_details.Click += panel_Click;
+            new_panel.Click += panel_Click;
+
+
+            MakePanelAndChildrenClickable(victim_panel);
+            MakePanelAndChildrenClickable(Donator_panel);
+            MakePanelAndChildrenClickable(volun_panel);
+            MakePanelAndChildrenClickable(nearhub);
+            MakePanelAndChildrenClickable(donation_details);
+            MakePanelAndChildrenClickable(new_panel);
         }
 
-        private void CardPanel_Click(object sender, EventArgs e)
+        private void MakePanelAndChildrenClickable(Panel panel)
+        {
+            panel.Cursor = Cursors.Hand;
+
+            foreach (Control control in panel.Controls)
+            {
+                control.Cursor = Cursors.Hand;
+                control.Click += (s, e) =>
+                {
+
+                    panel_Click(panel, e);
+                };
+            }
+        }
+
+
+        private void panel_Click(object sender, EventArgs e)
         {
             Panel panel = sender as Panel;
 
-            if (panel == panel1)
+            if (panel == victim_panel)
             {
-                MessageBox.Show("NEED HELP clicked");
+                new VictimSignUp().Show();
             }
-            else if (panel == panel2)
+            else if (panel == Donator_panel)
             {
-                MessageBox.Show("Give Hope clicked");
+                new DonatorSIgnUp().Show();
             }
-            else if (panel == panel3)
+            else if (panel == volun_panel)
             {
-                MessageBox.Show("Volunteer clicked");
+                new VolunteerSignUp().Show();
             }
-            else if (panel == panel4)
+            else if (panel == nearhub)
             {
-                MessageBox.Show("Near delivery hub clicked");
+
+                MessageBox.Show("Near Delivery Hub - Coming Soon!");
+
             }
-            else if (panel == panel5)
+            else if (panel == donation_details)
             {
-                MessageBox.Show("View Donation Need clicked");
+
+                MessageBox.Show("Donation Needs - Coming Soon!");
+
             }
-            else if (panel == panel6)
+            else if (panel == new_panel)
             {
-                MessageBox.Show("Total Donation clicked");
-            }
-            else if (panel == panel7)
-            {
-                MessageBox.Show("Latest News clicked");
+
+                OpenWebLink("https://reliefweb.int/disasters?advanced-search=%28C31%29&search=");
+
             }
         }
-
-        private void MakePanelActLikeButton(Panel panel)
+        private void OpenWebLink(string url)
         {
-            panel.Cursor = Cursors.Hand;
-            panel.Click += CardPanel_Click;
-
-            foreach (Control ctrl in panel.Controls)
+            try
             {
-                ctrl.Click += (s, e) => CardPanel_Click(panel, EventArgs.Empty);
-
+                
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = url,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Cannot open web link: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        private void loginbt_Click(object sender, EventArgs e)
+        {
+            new LogInPage().Show();
+        }
+
+        private void label3_Click(object sender, EventArgs e) { }
+        private void label8_Click(object sender, EventArgs e) { }
+        private void label7_Click(object sender, EventArgs e) { }
+
+        
     }
 }

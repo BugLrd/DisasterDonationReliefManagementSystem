@@ -28,95 +28,83 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GreetPage));
-            greetlbl = new Label();
-            mottolbl = new Label();
-            userBindingSource = new BindingSource(components);
-            label_1 = new Label();
+            greettitle = new Label();
+            greettitle2 = new Label();
+            quickaction = new Label();
             label1 = new Label();
             pictureBox1 = new PictureBox();
-            panel1 = new Panel();
+            victim_panel = new Panel();
             pictureBox2 = new PictureBox();
             label3 = new Label();
             label2 = new Label();
-            panel3 = new Panel();
+            volun_panel = new Panel();
             pictureBox3 = new PictureBox();
             label5 = new Label();
             label4 = new Label();
-            panel2 = new Panel();
+            Donator_panel = new Panel();
             pictureBox4 = new PictureBox();
             label8 = new Label();
             label7 = new Label();
-            panel4 = new Panel();
+            nearhub = new Panel();
             label9 = new Label();
             pictureBox5 = new PictureBox();
-            panel5 = new Panel();
+            donation_details = new Panel();
             label10 = new Label();
             pictureBox6 = new PictureBox();
-            panel6 = new Panel();
-            label11 = new Label();
-            pictureBox7 = new PictureBox();
-            panel7 = new Panel();
+            new_panel = new Panel();
             label12 = new Label();
             pictureBox8 = new PictureBox();
-            LoginBT = new Button();
-            ((System.ComponentModel.ISupportInitialize)userBindingSource).BeginInit();
+            loginbt = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panel1.SuspendLayout();
+            victim_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            panel3.SuspendLayout();
+            volun_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            panel2.SuspendLayout();
+            Donator_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            panel4.SuspendLayout();
+            nearhub.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            panel5.SuspendLayout();
+            donation_details.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
-            panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
-            panel7.SuspendLayout();
+            new_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             SuspendLayout();
             // 
-            // greetlbl
+            // greettitle
             // 
-            greetlbl.AutoSize = true;
-            greetlbl.BackColor = Color.Transparent;
-            greetlbl.Font = new Font("Segoe UI", 30F, FontStyle.Bold);
-            greetlbl.ForeColor = Color.White;
-            greetlbl.Location = new Point(131, 44);
-            greetlbl.Name = "greetlbl";
-            greetlbl.Size = new Size(448, 54);
-            greetlbl.TabIndex = 0;
-            greetlbl.Text = "Welcome To ReliefHub";
+            greettitle.AutoSize = true;
+            greettitle.BackColor = Color.Transparent;
+            greettitle.Font = new Font("Segoe UI", 30F, FontStyle.Bold);
+            greettitle.ForeColor = Color.White;
+            greettitle.Location = new Point(131, 44);
+            greettitle.Name = "greettitle";
+            greettitle.Size = new Size(448, 54);
+            greettitle.TabIndex = 0;
+            greettitle.Text = "Welcome To ReliefHub";
             // 
-            // mottolbl
+            // greettitle2
             // 
-            mottolbl.AutoSize = true;
-            mottolbl.BackColor = Color.Transparent;
-            mottolbl.Font = new Font("Segoe UI", 15F);
-            mottolbl.ForeColor = Color.White;
-            mottolbl.Location = new Point(80, 98);
-            mottolbl.Name = "mottolbl";
-            mottolbl.Size = new Size(350, 28);
-            mottolbl.TabIndex = 1;
-            mottolbl.Text = "Connecting help when its needed most";
+            greettitle2.AutoSize = true;
+            greettitle2.BackColor = Color.Transparent;
+            greettitle2.Font = new Font("Segoe UI", 15F);
+            greettitle2.ForeColor = Color.White;
+            greettitle2.Location = new Point(80, 98);
+            greettitle2.Name = "greettitle2";
+            greettitle2.Size = new Size(350, 28);
+            greettitle2.TabIndex = 1;
+            greettitle2.Text = "Connecting help when its needed most";
             // 
-            // userBindingSource
+            // quickaction
             // 
-            userBindingSource.DataSource = typeof(Entities.User);
-            // 
-            // label_1
-            // 
-            label_1.AutoSize = true;
-            label_1.BackColor = Color.Transparent;
-            label_1.Font = new Font("Segoe UI", 13F);
-            label_1.Location = new Point(80, 165);
-            label_1.Name = "label_1";
-            label_1.Size = new Size(130, 25);
-            label_1.TabIndex = 3;
-            label_1.Text = "Quick Actions :";
+            quickaction.AutoSize = true;
+            quickaction.BackColor = Color.Transparent;
+            quickaction.Font = new Font("Segoe UI", 13F);
+            quickaction.Location = new Point(80, 165);
+            quickaction.Name = "quickaction";
+            quickaction.Size = new Size(130, 25);
+            quickaction.TabIndex = 3;
+            quickaction.Text = "Quick Actions :";
             // 
             // label1
             // 
@@ -138,17 +126,17 @@
             pictureBox1.TabIndex = 11;
             pictureBox1.TabStop = false;
             // 
-            // panel1
+            // victim_panel
             // 
-            panel1.BackColor = Color.Tomato;
-            panel1.Controls.Add(pictureBox2);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
-            panel1.Cursor = Cursors.Hand;
-            panel1.Location = new Point(54, 236);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(407, 146);
-            panel1.TabIndex = 12;
+            victim_panel.BackColor = Color.Tomato;
+            victim_panel.Controls.Add(pictureBox2);
+            victim_panel.Controls.Add(label3);
+            victim_panel.Controls.Add(label2);
+            victim_panel.Cursor = Cursors.Hand;
+            victim_panel.Location = new Point(54, 236);
+            victim_panel.Name = "victim_panel";
+            victim_panel.Size = new Size(407, 146);
+            victim_panel.TabIndex = 12;
             // 
             // pictureBox2
             // 
@@ -168,6 +156,7 @@
             label3.Size = new Size(209, 30);
             label3.TabIndex = 1;
             label3.Text = "Emmergency Assist";
+            label3.Click += label3_Click;
             // 
             // label2
             // 
@@ -179,16 +168,16 @@
             label2.TabIndex = 0;
             label2.Text = "[[ NEED HELP ]]";
             // 
-            // panel3
+            // volun_panel
             // 
-            panel3.BackColor = Color.DarkGreen;
-            panel3.Controls.Add(pictureBox3);
-            panel3.Controls.Add(label5);
-            panel3.Controls.Add(label4);
-            panel3.Location = new Point(791, 236);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(235, 144);
-            panel3.TabIndex = 14;
+            volun_panel.BackColor = Color.DarkGreen;
+            volun_panel.Controls.Add(pictureBox3);
+            volun_panel.Controls.Add(label5);
+            volun_panel.Controls.Add(label4);
+            volun_panel.Location = new Point(791, 236);
+            volun_panel.Name = "volun_panel";
+            volun_panel.Size = new Size(235, 144);
+            volun_panel.TabIndex = 14;
             // 
             // pictureBox3
             // 
@@ -203,7 +192,7 @@
             // label5
             // 
             label5.Font = new Font("Segoe Fluent Icons", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(13, 71);
+            label5.Location = new Point(10, 73);
             label5.Name = "label5";
             label5.Size = new Size(229, 61);
             label5.TabIndex = 1;
@@ -218,16 +207,16 @@
             label4.TabIndex = 0;
             label4.Text = "I WANT TO VOLUNTEER";
             // 
-            // panel2
+            // Donator_panel
             // 
-            panel2.BackColor = Color.MediumTurquoise;
-            panel2.Controls.Add(pictureBox4);
-            panel2.Controls.Add(label8);
-            panel2.Controls.Add(label7);
-            panel2.Location = new Point(504, 236);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(268, 146);
-            panel2.TabIndex = 16;
+            Donator_panel.BackColor = Color.MediumTurquoise;
+            Donator_panel.Controls.Add(pictureBox4);
+            Donator_panel.Controls.Add(label8);
+            Donator_panel.Controls.Add(label7);
+            Donator_panel.Location = new Point(504, 236);
+            Donator_panel.Name = "Donator_panel";
+            Donator_panel.Size = new Size(268, 146);
+            Donator_panel.TabIndex = 16;
             // 
             // pictureBox4
             // 
@@ -247,6 +236,7 @@
             label8.Size = new Size(187, 61);
             label8.TabIndex = 1;
             label8.Text = "Support those in need";
+            label8.Click += label8_Click;
             // 
             // label7
             // 
@@ -256,16 +246,17 @@
             label7.Size = new Size(201, 37);
             label7.TabIndex = 0;
             label7.Text = "Give Hope";
+            label7.Click += label7_Click;
             // 
-            // panel4
+            // nearhub
             // 
-            panel4.BackColor = Color.DarkSeaGreen;
-            panel4.Controls.Add(label9);
-            panel4.Controls.Add(pictureBox5);
-            panel4.Location = new Point(68, 446);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(155, 103);
-            panel4.TabIndex = 17;
+            nearhub.BackColor = Color.DarkSeaGreen;
+            nearhub.Controls.Add(label9);
+            nearhub.Controls.Add(pictureBox5);
+            nearhub.Location = new Point(68, 446);
+            nearhub.Name = "nearhub";
+            nearhub.Size = new Size(155, 103);
+            nearhub.TabIndex = 17;
             // 
             // label9
             // 
@@ -280,22 +271,22 @@
             // pictureBox5
             // 
             pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(37, 3);
+            pictureBox5.Location = new Point(42, 8);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(67, 61);
             pictureBox5.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox5.TabIndex = 0;
             pictureBox5.TabStop = false;
             // 
-            // panel5
+            // donation_details
             // 
-            panel5.BackColor = Color.Peru;
-            panel5.Controls.Add(label10);
-            panel5.Controls.Add(pictureBox6);
-            panel5.Location = new Point(266, 446);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(164, 103);
-            panel5.TabIndex = 18;
+            donation_details.BackColor = Color.Peru;
+            donation_details.Controls.Add(label10);
+            donation_details.Controls.Add(pictureBox6);
+            donation_details.Location = new Point(266, 446);
+            donation_details.Name = "donation_details";
+            donation_details.Size = new Size(164, 103);
+            donation_details.TabIndex = 18;
             // 
             // label10
             // 
@@ -317,45 +308,15 @@
             pictureBox6.TabIndex = 1;
             pictureBox6.TabStop = false;
             // 
-            // panel6
+            // new_panel
             // 
-            panel6.BackColor = Color.Crimson;
-            panel6.Controls.Add(label11);
-            panel6.Controls.Add(pictureBox7);
-            panel6.Location = new Point(466, 448);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(156, 101);
-            panel6.TabIndex = 19;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label11.Location = new Point(32, 70);
-            label11.Name = "label11";
-            label11.Size = new Size(93, 17);
-            label11.TabIndex = 2;
-            label11.Text = "Total Donation";
-            // 
-            // pictureBox7
-            // 
-            pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
-            pictureBox7.Location = new Point(38, -4);
-            pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(87, 91);
-            pictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox7.TabIndex = 1;
-            pictureBox7.TabStop = false;
-            // 
-            // panel7
-            // 
-            panel7.BackColor = Color.SlateBlue;
-            panel7.Controls.Add(label12);
-            panel7.Controls.Add(pictureBox8);
-            panel7.Location = new Point(671, 446);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(137, 103);
-            panel7.TabIndex = 20;
+            new_panel.BackColor = Color.SlateBlue;
+            new_panel.Controls.Add(label12);
+            new_panel.Controls.Add(pictureBox8);
+            new_panel.Location = new Point(482, 446);
+            new_panel.Name = "new_panel";
+            new_panel.Size = new Size(137, 103);
+            new_panel.TabIndex = 20;
             // 
             // label12
             // 
@@ -377,19 +338,19 @@
             pictureBox8.TabIndex = 1;
             pictureBox8.TabStop = false;
             // 
-            // LoginBT
+            // loginbt
             // 
-            LoginBT.BackColor = Color.Transparent;
-            LoginBT.FlatAppearance.BorderSize = 0;
-            LoginBT.FlatStyle = FlatStyle.Flat;
-            LoginBT.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            LoginBT.ForeColor = Color.Yellow;
-            LoginBT.Location = new Point(887, 62);
-            LoginBT.Name = "LoginBT";
-            LoginBT.Size = new Size(139, 38);
-            LoginBT.TabIndex = 21;
-            LoginBT.Text = "Login";
-            LoginBT.UseVisualStyleBackColor = false;
+            loginbt.AutoSize = true;
+            loginbt.BackColor = Color.Transparent;
+            loginbt.Cursor = Cursors.Hand;
+            loginbt.Font = new Font("Segoe UI", 18F, FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point, 0);
+            loginbt.ForeColor = Color.Gold;
+            loginbt.Location = new Point(894, 64);
+            loginbt.Name = "loginbt";
+            loginbt.Size = new Size(70, 32);
+            loginbt.TabIndex = 21;
+            loginbt.Text = "LogIn";
+            loginbt.Click += loginbt_Click;
             // 
             // GreetPage
             // 
@@ -399,43 +360,37 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1062, 610);
-            Controls.Add(LoginBT);
-            Controls.Add(panel7);
-            Controls.Add(panel6);
-            Controls.Add(panel5);
-            Controls.Add(panel4);
-            Controls.Add(panel2);
-            Controls.Add(panel3);
-            Controls.Add(panel1);
+            Controls.Add(loginbt);
+            Controls.Add(new_panel);
+            Controls.Add(donation_details);
+            Controls.Add(nearhub);
+            Controls.Add(Donator_panel);
+            Controls.Add(volun_panel);
+            Controls.Add(victim_panel);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
-            Controls.Add(label_1);
-            Controls.Add(mottolbl);
-            Controls.Add(greetlbl);
+            Controls.Add(quickaction);
+            Controls.Add(greettitle2);
+            Controls.Add(greettitle);
             ForeColor = Color.White;
             Name = "GreetPage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "GreetPage";
-            WindowState = FormWindowState.Maximized;
-            ((System.ComponentModel.ISupportInitialize)userBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panel1.ResumeLayout(false);
+            victim_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            panel3.ResumeLayout(false);
+            volun_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            panel2.ResumeLayout(false);
+            Donator_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
+            nearhub.ResumeLayout(false);
+            nearhub.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
+            donation_details.ResumeLayout(false);
+            donation_details.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
-            panel6.ResumeLayout(false);
-            panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
-            panel7.ResumeLayout(false);
-            panel7.PerformLayout();
+            new_panel.ResumeLayout(false);
+            new_panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -443,36 +398,32 @@
 
         #endregion
 
-        private Label greetlbl;
-        private Label mottolbl;
-        private BindingSource userBindingSource;
-        private Label label_1;
+        private Label greettitle;
+        private Label greettitle2;
+        private Label quickaction;
         private Label label1;
         private PictureBox pictureBox1;
-        private Panel panel1;
-        private Panel panel3;
+        private Panel victim_panel;
+        private Panel volun_panel;
         private Label label2;
         private PictureBox pictureBox2;
         private Label label3;
         private PictureBox pictureBox3;
         private Label label5;
         private Label label4;
-        private Panel panel2;
+        private Panel Donator_panel;
         private Label label8;
         private Label label7;
         private PictureBox pictureBox4;
-        private Panel panel4;
+        private Panel nearhub;
         private PictureBox pictureBox5;
-        private Panel panel5;
+        private Panel donation_details;
         private PictureBox pictureBox6;
-        private Panel panel6;
-        private PictureBox pictureBox7;
-        private Panel panel7;
+        private Panel new_panel;
         private PictureBox pictureBox8;
         private Label label9;
         private Label label10;
-        private Label label11;
         private Label label12;
-        private Button LoginBT;
+        private Label loginbt;
     }
 }
