@@ -1,4 +1,5 @@
-﻿using DisasterDonationReliefManagementSystem.Services;
+﻿using DisasterDonationReliefManagementSystem.Entities;
+using DisasterDonationReliefManagementSystem.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,8 @@ namespace DisasterDonationReliefManagementSystem.Forms.cards
     public partial class donation_card : Form
     {
 
-
+        public static int victimLoginID;
+        public static int donatorLoginID;
 
         public donation_card(int deliveryID)
         {
@@ -36,6 +38,9 @@ namespace DisasterDonationReliefManagementSystem.Forms.cards
 
             Donator_username.Text = row["DonatorUsername"].ToString();
             Donator_nunber.Text = row["DonatorPhone"].ToString();
+
+            victimLoginID = Convert.ToInt32(row["VictimLoginID"]);
+            donatorLoginID = Convert.ToInt32(row["DonatorLoginID"]);
         }
 
         private void DisasterType_Click(object sender, EventArgs e)
@@ -45,7 +50,12 @@ namespace DisasterDonationReliefManagementSystem.Forms.cards
 
         private void Donator_username_Click(object sender, EventArgs e)
         {
+            new User_card(donatorLoginID).Show();
+        }
 
+        private void victim_username_Click(object sender, EventArgs e)
+        {
+            new User_card(victimLoginID).Show();
         }
     }
 }

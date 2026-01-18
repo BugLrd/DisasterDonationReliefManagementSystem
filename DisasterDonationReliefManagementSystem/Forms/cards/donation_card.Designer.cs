@@ -52,7 +52,7 @@
             // DonationType
             // 
             DonationType.AutoSize = true;
-            DonationType.Location = new Point(392, 197);
+            DonationType.Location = new Point(379, 190);
             DonationType.Name = "DonationType";
             DonationType.Size = new Size(84, 15);
             DonationType.TabIndex = 1;
@@ -61,7 +61,7 @@
             // Iteam_details
             // 
             Iteam_details.AutoSize = true;
-            Iteam_details.Location = new Point(392, 259);
+            Iteam_details.Location = new Point(379, 252);
             Iteam_details.Name = "Iteam_details";
             Iteam_details.Size = new Size(72, 15);
             Iteam_details.TabIndex = 2;
@@ -70,7 +70,7 @@
             // donation_date
             // 
             donation_date.AutoSize = true;
-            donation_date.Location = new Point(392, 322);
+            donation_date.Location = new Point(379, 315);
             donation_date.Name = "donation_date";
             donation_date.Size = new Size(86, 15);
             donation_date.TabIndex = 3;
@@ -79,7 +79,7 @@
             // VolunterUpdate
             // 
             VolunterUpdate.AutoSize = true;
-            VolunterUpdate.Location = new Point(392, 389);
+            VolunterUpdate.Location = new Point(379, 382);
             VolunterUpdate.Name = "VolunterUpdate";
             VolunterUpdate.Size = new Size(95, 15);
             VolunterUpdate.TabIndex = 4;
@@ -88,7 +88,7 @@
             // Disaster_name
             // 
             Disaster_name.AutoSize = true;
-            Disaster_name.Location = new Point(392, 142);
+            Disaster_name.Location = new Point(379, 135);
             Disaster_name.Name = "Disaster_name";
             Disaster_name.Size = new Size(77, 15);
             Disaster_name.TabIndex = 5;
@@ -98,7 +98,7 @@
             // 
             doantiondetails.AutoSize = true;
             doantiondetails.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            doantiondetails.Location = new Point(211, 35);
+            doantiondetails.Location = new Point(198, 28);
             doantiondetails.Name = "doantiondetails";
             doantiondetails.Size = new Size(223, 37);
             doantiondetails.TabIndex = 7;
@@ -109,7 +109,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.HotTrack;
-            label1.Location = new Point(99, 137);
+            label1.Location = new Point(86, 130);
             label1.Name = "label1";
             label1.Size = new Size(99, 20);
             label1.TabIndex = 8;
@@ -120,7 +120,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.HotTrack;
-            label2.Location = new Point(99, 192);
+            label2.Location = new Point(86, 185);
             label2.Name = "label2";
             label2.Size = new Size(106, 20);
             label2.TabIndex = 9;
@@ -131,7 +131,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = SystemColors.HotTrack;
-            label3.Location = new Point(101, 254);
+            label3.Location = new Point(88, 247);
             label3.Name = "label3";
             label3.Size = new Size(93, 20);
             label3.TabIndex = 10;
@@ -142,7 +142,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = SystemColors.HotTrack;
-            label4.Location = new Point(102, 317);
+            label4.Location = new Point(89, 310);
             label4.Name = "label4";
             label4.Size = new Size(111, 20);
             label4.TabIndex = 11;
@@ -153,7 +153,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = SystemColors.HotTrack;
-            label5.Location = new Point(99, 384);
+            label5.Location = new Point(86, 377);
             label5.Name = "label5";
             label5.Size = new Size(120, 20);
             label5.TabIndex = 12;
@@ -164,7 +164,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = SystemColors.HotTrack;
-            label6.Location = new Point(102, 441);
+            label6.Location = new Point(89, 434);
             label6.Name = "label6";
             label6.Size = new Size(99, 20);
             label6.TabIndex = 13;
@@ -175,7 +175,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = SystemColors.HotTrack;
-            label7.Location = new Point(101, 539);
+            label7.Location = new Point(88, 532);
             label7.Name = "label7";
             label7.Size = new Size(108, 20);
             label7.TabIndex = 14;
@@ -185,7 +185,8 @@
             // 
             Donator_username.FlatAppearance.BorderSize = 0;
             Donator_username.FlatStyle = FlatStyle.Flat;
-            Donator_username.Location = new Point(385, 539);
+            Donator_username.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            Donator_username.Location = new Point(372, 532);
             Donator_username.Name = "Donator_username";
             Donator_username.Size = new Size(117, 29);
             Donator_username.TabIndex = 15;
@@ -199,20 +200,22 @@
             victim_username.AutoSize = true;
             victim_username.FlatAppearance.BorderSize = 0;
             victim_username.FlatStyle = FlatStyle.Flat;
-            victim_username.Location = new Point(388, 441);
+            victim_username.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            victim_username.Location = new Point(375, 434);
             victim_username.Name = "victim_username";
             victim_username.Size = new Size(114, 29);
             victim_username.TabIndex = 16;
             victim_username.Text = "Victim  username ";
             victim_username.TextAlign = ContentAlignment.MiddleLeft;
             victim_username.UseVisualStyleBackColor = true;
+            victim_username.Click += victim_username_Click;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label9.ForeColor = SystemColors.HotTrack;
-            label9.Location = new Point(102, 492);
+            label9.Location = new Point(89, 485);
             label9.Name = "label9";
             label9.Size = new Size(64, 20);
             label9.TabIndex = 18;
@@ -221,7 +224,7 @@
             // Donator_nunber
             // 
             Donator_nunber.AutoSize = true;
-            Donator_nunber.Location = new Point(392, 587);
+            Donator_nunber.Location = new Point(379, 580);
             Donator_nunber.Name = "Donator_nunber";
             Donator_nunber.Size = new Size(49, 15);
             Donator_nunber.TabIndex = 19;
@@ -232,7 +235,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.ForeColor = SystemColors.HotTrack;
-            label8.Location = new Point(102, 587);
+            label8.Location = new Point(89, 580);
             label8.Name = "label8";
             label8.Size = new Size(64, 20);
             label8.TabIndex = 20;
@@ -241,7 +244,7 @@
             // vphone
             // 
             vphone.AutoSize = true;
-            vphone.Location = new Point(392, 497);
+            vphone.Location = new Point(379, 490);
             vphone.Name = "vphone";
             vphone.Size = new Size(48, 15);
             vphone.TabIndex = 21;
@@ -251,7 +254,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(674, 665);
+            ClientSize = new Size(589, 657);
             Controls.Add(vphone);
             Controls.Add(label8);
             Controls.Add(Donator_nunber);
