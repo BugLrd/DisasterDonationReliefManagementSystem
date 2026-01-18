@@ -2,6 +2,7 @@
 using DisasterDonationReliefManagementSystem.Views;
 using DisasterDonationReliefManagementSystem.Views.Admin;
 using DisasterDonationReliefManagementSystem.Views.Donator;
+using DisasterDonationReliefManagementSystem.Views.Volunteer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -133,6 +134,7 @@ namespace DisasterDonationReliefManagementSystem.Forms
                 case "volunteer":
                     currDelBtn.Visible = true;
                     delHistBtn.Visible = true;
+                    ShowView(new VolunteerHomeView(_currentUser as Volunteer));
                     break;
             }
         }
@@ -168,6 +170,8 @@ namespace DisasterDonationReliefManagementSystem.Forms
                 ShowView(new VictimHomeView());
             if (_currentUser.Role.ToLower() == "donator")
                 ShowView(new DonatorHomeView(_currentUser as Donator));
+            if (_currentUser is Volunteer v)
+                ShowView(new VolunteerHomeView(v));
         }
 
         public void ShowView(UserControl view)
@@ -226,14 +230,14 @@ namespace DisasterDonationReliefManagementSystem.Forms
             ShowView(new DonationHistoryView(_currentUser as Donator));
         }
 
-        private void delHistBtn_Click(object sender, EventArgs e)
+        private void currDelBtn_Click(object sender, EventArgs e)
         {
-
+            ShowView(new CurrentDelView(_currentUser as Volunteer));
         }
 
-        private void donateBtn_Click(object sender, EventArgs e)
+        private void delHistBtn_Click(object sender, EventArgs e)
         {
-
+            ShowView(new DelHistView(_currentUser as Volunteer));
         }
     }
 }
