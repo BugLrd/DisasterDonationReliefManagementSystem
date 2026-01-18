@@ -36,31 +36,6 @@ namespace DisasterDonationReliefManagementSystem.Entities
         public string DeliveryStatus { get; set; }
     }
 
-    public class DonationDetailsView
-    {
-        public string DisasterType { get; set; }
-        public string DonationType { get; set; }
-        public int RequestID { get; set; }
-        public string ItemDetails { get; set; }
-        public string DeliveryLocation { get; set; }
-        public string PickupLocation { get; set; }
-        public string VictimName { get; set; } 
-    }
-
-    public class VictimDisasterDetails
-    {
-     
-        public string FullName { get; set; }
-        public string Phone { get; set; }
-        public string Address { get; set; }
-
-        
-        public string DisasterTitle { get; set; }
-        public string DisasterType { get; set; }
-        public string RequestedItems { get; set; }
-        public DateTime RequestDate { get; set; }
-        public string Location { get; set; }
-        public int NumberOfMembers { get; set; }
-    }
+   
 
 }

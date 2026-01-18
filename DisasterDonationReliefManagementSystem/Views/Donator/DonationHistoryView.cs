@@ -57,8 +57,8 @@ namespace DisasterDonationReliefManagementSystem.Views.Donator
         }
         private void Card_Click(DonationInfo info)
         {
-            Donation_details detailsForm = new Donation_details(info.DonationID);
-            detailsForm.ShowDialog(); 
+            var detailsForm = new donation_card(info.DonationID);
+            detailsForm.Show();
         }
 
 

@@ -294,109 +294,43 @@ namespace DisasterDonationReliefManagementSystem.Services
         }
 
 
-        public static DonationDetailsView GetDonationDetailsByDonationID(int donationID)
+        public static DataRow GetDonationCardRow(int deliveryID)
         {
             string sql = @"
-        SELECT 
-            r.DisasterType,
-            d.RequestID,
-            d.DonationType,
-            d.ItemDetails,
-            dl.DeliveryLocation,
-            dl.PickupLocation,
-            v.FullName AS VictimName
-        FROM Donation d
-        INNER JOIN DisasterRequest r ON d.RequestID = r.RequestID
-        LEFT JOIN Delivery dl ON dl.DonationID = d.DonationID
-        INNER JOIN Victim v ON r.VictimID = v.VictimID
-        WHERE d.DonationID = @DonationID
+        SELECT
+            dr.DisasterTitle   AS DisasterName,
+            d.DonationType     AS DonationType,
+            d.ItemDetails      AS ItemDetails,
+            d.DonationDate     AS DonationDate,
+            del.DeliveryStatus AS VolunteerStatus,
+            lv.Username        AS VictimUsername,
+            v.Phone            AS VictimPhone,
+            ld.Username        AS DonatorUsername,
+            dn.Phone           AS DonatorPhone
+        FROM Delivery del
+        INNER JOIN Donation d ON del.DonationID = d.DonationID
+        INNER JOIN DisasterRequest dr ON d.RequestID = dr.RequestID
+        INNER JOIN Victim v ON dr.VictimID = v.VictimID
+        INNER JOIN Login lv ON v.LoginID = lv.LoginID
+        INNER JOIN Donator dn ON d.DonatorID = dn.DonatorID
+        INNER JOIN Login ld ON dn.LoginID = ld.LoginID
+        WHERE del.DeliveryID = @DeliveryID;
     ";
 
-            using (SqlCommand cmd = new SqlCommand(sql, con))
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, con))
             {
-                cmd.Parameters.AddWithValue("@DonationID", donationID);
+                da.SelectCommand.Parameters.AddWithValue("@DeliveryID", deliveryID);
 
-                if (con.State == ConnectionState.Closed)
-                    con.Open();
+                DataTable dt = new DataTable();
+                da.Fill(dt);
 
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        DonationDetailsView details = new DonationDetailsView
-                        {
-                            RequestID = Convert.ToInt32(reader["RequestID"]),
-                            DisasterType = Convert.ToString(reader["DisasterType"]),
-                            DonationType = Convert.ToString(reader["DonationType"]),
-                            ItemDetails = Convert.ToString(reader["ItemDetails"]),
-                            DeliveryLocation = Convert.ToString(reader["DeliveryLocation"]),
-                            PickupLocation = Convert.ToString(reader["PickupLocation"]),
+                if (dt.Rows.Count == 0)
+                    return null;
 
-
-                        };
-
-                        con.Close();
-                        return details;
-                    }
-                }
-
-                con.Close();
+                return dt.Rows[0];
             }
-
-            return null;
         }
-        public static VictimDisasterDetails GetVictimDisasterDetailsByRequestID(int requestID)
-        {
-            string sql = @"
-        SELECT 
-            v.FullName,
-            v.Phone,
-            v.Address,
-            r.DisasterTitle,
-            r.DisasterType,
-            r.RequestedItems,
-            r.RequestDate,
-            r.Location,
-            r.NumberOfMembers
-        FROM DisasterRequest r
-        INNER JOIN Victim v ON r.VictimID = v.VictimID
-        WHERE r.RequestID = @RequestID
-    ";
 
-            using (SqlCommand cmd = new SqlCommand(sql, con))
-            {
-                cmd.Parameters.AddWithValue("@RequestID", requestID);
-
-                if (con.State == ConnectionState.Closed)
-                    con.Open();
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        var details = new VictimDisasterDetails
-                        {
-                            FullName = reader["FullName"].ToString(),
-                            Phone = reader["Phone"].ToString(),
-                            Address = reader["Address"].ToString(),
-                            DisasterTitle = reader["DisasterTitle"].ToString(),
-                            DisasterType = reader["DisasterType"].ToString(),
-                            RequestedItems = reader["RequestedItems"].ToString(),
-                            RequestDate = Convert.ToDateTime(reader["RequestDate"]),
-                            Location = reader["Location"].ToString(),
-                            NumberOfMembers = Convert.ToInt32(reader["NumberOfMembers"])
-                        };
-
-                        con.Close();
-                        return details;
-                    }
-                }
-
-                con.Close();
-            }
-
-            return null;
-        }
 
 
 
