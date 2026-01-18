@@ -201,7 +201,7 @@
             // label4
             // 
             label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(70, 17);
+            label4.Location = new Point(80, 10);
             label4.Name = "label4";
             label4.Size = new Size(204, 64);
             label4.TabIndex = 0;
@@ -213,7 +213,7 @@
             Donator_panel.Controls.Add(pictureBox4);
             Donator_panel.Controls.Add(label8);
             Donator_panel.Controls.Add(label7);
-            Donator_panel.Location = new Point(504, 236);
+            Donator_panel.Location = new Point(486, 236);
             Donator_panel.Name = "Donator_panel";
             Donator_panel.Size = new Size(268, 146);
             Donator_panel.TabIndex = 16;
@@ -253,7 +253,7 @@
             nearhub.BackColor = Color.DarkSeaGreen;
             nearhub.Controls.Add(label9);
             nearhub.Controls.Add(pictureBox5);
-            nearhub.Location = new Point(68, 446);
+            nearhub.Location = new Point(55, 446);
             nearhub.Name = "nearhub";
             nearhub.Size = new Size(155, 103);
             nearhub.TabIndex = 17;
@@ -283,7 +283,7 @@
             donation_details.BackColor = Color.Peru;
             donation_details.Controls.Add(label10);
             donation_details.Controls.Add(pictureBox6);
-            donation_details.Location = new Point(266, 446);
+            donation_details.Location = new Point(249, 446);
             donation_details.Name = "donation_details";
             donation_details.Size = new Size(164, 103);
             donation_details.TabIndex = 18;
@@ -313,7 +313,7 @@
             new_panel.BackColor = Color.SlateBlue;
             new_panel.Controls.Add(label12);
             new_panel.Controls.Add(pictureBox8);
-            new_panel.Location = new Point(482, 446);
+            new_panel.Location = new Point(459, 448);
             new_panel.Name = "new_panel";
             new_panel.Size = new Size(137, 103);
             new_panel.TabIndex = 20;

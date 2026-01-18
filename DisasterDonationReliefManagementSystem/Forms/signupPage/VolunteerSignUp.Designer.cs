@@ -148,6 +148,7 @@
             Controls.Add(flname);
             Controls.Add(textlbl);
             Name = "VolunteerSignUp";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "VolunteerSignUp";
             ResumeLayout(false);
             PerformLayout();
