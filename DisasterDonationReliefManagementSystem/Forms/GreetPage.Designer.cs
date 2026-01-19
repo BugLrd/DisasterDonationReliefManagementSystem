@@ -156,7 +156,6 @@
             label3.Size = new Size(209, 30);
             label3.TabIndex = 1;
             label3.Text = "Emmergency Assist";
-            label3.Click += label3_Click;
             // 
             // label2
             // 
@@ -236,7 +235,6 @@
             label8.Size = new Size(187, 61);
             label8.TabIndex = 1;
             label8.Text = "Support those in need";
-            label8.Click += label8_Click;
             // 
             // label7
             // 
@@ -246,7 +244,6 @@
             label7.Size = new Size(201, 37);
             label7.TabIndex = 0;
             label7.Text = "Give Hope";
-            label7.Click += label7_Click;
             // 
             // nearhub
             // 

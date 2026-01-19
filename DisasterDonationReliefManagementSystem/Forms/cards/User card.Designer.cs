@@ -41,13 +41,14 @@
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
+            okBtn = new Button();
             SuspendLayout();
             // 
             // usercard
             // 
             usercard.AutoSize = true;
             usercard.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            usercard.Location = new Point(139, 28);
+            usercard.Location = new Point(52, 18);
             usercard.Name = "usercard";
             usercard.Size = new Size(142, 40);
             usercard.TabIndex = 0;
@@ -56,7 +57,7 @@
             // Xusername
             // 
             Xusername.AutoSize = true;
-            Xusername.Location = new Point(272, 139);
+            Xusername.Location = new Point(162, 93);
             Xusername.Name = "Xusername";
             Xusername.Size = new Size(63, 15);
             Xusername.TabIndex = 1;
@@ -65,7 +66,7 @@
             // Xfullname
             // 
             Xfullname.AutoSize = true;
-            Xfullname.Location = new Point(272, 218);
+            Xfullname.Location = new Point(162, 126);
             Xfullname.Name = "Xfullname";
             Xfullname.Size = new Size(61, 15);
             Xfullname.TabIndex = 2;
@@ -74,7 +75,7 @@
             // Xphone
             // 
             Xphone.AutoSize = true;
-            Xphone.Location = new Point(272, 293);
+            Xphone.Location = new Point(162, 163);
             Xphone.Name = "Xphone";
             Xphone.Size = new Size(88, 15);
             Xphone.TabIndex = 3;
@@ -83,7 +84,7 @@
             // Xstatus
             // 
             Xstatus.AutoSize = true;
-            Xstatus.Location = new Point(272, 368);
+            Xstatus.Location = new Point(163, 199);
             Xstatus.Name = "Xstatus";
             Xstatus.Size = new Size(39, 15);
             Xstatus.TabIndex = 4;
@@ -92,7 +93,7 @@
             // xRole
             // 
             xRole.AutoSize = true;
-            xRole.Location = new Point(272, 441);
+            xRole.Location = new Point(164, 230);
             xRole.Name = "xRole";
             xRole.Size = new Size(30, 15);
             xRole.TabIndex = 5;
@@ -102,18 +103,19 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(272, 526);
+            label7.Location = new Point(164, 263);
             label7.Name = "label7";
             label7.Size = new Size(38, 15);
             label7.TabIndex = 6;
             label7.Text = "label7";
+            label7.Click += label7_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.HotTrack;
-            label1.Location = new Point(62, 139);
+            label1.Location = new Point(37, 89);
             label1.Name = "label1";
             label1.Size = new Size(79, 20);
             label1.TabIndex = 7;
@@ -124,7 +126,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.HotTrack;
-            label2.Location = new Point(64, 218);
+            label2.Location = new Point(37, 126);
             label2.Name = "label2";
             label2.Size = new Size(76, 20);
             label2.TabIndex = 8;
@@ -135,7 +137,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11.25F);
             label3.ForeColor = SystemColors.HotTrack;
-            label3.Location = new Point(61, 293);
+            label3.Location = new Point(37, 163);
             label3.Name = "label3";
             label3.Size = new Size(108, 20);
             label3.TabIndex = 9;
@@ -146,7 +148,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 11.25F);
             label4.ForeColor = SystemColors.HotTrack;
-            label4.Location = new Point(62, 368);
+            label4.Location = new Point(38, 195);
             label4.Name = "label4";
             label4.Size = new Size(49, 20);
             label4.TabIndex = 10;
@@ -157,7 +159,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 11.25F);
             label5.ForeColor = SystemColors.HotTrack;
-            label5.Location = new Point(64, 441);
+            label5.Location = new Point(38, 225);
             label5.Name = "label5";
             label5.Size = new Size(39, 20);
             label5.TabIndex = 11;
@@ -168,17 +170,32 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 11.25F);
             label6.ForeColor = SystemColors.HotTrack;
-            label6.Location = new Point(64, 526);
+            label6.Location = new Point(38, 263);
             label6.Name = "label6";
             label6.Size = new Size(50, 20);
             label6.TabIndex = 12;
             label6.Text = "label6";
+            label6.Click += label6_Click_1;
+            // 
+            // okBtn
+            // 
+            okBtn.BackColor = SystemColors.GradientActiveCaption;
+            okBtn.Location = new Point(94, 300);
+            okBtn.Name = "okBtn";
+            okBtn.Size = new Size(75, 23);
+            okBtn.TabIndex = 25;
+            okBtn.Text = "OK";
+            okBtn.UseVisualStyleBackColor = false;
+            okBtn.Click += okBtn_Click;
             // 
             // User_card
             // 
+            AcceptButton = okBtn;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(448, 628);
+            CancelButton = okBtn;
+            ClientSize = new Size(276, 335);
+            Controls.Add(okBtn);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -192,9 +209,14 @@
             Controls.Add(Xfullname);
             Controls.Add(Xusername);
             Controls.Add(usercard);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "User_card";
-            StartPosition = FormStartPosition.CenterParent;
+            ShowInTaskbar = false;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "User_card";
+            Load += User_card_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -214,5 +236,6 @@
         private Label label4;
         private Label label5;
         private Label label6;
+        private Button okBtn;
     }
 }

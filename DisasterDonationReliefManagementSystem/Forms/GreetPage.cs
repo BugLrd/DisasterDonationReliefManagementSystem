@@ -62,15 +62,24 @@ namespace DisasterDonationReliefManagementSystem
 
             if (panel == victim_panel)
             {
-                new VictimSignUp().Show();
+                VictimSignUp v = new VictimSignUp();
+                v.FormClosed += (s, args) => this.Show();
+                v.Show();
+                this.Hide();
             }
             else if (panel == Donator_panel)
             {
-                new DonatorSIgnUp().Show();
+                DonatorSIgnUp v = new DonatorSIgnUp();
+                v.FormClosed += (s, args) => this.Show();
+                v.Show();
+                this.Hide();
             }
             else if (panel == volun_panel)
             {
-                new VolunteerSignUp().Show();
+                VolunteerSignUp v = new VolunteerSignUp();
+                v.FormClosed += (s, args) => this.Show();
+                v.Show();
+                this.Hide();
             }
             else if (panel == nearhub)
             {
@@ -81,7 +90,7 @@ namespace DisasterDonationReliefManagementSystem
             else if (panel == donation_details)
             {
 
-                MessageBox.Show("Donation Needs - Coming Soon!");
+                new DisasterReqs().Show();
 
             }
             else if (panel == new_panel)
@@ -95,7 +104,7 @@ namespace DisasterDonationReliefManagementSystem
         {
             try
             {
-                
+
                 Process.Start(new ProcessStartInfo
                 {
                     FileName = url,
@@ -113,11 +122,5 @@ namespace DisasterDonationReliefManagementSystem
         {
             new LogInPage().Show();
         }
-
-        private void label3_Click(object sender, EventArgs e) { }
-        private void label8_Click(object sender, EventArgs e) { }
-        private void label7_Click(object sender, EventArgs e) { }
-
-        
     }
 }

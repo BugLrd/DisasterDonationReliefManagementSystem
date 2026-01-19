@@ -42,7 +42,7 @@ namespace DisasterDonationReliefManagementSystem.Forms
 
         protected virtual void backbtn_Click(object sender, EventArgs e)
         {
-            LogInPage l = new LogInPage();
+            GreetPage l = new GreetPage();
             l.FormClosed += (s, args) => Application.Exit();
             l.Show();
             this.Hide();

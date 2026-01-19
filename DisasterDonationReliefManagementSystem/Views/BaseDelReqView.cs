@@ -1,4 +1,5 @@
 ﻿using DisasterDonationReliefManagementSystem.Entities;
+using DisasterDonationReliefManagementSystem.Forms.cards;
 using DisasterDonationReliefManagementSystem.Services;
 using System;
 using System.Collections.Generic;
@@ -117,6 +118,12 @@ namespace DisasterDonationReliefManagementSystem.Views.Volunteer
                 Name = "card_" + r.DeliveryID,
                 Tag = r
             };
+            card.Cursor = Cursors.Hand;
+            card.Click += (sender, e) =>
+            {
+                // Raise a custom event or handle the click as needed
+                OnRequestCardClicked(r);
+            };
 
             var TitleLbl = new Label
             {
@@ -142,6 +149,10 @@ namespace DisasterDonationReliefManagementSystem.Views.Volunteer
             return ReDecorateCard(card, r);
         }
 
+        private void OnRequestCardClicked(Delivery r)
+        {
+            new donation_card(r.DeliveryID).ShowDialog();
+        }
         protected virtual Panel ReDecorateCard(Panel card, Delivery delivery)
         {
             // Default no-op; derived views can override for specific decorations
