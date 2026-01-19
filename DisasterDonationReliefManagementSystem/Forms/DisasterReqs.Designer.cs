@@ -1,6 +1,6 @@
 ﻿namespace DisasterDonationReliefManagementSystem.Forms
 {
-    partial class demo
+    partial class DisasterReqs
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            baseReqView = new DisasterDonationReliefManagementSystem.Views.BaseReqView();
             SuspendLayout();
+            // 
+            // baseReqView
+            // 
+            baseReqView.Location = new Point(1, 2);
+            baseReqView.Name = "baseReqView";
+            baseReqView.Size = new Size(923, 597);
+            baseReqView.TabIndex = 0;
             // 
             // demo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(907, 558);
+            ClientSize = new Size(925, 600);
+            Controls.Add(baseReqView);
             Name = "demo";
             Text = "demo";
             Load += demo_Load;
@@ -42,5 +51,7 @@
         }
 
         #endregion
+
+        private Views.BaseReqView baseReqView;
     }
 }

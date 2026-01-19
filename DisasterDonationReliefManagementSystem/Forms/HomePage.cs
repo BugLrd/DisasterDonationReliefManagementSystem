@@ -2,6 +2,7 @@
 using DisasterDonationReliefManagementSystem.Views;
 using DisasterDonationReliefManagementSystem.Views.Admin;
 using DisasterDonationReliefManagementSystem.Views.Donator;
+using DisasterDonationReliefManagementSystem.Views.Victim;
 using DisasterDonationReliefManagementSystem.Views.Volunteer;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace DisasterDonationReliefManagementSystem.Forms
                 mngReqBtn,
                 penReqBtn,
                 adminBtn,
-                donateBtn,
+                donationsBtn,
                 donHistBtn,
                 currDelBtn,
                 delHistBtn
@@ -122,11 +123,11 @@ namespace DisasterDonationReliefManagementSystem.Forms
                 case "victim":
                     urReqBtn.Visible = true;
                     cReqBtn.Visible = true;
+                    donationsBtn.Visible = true;
                     ShowView(new VictimHomeView());
                     break;
 
                 case "donator":
-                    donateBtn.Visible = true;
                     donHistBtn.Visible = true;
                     ShowView(new DonatorHomeView(_currentUser as Donator));
                     break;
@@ -243,6 +244,9 @@ namespace DisasterDonationReliefManagementSystem.Forms
         private void adminBtn_Click(object sender, EventArgs e)
         {
             ShowView(new create_new_admin(_currentUser as Admin));
+        private void donationsBtn_Click(object sender, EventArgs e)
+        {
+            ShowView(new DonationsView(_currentUser as Victim));
         }
     }
 }

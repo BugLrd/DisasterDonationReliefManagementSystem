@@ -10,7 +10,7 @@ namespace DisasterDonationReliefManagementSystem.Services
 {
     internal static class Query
     {
-        private static readonly string connectionString = "Data Source=RAIDEN\\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Trust Server Certificate=True";
+        private static readonly string connectionString = "Data Source=SHAYON\\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         private static SqlConnection con = new SqlConnection(connectionString);
 
         //---------------------SELECT QUERIES---------------------//
@@ -307,7 +307,7 @@ namespace DisasterDonationReliefManagementSystem.Services
             d.DonationType     AS DonationType,
             d.ItemDetails      AS ItemDetails,
             d.DonationDate     AS DonationDate,
-            del.DeliveryStatus AS VolunteerStatus,
+            del.DeliveryStatus AS DeliveryStatus,
             lv.LoginID         AS VictimLoginID,
             lv.Username        AS VictimUsername,
             v.Phone            AS VictimPhone,
@@ -609,24 +609,56 @@ namespace DisasterDonationReliefManagementSystem.Services
         {
             return con;
         }
-        
 
-        internal static int DeleteDisasterRequest(int requestID)
+
+        public static int DeleteDisasterRequest(int requestID)
         {
-            const string sql = @"DELETE FROM DisasterRequest WHERE RequestID = @RequestID";
-
-            var cmd = new SqlCommand(sql, con);
-            
-            cmd.Parameters.AddWithValue("@RequestID", requestID);
-
             if (con.State == ConnectionState.Closed)
                 con.Open();
 
-            int affected = cmd.ExecuteNonQuery();
-            con.Close();
+            SqlTransaction tran = con.BeginTransaction();
 
-            return affected;
+            try
+            {
+                // 1️⃣ Delete from Delivery
+                SqlCommand delDelivery = new SqlCommand(@"
+            DELETE FROM Delivery
+            WHERE DonationID IN (
+                SELECT DonationID FROM Donation WHERE RequestID = @RequestID
+            )", con, tran);
+
+                delDelivery.Parameters.AddWithValue("@RequestID", requestID);
+                delDelivery.ExecuteNonQuery();
+
+                // 2️⃣ Delete from Donation
+                SqlCommand delDonation = new SqlCommand(@"
+            DELETE FROM Donation
+            WHERE RequestID = @RequestID", con, tran);
+
+                delDonation.Parameters.AddWithValue("@RequestID", requestID);
+                delDonation.ExecuteNonQuery();
+
+                // 3️⃣ Delete from DisasterRequest
+                SqlCommand delRequest = new SqlCommand(@"
+            DELETE FROM DisasterRequest
+            WHERE RequestID = @RequestID", con, tran);
+
+                delRequest.Parameters.AddWithValue("@RequestID", requestID);
+                int affected = delRequest.ExecuteNonQuery();
+
+                tran.Commit();
+                con.Close();
+
+                return affected;
+            }
+            catch
+            {
+                tran.Rollback();
+                con.Close();
+                throw;
+            }
         }
+
 
         public static int UpdateDisasterRequest(DisasterRequest req)
         {

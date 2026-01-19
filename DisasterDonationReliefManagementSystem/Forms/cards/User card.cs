@@ -12,11 +12,11 @@ namespace DisasterDonationReliefManagementSystem.Forms.cards
 {
     public partial class User_card : Form
     {
-        
+
         public User_card(int LoginID)
         {
             InitializeComponent();
-            
+
             LoadUserCard(LoginID);
         }
 
@@ -29,7 +29,7 @@ namespace DisasterDonationReliefManagementSystem.Forms.cards
             string role = row["Role"].ToString();
 
             Xusername.Text = row["Username"].ToString();
-            
+
             Xstatus.Text = (bool)row["Status"] ? "Active" : "Inactive";
             xRole.Text = role;
 
@@ -61,6 +61,26 @@ namespace DisasterDonationReliefManagementSystem.Forms.cards
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void User_card_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void okBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

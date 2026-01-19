@@ -12,8 +12,8 @@ namespace DisasterDonationReliefManagementSystem.Views
 {
     public partial class create_req_view : UserControl
     {
-        Victim currVictim;
-        public create_req_view(Victim victim)
+        Entities.Victim currVictim;
+        public create_req_view(Entities.Victim victim)
         {
             InitializeComponent();
             this.currVictim = victim;

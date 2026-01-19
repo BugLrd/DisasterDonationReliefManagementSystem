@@ -14,11 +14,11 @@ namespace DisasterDonationReliefManagementSystem.Views
 {
     public partial class YourRequestsView : BaseReqView
     {
-        Victim victim;
+        Entities.Victim victim;
         private DisasterRequest currReq;
 
         Button editBtn, deleteBtn;
-        public YourRequestsView(Victim victim)
+        public YourRequestsView(Entities.Victim victim)
         {
             InitializeComponent();
             this.victim = victim;
@@ -339,7 +339,7 @@ namespace DisasterDonationReliefManagementSystem.Views
             }
 
             var confirm = MessageBox.Show(
-                $"Are you sure you want to delete request ID {currReq.RequestID}?",
+                $"Are you sure you want to delete request ID {currReq.RequestID}? It will remove all associated data.",
                 "Confirm Delete",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning

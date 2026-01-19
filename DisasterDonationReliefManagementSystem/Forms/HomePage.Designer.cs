@@ -40,7 +40,7 @@
             mngReqBtn = new Button();
             penReqBtn = new Button();
             cReqBtn = new Button();
-            donateBtn = new Button();
+            donationsBtn = new Button();
             donHistBtn = new Button();
             currDelBtn = new Button();
             delHistBtn = new Button();
@@ -117,7 +117,7 @@
             sideBarPnl.Controls.Add(mngReqBtn);
             sideBarPnl.Controls.Add(penReqBtn);
             sideBarPnl.Controls.Add(cReqBtn);
-            sideBarPnl.Controls.Add(donateBtn);
+            sideBarPnl.Controls.Add(donationsBtn);
             sideBarPnl.Controls.Add(donHistBtn);
             sideBarPnl.Controls.Add(currDelBtn);
             sideBarPnl.Controls.Add(delHistBtn);
@@ -230,21 +230,22 @@
             cReqBtn.UseVisualStyleBackColor = false;
             cReqBtn.Click += cReqBtn_Click;
             // 
-            // donateBtn
+            // donationsBtn
             // 
-            donateBtn.BackColor = Color.Transparent;
-            donateBtn.Cursor = Cursors.Hand;
-            donateBtn.FlatAppearance.BorderSize = 0;
-            donateBtn.FlatStyle = FlatStyle.Flat;
-            donateBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
-            donateBtn.ForeColor = SystemColors.ButtonFace;
-            donateBtn.Location = new Point(3, 187);
-            donateBtn.Name = "donateBtn";
-            donateBtn.Size = new Size(144, 23);
-            donateBtn.TabIndex = 3;
-            donateBtn.Text = "Donate";
-            donateBtn.TextAlign = ContentAlignment.MiddleLeft;
-            donateBtn.UseVisualStyleBackColor = false;
+            donationsBtn.BackColor = Color.Transparent;
+            donationsBtn.Cursor = Cursors.Hand;
+            donationsBtn.FlatAppearance.BorderSize = 0;
+            donationsBtn.FlatStyle = FlatStyle.Flat;
+            donationsBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            donationsBtn.ForeColor = SystemColors.ButtonFace;
+            donationsBtn.Location = new Point(3, 187);
+            donationsBtn.Name = "donationsBtn";
+            donationsBtn.Size = new Size(144, 23);
+            donationsBtn.TabIndex = 3;
+            donationsBtn.Text = "Donations";
+            donationsBtn.TextAlign = ContentAlignment.MiddleLeft;
+            donationsBtn.UseVisualStyleBackColor = false;
+            donationsBtn.Click += donationsBtn_Click;
             // 
             // donHistBtn
             // 
@@ -355,7 +356,7 @@
         private Button mngUsrsBtn;
         private Button mngReqBtn;
         private Button adminBtn;
-        private Button donateBtn;
+        private Button donationsBtn;
         private Button donHistBtn;
         private Button currDelBtn;
         private Button delHistBtn;

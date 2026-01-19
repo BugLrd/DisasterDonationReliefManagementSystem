@@ -32,7 +32,7 @@ namespace DisasterDonationReliefManagementSystem.Forms.cards
             DonationType.Text = row["DonationType"].ToString();
             Iteam_details.Text = row["ItemDetails"].ToString();
             donation_date.Text = Convert.ToDateTime(row["DonationDate"]).ToShortDateString();
-            VolunterUpdate.Text = row["VolunteerStatus"].ToString();
+            DelStsUpdate.Text = row["DeliveryStatus"].ToString();
 
             victim_username.Text = row["VictimUsername"].ToString();
             vphone.Text = row["VictimPhone"].ToString();
@@ -50,7 +50,7 @@ namespace DisasterDonationReliefManagementSystem.Forms.cards
 
         }
 
-        
+
 
         private void DonationType_Click(object sender, EventArgs e)
         {
@@ -70,6 +70,16 @@ namespace DisasterDonationReliefManagementSystem.Forms.cards
         private void victim_username_Click_1(object sender, EventArgs e)
         {
             new User_card(victimLoginID).Show();
+        }
+
+        private void donation_card_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void okBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
