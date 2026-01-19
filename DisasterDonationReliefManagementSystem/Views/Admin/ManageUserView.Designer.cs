@@ -75,7 +75,7 @@
             roleFilter.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             roleFilter.DropDownStyle = ComboBoxStyle.DropDownList;
             roleFilter.Font = new Font("Segoe UI", 10F);
-            roleFilter.Items.AddRange(new object[] { "All", "Admin", "Victim", "Donator", "Volunteer" });
+            roleFilter.Items.AddRange(new object[] { "All", "Victim", "Donator", "Volunteer" });
             roleFilter.Location = new Point(540, 12);
             roleFilter.Name = "roleFilter";
             roleFilter.Size = new Size(180, 25);

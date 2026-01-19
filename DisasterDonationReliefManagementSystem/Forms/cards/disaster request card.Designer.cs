@@ -110,7 +110,7 @@
             // Location
             // 
             Location.AutoSize = true;
-            Location.Location = new Point(195, 311);
+            Location.Location = new Point(199, 311);
             Location.Name = "Location";
             Location.Size = new Size(56, 15);
             Location.TabIndex = 7;
@@ -119,7 +119,7 @@
             // reqsatus
             // 
             reqsatus.AutoSize = true;
-            reqsatus.Location = new Point(195, 348);
+            reqsatus.Location = new Point(199, 348);
             reqsatus.Name = "reqsatus";
             reqsatus.Size = new Size(84, 15);
             reqsatus.TabIndex = 8;
@@ -128,10 +128,9 @@
             // 
             // description
             // 
-            description.AutoSize = true;
             description.Location = new Point(199, 389);
             description.Name = "description";
-            description.Size = new Size(70, 15);
+            description.Size = new Size(167, 79);
             description.TabIndex = 9;
             description.Text = "Description ";
             // 
@@ -248,7 +247,7 @@
             // okBtn
             // 
             okBtn.BackColor = SystemColors.GradientActiveCaption;
-            okBtn.Location = new Point(114, 429);
+            okBtn.Location = new Point(133, 484);
             okBtn.Name = "okBtn";
             okBtn.Size = new Size(75, 23);
             okBtn.TabIndex = 25;
@@ -262,7 +261,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             CancelButton = okBtn;
-            ClientSize = new Size(326, 464);
+            ClientSize = new Size(378, 533);
             Controls.Add(okBtn);
             Controls.Add(victimname);
             Controls.Add(label1);

@@ -30,8 +30,10 @@ namespace DisasterDonationReliefManagementSystem.Views.Volunteer
 
             foreach (Control ctrl in GetDelReqListPnl().Controls)
             {
-                Panel card = (Panel)ctrl;
-                ReDecorateCard(card, card.Tag as Delivery);
+                if (ctrl is Panel card)
+                {
+                    ReDecorateCard(card, card.Tag as Delivery);
+                }
             }
         }
 

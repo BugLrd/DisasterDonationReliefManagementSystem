@@ -36,7 +36,6 @@
             passtf = new TextBox();
             loginbtn = new Button();
             logInlbl = new Label();
-            createbtn = new Button();
             backbtn = new Button();
             SuspendLayout();
             // 
@@ -111,21 +110,10 @@
             logInlbl.TabIndex = 0;
             logInlbl.Text = "Log In to ReliefHub";
             // 
-            // createbtn
-            // 
-            createbtn.BackColor = Color.ForestGreen;
-            createbtn.Location = new Point(636, 389);
-            createbtn.Name = "createbtn";
-            createbtn.Size = new Size(355, 33);
-            createbtn.TabIndex = 5;
-            createbtn.Text = "SignUp";
-            createbtn.UseVisualStyleBackColor = false;
-            createbtn.Click += SignUpBtn_Click;
-            // 
             // backbtn
             // 
             backbtn.BackColor = SystemColors.GrayText;
-            backbtn.Location = new Point(636, 428);
+            backbtn.Location = new Point(636, 397);
             backbtn.Name = "backbtn";
             backbtn.Size = new Size(355, 33);
             backbtn.TabIndex = 6;
@@ -144,7 +132,6 @@
             ClientSize = new Size(1110, 601);
             Controls.Add(logInlbl);
             Controls.Add(backbtn);
-            Controls.Add(createbtn);
             Controls.Add(loginbtn);
             Controls.Add(passlbl);
             Controls.Add(label2);
@@ -168,7 +155,6 @@
         private TextBox passtf;
         private Button loginbtn;
         private Label logInlbl;
-        private Button createbtn;
         private Button backbtn;
     }
 }

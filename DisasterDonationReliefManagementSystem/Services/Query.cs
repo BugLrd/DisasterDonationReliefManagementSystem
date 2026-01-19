@@ -10,7 +10,7 @@ namespace DisasterDonationReliefManagementSystem.Services
 {
     internal static class Query
     {
-        private static readonly string connectionString = "Data Source=SHAYON\\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private static readonly string connectionString = "Data Source=RAIDEN\\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         private static SqlConnection con = new SqlConnection(connectionString);
 
         //---------------------SELECT QUERIES---------------------//
@@ -35,7 +35,6 @@ namespace DisasterDonationReliefManagementSystem.Services
                 //    Message = row.Table.Columns.Contains("Message") ? row["Message"].ToString() : null
                 //});
             }
-
             return list;
         }
 
@@ -58,7 +57,8 @@ namespace DisasterDonationReliefManagementSystem.Services
                     row["Message"].ToString()
                 ));
             }
-
+            
+            
             return list;
         }
 

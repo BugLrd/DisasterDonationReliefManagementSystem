@@ -40,7 +40,7 @@
             addresstb.Name = "addresstb";
             addresstb.PlaceholderText = "Address";
             addresstb.Size = new Size(292, 27);
-            addresstb.TabIndex = 5;
+            addresstb.TabIndex = 7;
             // 
             // phonetb
             // 
@@ -49,7 +49,7 @@
             phonetb.Name = "phonetb";
             phonetb.PlaceholderText = "Phone";
             phonetb.Size = new Size(292, 27);
-            phonetb.TabIndex = 6;
+            phonetb.TabIndex = 8;
             // 
             // VictimSignUp
             // 
