@@ -1,4 +1,5 @@
 ﻿using DisasterDonationReliefManagementSystem.Entities;
+using DisasterDonationReliefManagementSystem.Forms.cards;
 using DisasterDonationReliefManagementSystem.Services;
 using Microsoft.Data.SqlClient;
 using System;
@@ -299,9 +300,9 @@ namespace DisasterDonationReliefManagementSystem.Views
             Label requestIdLbl = new Label
             {
                 Text = $"Request ID: {req.RequestID}",
+                Font = new Font("Segoe UI", 10F),
                 Location = new Point(xPos_info, yPosition),
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10F),
                 ForeColor = descColor
             };
             contentPnl.Controls.Add(requestIdLbl);
@@ -438,8 +439,13 @@ namespace DisasterDonationReliefManagementSystem.Views
                 Text = $"Victim ID: {req.VictimID}",
                 Location = new Point(xPos_info, yPosition),
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10F),
-                ForeColor = descColor
+                Font = new Font("Segoe UI", 10F, FontStyle.Underline | FontStyle.Italic),
+                ForeColor = descColor,
+                Cursor = Cursors.Hand
+            };
+            victimIdLbl.Click += (s, e) =>
+            {
+                new User_card(req.VictimID).ShowDialog();
             };
             contentPnl.Controls.Add(victimIdLbl);
             yPosition += fieldSpacing + labelHeight;

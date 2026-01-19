@@ -1,4 +1,5 @@
 ﻿using DisasterDonationReliefManagementSystem.Services;
+using DisasterDonationReliefManagementSystem.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,21 +8,20 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace DisasterDonationReliefManagementSystem.Views
+namespace DisasterDonationReliefManagementSystem.Forms
 {
-    public partial class Donation_view : BaseReqView
+    public partial class DisasterReqs : Form
     {
-        public Donation_view()
+        public DisasterReqs()
         {
             InitializeComponent();
 
-
         }
 
-        private void Donationview_Load(object sender, EventArgs e)
+        private void demo_Load(object sender, EventArgs e)
         {
             string select_query = "SELECT * FROM DisasterRequest WHERE RequestStatus = 'Approved' ORDER BY RequestDate DESC";
-            SetRequests(Query.GetDisasterRequests(select_query));
+            baseReqView.SetRequests(Query.GetDisasterRequests(select_query));
         }
     }
 }

@@ -55,5 +55,20 @@ namespace DisasterDonationReliefManagementSystem.Forms.cards
         {
             new User_card(victimLoginID).Show();
         }
+
+        private void disaster_request_card_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void disastereqcard_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void okBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

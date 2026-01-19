@@ -307,7 +307,7 @@ namespace DisasterDonationReliefManagementSystem.Services
             d.DonationType     AS DonationType,
             d.ItemDetails      AS ItemDetails,
             d.DonationDate     AS DonationDate,
-            del.DeliveryStatus AS VolunteerStatus,
+            del.DeliveryStatus AS DeliveryStatus,
             lv.LoginID         AS VictimLoginID,
             lv.Username        AS VictimUsername,
             v.Phone            AS VictimPhone,
