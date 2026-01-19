@@ -245,7 +245,6 @@
             donateBtn.Text = "Donate";
             donateBtn.TextAlign = ContentAlignment.MiddleLeft;
             donateBtn.UseVisualStyleBackColor = false;
-            
             // 
             // donHistBtn
             // 
@@ -313,6 +312,7 @@
             adminBtn.Text = "Create New Admin";
             adminBtn.TextAlign = ContentAlignment.MiddleLeft;
             adminBtn.UseVisualStyleBackColor = false;
+            adminBtn.Click += adminBtn_Click;
             // 
             // mainpnl
             // 
