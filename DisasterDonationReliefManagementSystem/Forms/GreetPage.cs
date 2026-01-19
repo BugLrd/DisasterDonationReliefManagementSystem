@@ -90,7 +90,12 @@ namespace DisasterDonationReliefManagementSystem
             else if (panel == donation_details)
             {
 
-                new DisasterReqs().Show();
+                
+                this.Hide();
+                DisasterReqs D = new DisasterReqs();
+                D.FormClosed += (s, args) => this.Show();
+                D.Show();
+
 
             }
             else if (panel == new_panel)
@@ -120,7 +125,11 @@ namespace DisasterDonationReliefManagementSystem
 
         private void loginbt_Click(object sender, EventArgs e)
         {
-            new LogInPage().Show();
+            
+            this.Hide();
+            LogInPage L = new LogInPage();
+            L.FormClosed += (s, args) => this.Show();
+            L.Show();
         }
     }
 }

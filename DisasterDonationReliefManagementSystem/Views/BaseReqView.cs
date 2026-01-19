@@ -139,8 +139,6 @@ namespace DisasterDonationReliefManagementSystem.Views
                 titleLbl.Font = new Font(titleLbl.Font.FontFamily, titleLbl.Font.Size, FontStyle.Bold);
             };
 
-            titleLbl.Click += Title_Click;
-
             // Description label
             var descLbl = new Label
             {
@@ -190,14 +188,6 @@ namespace DisasterDonationReliefManagementSystem.Views
                 selectedPanel = panel;
                 panel.BackColor = reqHoverColor;
                 ShowDetailsPanel(panel);
-            }
-        }
-
-        private void Title_Click(object sender, EventArgs e)
-        {
-            if (sender is Label label)
-            {
-                MessageBox.Show($"You clicked on {label.Text}");
             }
         }
 
@@ -444,8 +434,10 @@ namespace DisasterDonationReliefManagementSystem.Views
                 Cursor = Cursors.Hand
             };
             victimIdLbl.Click += (s, e) =>
-            {
+            {   
+                
                 new User_card(req.VictimID).ShowDialog();
+
             };
             contentPnl.Controls.Add(victimIdLbl);
             yPosition += fieldSpacing + labelHeight;

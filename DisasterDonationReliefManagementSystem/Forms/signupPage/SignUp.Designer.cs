@@ -105,18 +105,20 @@
             confirmPasstb.Font = new Font("Segoe UI", 11F);
             confirmPasstb.Location = new Point(127, 296);
             confirmPasstb.Name = "confirmPasstb";
+            confirmPasstb.PasswordChar = '*';
             confirmPasstb.PlaceholderText = "Confirm Password";
             confirmPasstb.Size = new Size(292, 27);
-            confirmPasstb.TabIndex = 11;
+            confirmPasstb.TabIndex = 6;
             // 
             // passtb
             // 
             passtb.Font = new Font("Segoe UI", 11F);
             passtb.Location = new Point(127, 249);
             passtb.Name = "passtb";
+            passtb.PasswordChar = '*';
             passtb.PlaceholderText = "Password";
             passtb.Size = new Size(292, 27);
-            passtb.TabIndex = 10;
+            passtb.TabIndex = 5;
             // 
             // SignUp
             // 

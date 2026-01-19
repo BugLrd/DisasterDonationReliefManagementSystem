@@ -20,7 +20,8 @@ namespace DisasterDonationReliefManagementSystem.Views.Manager
 
 
         public override void LoadUsers()
-        {
+        {   
+            RoleFilter.Visible = false;
             // Admins
             string adminQuery = "SELECT a.*, l.Username, l.Status, l.Message FROM Admin a INNER JOIN Login l ON a.LoginID = l.LoginID";
             foreach (var a in Query.GetAdmins(adminQuery))

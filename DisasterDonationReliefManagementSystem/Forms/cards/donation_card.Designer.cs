@@ -231,7 +231,7 @@
             victim_username.AutoSize = true;
             victim_username.Cursor = Cursors.Hand;
             victim_username.Font = new Font("Segoe UI", 9F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            victim_username.Location = new Point(230, 287);
+            victim_username.Location = new Point(239, 287);
             victim_username.Name = "victim_username";
             victim_username.Size = new Size(96, 15);
             victim_username.TabIndex = 22;

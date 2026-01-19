@@ -10,20 +10,20 @@ INSERT INTO Login (Username, Password, Role, Status) VALUES
 
 
 INSERT INTO Admin (LoginID, FullName, Email) VALUES
-(1, 'System Admin', 'admin@mail.com');
+(2, 'System Admin', 'admin@mail.com');
 
 
 INSERT INTO Victim (LoginID, FullName, Phone, Address, VerificationStatus) VALUES
-(2, 'Ali Ahmed', '01711111111', 'Dhaka', 'Verified'),
-(3, 'Sara Khan', '01822222222', 'Chittagong', 'Pending');
+(3, 'Ali Ahmed', '01711111111', 'Dhaka', 'Verified'),
+(4, 'Sara Khan', '01822222222', 'Chittagong', 'Pending');
 
 
 INSERT INTO Donator (LoginID, FullName, Phone, Address) VALUES
-(4, 'Rahim Uddin', '01933333333', 'Dhaka');
+(5, 'Rahim Uddin', '01933333333', 'Dhaka');
 
 
 INSERT INTO Volunteer (LoginID, FullName, Phone, VehicleType, AvailabilityStatus) VALUES
-(5, 'Karim Mia', '01644444444', 'Truck', 'Available');
+(6, 'Karim Mia', '01644444444', 'Truck', 'Available');
 
 
 INSERT INTO DisasterRequest 

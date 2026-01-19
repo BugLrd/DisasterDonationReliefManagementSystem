@@ -80,10 +80,17 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
         public ManageUserView()
         {
             InitializeComponent();
+
         }
+         
+        public ComboBox RoleFilter => roleFilter;
+
+
+
 
         internal void ManageUserView_Load(object sender, EventArgs e)
-        {
+        {   
+
             searchBox.TextChanged -= OnFilterChanged;
             searchBox.TextChanged += OnFilterChanged;
 
@@ -98,7 +105,7 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
             if (filter.SelectedIndex < 0) filter.SelectedIndex = 0;
 
             if (roleFilter.Items.Count == 0)
-                roleFilter.Items.AddRange(new object[] { "All", "Admin", "Victim", "Donator", "Volunteer" });
+                roleFilter.Items.AddRange(new object[] { "All", "Victim", "Donator", "Volunteer" });
             if (roleFilter.SelectedIndex < 0) roleFilter.SelectedIndex = 0;
 
             LoadUsers();

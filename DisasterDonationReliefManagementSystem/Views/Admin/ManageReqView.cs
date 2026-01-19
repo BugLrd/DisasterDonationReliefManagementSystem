@@ -29,7 +29,7 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
                 containerPnl.Controls.Clear();
                 Label noReqLbl = new Label
                 {
-                    Text = "You have not made any disaster requests yet.",
+                    Text = "No Disaster Requests Yet.",
                     AutoSize = true,
                     Font = new Font("Arial", 12, FontStyle.Italic),
                     ForeColor = Color.Gray,
