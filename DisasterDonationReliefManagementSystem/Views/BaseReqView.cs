@@ -435,8 +435,8 @@ namespace DisasterDonationReliefManagementSystem.Views
             };
             victimIdLbl.Click += (s, e) =>
             {   
-                
-                new User_card(req.VictimID).ShowDialog();
+                string query = $"SELECT LoginID FROM Victim WHERE VictimID = {req.VictimID}";
+                new User_card(Query.GetLogId(query)).ShowDialog();
 
             };
             contentPnl.Controls.Add(victimIdLbl);
