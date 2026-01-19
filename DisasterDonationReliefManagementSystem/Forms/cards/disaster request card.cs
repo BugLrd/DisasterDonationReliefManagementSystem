@@ -12,16 +12,13 @@ namespace DisasterDonationReliefManagementSystem.Forms.cards
 {
     public partial class disaster_request_card : Form
     {
+        public static int victimLoginID;
         public disaster_request_card(int RequestID)
         {
             InitializeComponent();
             LoadDisasterRequest(RequestID);
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void label6_Click(object sender, EventArgs e)
         {
@@ -51,6 +48,12 @@ namespace DisasterDonationReliefManagementSystem.Forms.cards
             Location.Text = row["Location"].ToString();
             reqsatus.Text = row["RequestStatus"].ToString();
             description.Text = row["Description"].ToString();
+            victimLoginID = Convert.ToInt32(row["VictimLoginID"]);
+        }
+
+        private void victimname_Click(object sender, EventArgs e)
+        {
+            new User_card(victimLoginID).Show();
         }
     }
 }
