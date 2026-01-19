@@ -15,7 +15,7 @@ namespace DisasterDonationReliefManagementSystem
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new GreetPage());
+            Application.Run(new HomePage(new Manager(1, "dsf", true, "fsf", "dsf")));
         }
     }
 }

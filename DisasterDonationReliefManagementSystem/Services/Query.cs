@@ -261,16 +261,18 @@ namespace DisasterDonationReliefManagementSystem.Services
 
             string sql = @"
             SELECT
-            
             (SELECT COUNT(*) FROM Login) AS TotalUsers,
-            (SELECT COUNT(*) FROM Login WHERE Status = 1) AS ActiveUsers,
-            (SELECT COUNT(*) FROM Login WHERE Status = 0) AS InactiveUsers,
+            (SELECT COUNT(*) FROM Login WHERE Status = 1 AND Role not in ('Admin', 'Manager')) AS ActiveUsers,
+            (SELECT COUNT(*) FROM Login WHERE Status = 0 AND Role not in ('Admin', 'Manager')) AS InactiveUsers,
             (SELECT COUNT(*) FROM DisasterRequest) AS TotalRequests,
             (SELECT COUNT(*) FROM DisasterRequest WHERE RequestStatus = 'Pending') AS PendingRequests,
             (SELECT COUNT(*) FROM Login WHERE Role = 'Volunteer') AS Volunteers,
             (SELECT COUNT(*) FROM Login WHERE Role = 'Donator') AS Donors,
-            (SELECT COUNT(*) FROM Login WHERE Role = 'Victim') AS Victims;
-                ";
+            (SELECT COUNT(*) FROM Login WHERE Role = 'Victim') AS Victims,
+            (SELECT COUNT(*) FROM Login WHERE Role = 'Admin') AS TotalAdmins,
+            (SELECT COUNT(*) FROM Login WHERE Role = 'Admin' AND Status = 1) AS ActiveAdmins,
+            (SELECT COUNT(*) FROM Login WHERE Role = 'Admin' AND Status = 0) AS InactiveAdmins;
+            ";
 
             SqlDataAdapter sda = new SqlDataAdapter(sql, con);
             DataTable dt = new DataTable();
@@ -280,23 +282,25 @@ namespace DisasterDonationReliefManagementSystem.Services
             {
                 DataRow row = dt.Rows[0];
 
-                // User statistics
                 infos["TotalUsers"] = Convert.ToInt32(row["TotalUsers"]);
                 infos["ActiveUsers"] = Convert.ToInt32(row["ActiveUsers"]);
                 infos["InactiveUsers"] = Convert.ToInt32(row["InactiveUsers"]);
 
-                // Request statistics
                 infos["TotalRequests"] = Convert.ToInt32(row["TotalRequests"]);
                 infos["PendingRequests"] = Convert.ToInt32(row["PendingRequests"]);
 
-                // User type distribution
                 infos["Volunteers"] = Convert.ToInt32(row["Volunteers"]);
                 infos["Donors"] = Convert.ToInt32(row["Donors"]);
                 infos["Victims"] = Convert.ToInt32(row["Victims"]);
+
+                infos["TotalAdmins"] = Convert.ToInt32(row["TotalAdmins"]);
+                infos["ActiveAdmins"] = Convert.ToInt32(row["ActiveAdmins"]);
+                infos["InactiveAdmins"] = Convert.ToInt32(row["InactiveAdmins"]);
             }
-            
+
             return infos;
         }
+
 
 
         public static DataRow GetDonationCardRow(int deliveryID)

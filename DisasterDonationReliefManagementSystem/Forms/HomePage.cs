@@ -119,7 +119,7 @@ namespace DisasterDonationReliefManagementSystem.Forms
                 case "manager":
                     adminBtn.Visible = true;
                     adminListBtn.Visible = true;
-                    ShowView(new HomeView());
+                    ShowView(new ManagerHomeView());
                     break;
                 case "admin":
                     mngUsrsBtn.Visible = true;
@@ -174,7 +174,7 @@ namespace DisasterDonationReliefManagementSystem.Forms
         private void homebtn_Click(object sender, EventArgs e)
         {
             if (_currentUser is Manager)
-                ShowView(new HomeView());
+                ShowView(new ManagerHomeView());
             if (_currentUser is Admin)
                 ShowView(new HomeView());
             if (_currentUser is Victim)

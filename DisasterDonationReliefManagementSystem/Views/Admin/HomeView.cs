@@ -15,7 +15,7 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
     public partial class HomeView : UserControl
     {
         private readonly ToolTip _toolTip = new ToolTip();
-
+        public Dictionary<string, int> infos;
         public HomeView()
         {
             InitializeComponent();
@@ -25,7 +25,10 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
             this.Load += HomeView_Load;
         }
 
-        private void HomeView_Load(object? sender, EventArgs e)
+        public ListBox ListBoxDisasterReq => listBoxDisasterReq;
+        public Panel MainPnl => mainPnl;
+
+        internal void HomeView_Load(object? sender, EventArgs e)
         {
 
 
@@ -59,7 +62,7 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
             try
             {
                 // Get all data from Query.GetInfos()
-                Dictionary<string, int> infos = Query.GetInfos();
+                infos = Query.GetInfos();
 
                 // Get user type counts
                 int volunteers = infos["Volunteers"];
