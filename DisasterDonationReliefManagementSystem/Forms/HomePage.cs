@@ -2,6 +2,7 @@
 using DisasterDonationReliefManagementSystem.Views;
 using DisasterDonationReliefManagementSystem.Views.Admin;
 using DisasterDonationReliefManagementSystem.Views.Donator;
+using DisasterDonationReliefManagementSystem.Views.Manager;
 using DisasterDonationReliefManagementSystem.Views.Victim;
 using DisasterDonationReliefManagementSystem.Views.Volunteer;
 using System;
@@ -45,7 +46,9 @@ namespace DisasterDonationReliefManagementSystem.Forms
                 donationsBtn,
                 donHistBtn,
                 currDelBtn,
-                delHistBtn
+                delHistBtn,
+                adminListBtn,
+                accBtn
             };
             ApplyRoleBasedUI();
 
@@ -109,13 +112,18 @@ namespace DisasterDonationReliefManagementSystem.Forms
             // Home button is visible to all users
             homebtn.Visible = true;
 
+
             // Show buttons based on user role
             switch (_currentUser.Role.ToLower())
             {
+                case "manager":
+                    adminBtn.Visible = true;
+                    adminListBtn.Visible = true;
+                    ShowView(new HomeView());
+                    break;
                 case "admin":
                     mngUsrsBtn.Visible = true;
                     mngReqBtn.Visible = true;
-                    adminBtn.Visible = true;
                     penReqBtn.Visible = true;
                     ShowView(new HomeView());
                     break;
@@ -165,12 +173,14 @@ namespace DisasterDonationReliefManagementSystem.Forms
 
         private void homebtn_Click(object sender, EventArgs e)
         {
-            if (_currentUser.Role.ToLower() == "admin")
+            if (_currentUser is Manager)
                 ShowView(new HomeView());
-            if (_currentUser.Role.ToLower() == "victim")
+            if (_currentUser is Admin)
+                ShowView(new HomeView());
+            if (_currentUser is Victim)
                 ShowView(new VictimHomeView());
-            if (_currentUser.Role.ToLower() == "donator")
-                ShowView(new DonatorHomeView(_currentUser as Donator));
+            if (_currentUser is Donator d)
+                ShowView(new DonatorHomeView(d));
             if (_currentUser is Volunteer v)
                 ShowView(new VolunteerHomeView(v));
         }
@@ -184,26 +194,12 @@ namespace DisasterDonationReliefManagementSystem.Forms
 
         private void cReqBtn_Click(object sender, EventArgs e)
         {
-            if (_currentUser is Victim victim)
-            {
-                ShowView(new create_req_view(victim));
-            }
-            else
-            {
-                MessageBox.Show("Current user is not a Victim. Cannot show your requests.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            ShowView(new create_req_view(_currentUser as Victim));
         }
 
         private void urReqBtn_Click(object sender, EventArgs e)
         {
-            if (_currentUser is Victim victim)
-            {
-                ShowView(new YourRequestsView(victim));
-            }
-            else
-            {
-                MessageBox.Show("Current user is not a Victim. Cannot show your requests.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            ShowView(new YourRequestsView(_currentUser as Victim));
         }
 
         private void mngUsrsBtn_Click(object sender, EventArgs e)
@@ -244,9 +240,20 @@ namespace DisasterDonationReliefManagementSystem.Forms
         private void adminBtn_Click(object sender, EventArgs e)
         {
             ShowView(new create_new_admin(_currentUser as Admin));
+        }
         private void donationsBtn_Click(object sender, EventArgs e)
         {
             ShowView(new DonationsView(_currentUser as Victim));
+        }
+
+        private void accBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void adminListBtn_Click(object sender, EventArgs e)
+        {
+            ShowView(new AdminListView());
         }
     }
 }

@@ -11,9 +11,9 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
 {
     public partial class ManageUserView : UserControl
     {
-        private readonly List<UserItem> _users = new List<UserItem>();
+        internal readonly List<UserItem> _users = new List<UserItem>();
 
-        private class UserItem
+        internal class UserItem
         {
             public int LoginID { get; set; }
             public string FullName { get; set; } = string.Empty;
@@ -82,7 +82,7 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
             InitializeComponent();
         }
 
-        private void ManageUserView_Load(object sender, EventArgs e)
+        internal void ManageUserView_Load(object sender, EventArgs e)
         {
             searchBox.TextChanged -= OnFilterChanged;
             searchBox.TextChanged += OnFilterChanged;
@@ -110,28 +110,13 @@ namespace DisasterDonationReliefManagementSystem.Views.Admin
             ApplyFilters();
         }
 
-        private void LoadUsers()
+        public virtual void LoadUsers()
         {
             _users.Clear();
 
             try
             {
-                // Admins
-                string adminQuery = "SELECT a.*, l.Username, l.Status, l.Message FROM Admin a INNER JOIN Login l ON a.LoginID = l.LoginID";
-                foreach (var a in Query.GetAdmins(adminQuery))
-                {
-                    _users.Add(new UserItem
-                    {
-                        LoginID = a.LoginID,
-                        Role = "Admin",
-                        Username = a.Username,
-                        FullName = a.FullName,
-                        Status = a.Status,
-                        Contact = a.Email,
-                        Extra = string.Empty,
-                        Message = a.Message ?? string.Empty
-                    });
-                }
+                
 
                 // Victims
                 string victimQuery = "SELECT v.*, l.Username, l.Status, l.Message FROM Victim v INNER JOIN Login l ON v.LoginID = l.LoginID";

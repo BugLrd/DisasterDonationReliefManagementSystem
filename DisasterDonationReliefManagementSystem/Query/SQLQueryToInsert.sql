@@ -1,3 +1,6 @@
+INSERT INTO Login (Username, Password, Role, Status, Message) VALUES
+('manager', '123', 'Manager', 1, 'Manager');
+
 INSERT INTO Login (Username, Password, Role, Status) VALUES
 ('admin1', 'pass123', 'Admin', 1),
 ('victim1', 'pass123', 'Victim', 1),

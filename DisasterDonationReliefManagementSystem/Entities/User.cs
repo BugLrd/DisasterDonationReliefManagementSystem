@@ -20,8 +20,13 @@ namespace DisasterDonationReliefManagementSystem.Entities
             FullName = fullName;
             Message = message;
         }
+    }
 
-        public abstract void LoadDashboard();
+    public class Manager : User
+    {
+        public Manager(int loginID, string username, bool status, string fullName, string message) : base(loginID, username, "Manager", status, fullName, message)
+        {
+        }
     }
 
     public class Admin : User
@@ -34,8 +39,6 @@ namespace DisasterDonationReliefManagementSystem.Entities
             AdminID = adminID;
             Email = email;
         }
-
-        public override void LoadDashboard() { }
 
         public void ApproveRequest(int requestId) { }
         public void RejectRequest(int requestId) { }
@@ -57,8 +60,6 @@ namespace DisasterDonationReliefManagementSystem.Entities
             VerificationStatus = verificationStatus;
         }
 
-        public override void LoadDashboard() { }
-
         public void CreateRequest() { }
         public void EditRequest(int requestId) { }
         public void CancelRequest(int requestId) { }
@@ -76,8 +77,6 @@ namespace DisasterDonationReliefManagementSystem.Entities
             Phone = phone;
             Address = address;
         }
-
-        public override void LoadDashboard() { }
 
         public void MakeDonation(int requestId) { }
         public void ViewDonationHistory() { }
@@ -97,8 +96,6 @@ namespace DisasterDonationReliefManagementSystem.Entities
             VehicleType = vehicleType;
             AvailabilityStatus = availabilityStatus;
         }
-
-        public override void LoadDashboard() { }
 
         public void AcceptDelivery(int deliveryId) { }
         public void UpdateDeliveryStatus(int deliveryId, string status) { }

@@ -10,7 +10,7 @@ CREATE TABLE Login (
     Username VARCHAR(50) NOT NULL UNIQUE,
     Password VARCHAR(255) NOT NULL,
     Role VARCHAR(20) NOT NULL
-        CHECK (Role IN ('Admin', 'Victim', 'Donator', 'Volunteer')),
+        CHECK (Role IN ('Manager', 'Admin', 'Victim', 'Donator', 'Volunteer')),
     Status BIT NOT NULL DEFAULT 0,
     Message VARCHAR(255) NOT NULL DEFAULT 'Your account isn''t activated yet. Contact administrator to activate.'
 );

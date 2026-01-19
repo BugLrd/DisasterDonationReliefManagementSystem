@@ -11,7 +11,6 @@ namespace DisasterDonationReliefManagementSystem
 {
     public partial class LogInPage : Form
     {
-        SqlConnection con = Query.GetConnection();
         Login login;
         public LogInPage()
         {
@@ -47,6 +46,15 @@ namespace DisasterDonationReliefManagementSystem
                         ? "Your account isn't activated yet. Contact administrator to activate."
                         : login.Message;
                     MessageBox.Show(msg, "Account inactive", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.Equals(login.Role, "Manager", StringComparison.OrdinalIgnoreCase))
+                {
+                    HomePage homePage = new HomePage(new Manager(login.LoginID, login.Username, login.Status, login.Message, login.Message));
+                    homePage.FormClosed += (s, args) => Application.Exit();
+                    this.Hide();
+                    homePage.Show();
                     return;
                 }
 

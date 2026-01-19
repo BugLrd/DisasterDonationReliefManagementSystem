@@ -46,6 +46,8 @@
             delHistBtn = new Button();
             adminBtn = new Button();
             mainpnl = new Panel();
+            adminListBtn = new Button();
+            accBtn = new Button();
             headerpnl.SuspendLayout();
             sideBarPnl.SuspendLayout();
             SuspendLayout();
@@ -122,6 +124,8 @@
             sideBarPnl.Controls.Add(currDelBtn);
             sideBarPnl.Controls.Add(delHistBtn);
             sideBarPnl.Controls.Add(adminBtn);
+            sideBarPnl.Controls.Add(adminListBtn);
+            sideBarPnl.Controls.Add(accBtn);
             sideBarPnl.Location = new Point(1, 35);
             sideBarPnl.Name = "sideBarPnl";
             sideBarPnl.Padding = new Padding(0, 10, 0, 0);
@@ -324,6 +328,40 @@
             mainpnl.TabIndex = 1;
             mainpnl.Paint += mainpnl_Paint;
             // 
+            // adminListBtn
+            // 
+            adminListBtn.BackColor = Color.Transparent;
+            adminListBtn.Cursor = Cursors.Hand;
+            adminListBtn.FlatAppearance.BorderSize = 0;
+            adminListBtn.FlatStyle = FlatStyle.Flat;
+            adminListBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            adminListBtn.ForeColor = SystemColors.ButtonFace;
+            adminListBtn.Location = new Point(3, 332);
+            adminListBtn.Name = "adminListBtn";
+            adminListBtn.Size = new Size(144, 23);
+            adminListBtn.TabIndex = 3;
+            adminListBtn.Text = "Admin List";
+            adminListBtn.TextAlign = ContentAlignment.MiddleLeft;
+            adminListBtn.UseVisualStyleBackColor = false;
+            adminListBtn.Click += adminListBtn_Click;
+            // 
+            // accBtn
+            // 
+            accBtn.BackColor = Color.Transparent;
+            accBtn.Cursor = Cursors.Hand;
+            accBtn.FlatAppearance.BorderSize = 0;
+            accBtn.FlatStyle = FlatStyle.Flat;
+            accBtn.Font = new Font("Segoe UI", 9F, FontStyle.Underline);
+            accBtn.ForeColor = SystemColors.ButtonFace;
+            accBtn.Location = new Point(3, 361);
+            accBtn.Name = "accBtn";
+            accBtn.Size = new Size(144, 23);
+            accBtn.TabIndex = 3;
+            accBtn.Text = "Your Acount";
+            accBtn.TextAlign = ContentAlignment.MiddleLeft;
+            accBtn.UseVisualStyleBackColor = false;
+            accBtn.Click += accBtn_Click;
+            // 
             // HomePage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -362,5 +400,7 @@
         private Button delHistBtn;
         private Panel mainpnl;
         private Button penReqBtn;
+        private Button adminListBtn;
+        private Button accBtn;
     }
 }
