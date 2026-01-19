@@ -10,7 +10,7 @@ namespace DisasterDonationReliefManagementSystem.Services
 {
     internal static class Query
     {
-        private static readonly string connectionString = "Data Source=RAIDEN\\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+        private static readonly string connectionString = "Data Source=SHAYON\\SQLEXPRESS;Initial Catalog=DisasterDonationReliefDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
         private static SqlConnection con = new SqlConnection(connectionString);
 
         //---------------------SELECT QUERIES---------------------//
@@ -36,6 +36,18 @@ namespace DisasterDonationReliefManagementSystem.Services
                 //});
             }
             return list;
+        }
+
+        public static int GetLogId(string sql)
+        {
+            SqlDataAdapter sda = new SqlDataAdapter(sql, con);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                return Convert.ToInt32(dt.Rows[0]["LoginID"]);
+            }
+            return   -1; // Return -1 if user not found
         }
 
         public static List<Admin> GetAdmins(string sql) // Gonna need Join query to get the the username and status from Login table
