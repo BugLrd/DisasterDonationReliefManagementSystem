@@ -339,7 +339,7 @@ namespace DisasterDonationReliefManagementSystem.Views
             }
 
             var confirm = MessageBox.Show(
-                $"Are you sure you want to delete request ID {currReq.RequestID}?",
+                $"Are you sure you want to delete request ID {currReq.RequestID}? It will remove all associated data.",
                 "Confirm Delete",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
