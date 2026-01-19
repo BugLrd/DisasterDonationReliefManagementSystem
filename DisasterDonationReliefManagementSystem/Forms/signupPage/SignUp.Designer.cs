@@ -52,7 +52,7 @@
             // backbtn
             // 
             backbtn.BackColor = SystemColors.ControlDarkDark;
-            backbtn.Location = new Point(40, 488);
+            backbtn.Location = new Point(45, 441);
             backbtn.Name = "backbtn";
             backbtn.Size = new Size(194, 31);
             backbtn.TabIndex = 1;
@@ -63,7 +63,7 @@
             // signupbtn
             // 
             signupbtn.BackColor = Color.ForestGreen;
-            signupbtn.Location = new Point(354, 488);
+            signupbtn.Location = new Point(357, 441);
             signupbtn.Name = "signupbtn";
             signupbtn.Size = new Size(196, 31);
             signupbtn.TabIndex = 9;
@@ -125,7 +125,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.SignUpBg;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1044, 582);
+            ClientSize = new Size(767, 563);
             Controls.Add(confirmPasstb);
             Controls.Add(passtb);
             Controls.Add(unametb);

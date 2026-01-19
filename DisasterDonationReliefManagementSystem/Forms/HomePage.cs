@@ -241,6 +241,9 @@ namespace DisasterDonationReliefManagementSystem.Forms
             ShowView(new DelHistView(_currentUser as Volunteer));
         }
 
+        private void adminBtn_Click(object sender, EventArgs e)
+        {
+            ShowView(new create_new_admin(_currentUser as Admin));
         private void donationsBtn_Click(object sender, EventArgs e)
         {
             ShowView(new DonationsView(_currentUser as Victim));
