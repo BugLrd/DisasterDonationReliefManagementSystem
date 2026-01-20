@@ -27,6 +27,7 @@ namespace DisasterDonationReliefManagementSystem.Entities
         public Manager(int loginID, string username, bool status, string fullName, string message) : base(loginID, username, "Manager", status, fullName, message)
         {
         }
+        public void CreateAdmin(Admin admin) { }
     }
 
     public class Admin : User
@@ -42,7 +43,7 @@ namespace DisasterDonationReliefManagementSystem.Entities
 
         public void ApproveRequest(int requestId) { }
         public void RejectRequest(int requestId) { }
-        public void CreateAdmin(Admin admin) { }
+        
     }
 
     public class Victim : User
