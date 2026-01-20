@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DisasterDonationReliefManagementSystem.Entities.Delivery">
+    <Position X="20.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAIAAAAAAAgAARAAAAAAAAABAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Entities\Delivery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DisasterDonationReliefManagementSystem.Entities.DisasterRequest">
+    <Position X="22.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAgAAQAAAIAAAAIAAAAAAQAACAIAEAAQAA=</HashCode>
+      <FileName>Entities\DisasterRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DisasterDonationReliefManagementSystem.Entities.Donation">
+    <Position X="24.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAEAAAAAgAAAQAAAAAAAAAAAAAAAAABAQAAAAAAAA=</HashCode>
+      <FileName>Entities\Donation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DisasterDonationReliefManagementSystem.Entities.DonationInfo">
+    <Position X="20.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgBABQAAAAAAAAAAAAAAAAABAAAAEAAAAA=</HashCode>
+      <FileName>Entities\Donation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DisasterDonationReliefManagementSystem.Entities.Login">
+    <Position X="22.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAEQAAAAAAAAEAAAACAAAAIAAAAAA=</HashCode>
+      <FileName>Entities\LogIn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DisasterDonationReliefManagementSystem.Entities.User">
+    <Position X="14" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAIAAEQAAAAAAAAEAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Entities\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DisasterDonationReliefManagementSystem.Entities.Manager">
+    <Position X="14" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DisasterDonationReliefManagementSystem.Entities.Admin">
+    <Position X="18.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAGAAABAAEAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DisasterDonationReliefManagementSystem.Entities.Victim">
+    <Position X="9.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAQAAAAAwAAAAAAAAAAAAAAACACAAIAAAAAA=</HashCode>
+      <FileName>Entities\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DisasterDonationReliefManagementSystem.Entities.Donator">
+    <Position X="11.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAECQAAAIAAAAAA=</HashCode>
+      <FileName>Entities\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DisasterDonationReliefManagementSystem.Entities.Volunteer">
+    <Position X="16.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAARAAAAAAAAAAAAAABAIAACAAA=</HashCode>
+      <FileName>Entities\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

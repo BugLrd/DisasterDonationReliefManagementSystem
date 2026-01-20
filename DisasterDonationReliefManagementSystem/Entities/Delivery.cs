@@ -25,9 +25,4 @@ namespace DisasterDonationReliefManagementSystem.Entities
 
         }
     }
-
-    public class DeliveryInfo
-    {
-
-    }
 }
