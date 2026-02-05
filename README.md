@@ -57,15 +57,11 @@ The system acts as a **central bridge between affected victims and humanitarian 
 
 ## ER Diagram
 
-The following diagram illustrates **entities, attributes, and relationships** in the system database.
-
 ![ER Diagram](docs/er-diagram.png)
 
 ---
 
 ## Data Dictionary
-
-The data dictionary defines **table structures, primary keys, foreign keys, and attributes** used in the system.
 
 ![Data Dictionary](docs/data-dictionary.png)
 
@@ -76,6 +72,14 @@ The data dictionary defines **table structures, primary keys, foreign keys, and 
 - **DisasterRequest** → Victim help requests, location, and approval status  
 - **Donation** → Donations connected to disaster requests  
 - **Delivery** → Volunteer delivery tracking and status  
+
+---
+
+# 📊 Use Case Diagram
+
+The following diagram illustrates the **interactions between system users and core functionalities**, including authentication, disaster request handling, donation processing, delivery management, and administrative control.
+
+![Use Case Diagram](docs/use-case-diagram.png)
 
 ---
 
@@ -150,19 +154,14 @@ Trust Server Certificate=True;
 
 ## 4️⃣ Run the Application
 
-1. Open the solution in **Visual Studio**
-2. Press **F5** to build and run
+1. Open the solution in **Visual Studio**  
+2. Press **F5** to build and run  
 
 ---
 
 # 📊 Core Functional Modules
 
-- User authent
-**Course:** CSC2210 – Object Oriented Programming 2  
-**Semester:** Spring 2024-2025  
-**University:** American International University-Bangladesh (AIUB)
-
-### 👨‍💻 Team Membersication and role management  
+- User authentication and role management  
 - Disaster request creation and approval  
 - Donation submission and tracking  
 - Volunteer delivery workflow management  
