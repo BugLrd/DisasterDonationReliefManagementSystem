@@ -115,8 +115,8 @@ docs/screenshots/
 ## 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/disaster-relief-management-system.git
-cd disaster-relief-management-system
+git clone [https://github.com/your-username/disaster-relief-management-system.git](https://github.com/BugLrd/DisasterDonationReliefManagementSystem)
+cd DisasterDonationReliefManagementSystem
 ```
 
 ## 2️⃣ Create Database
