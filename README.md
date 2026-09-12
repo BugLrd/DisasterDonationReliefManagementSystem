@@ -170,18 +170,6 @@ Trust Server Certificate=True;
 
 These modules demonstrate **real-world OOP integration with database-driven desktop software**.
 
----
-
-# 🔮 Future Improvements
-
-- Web or mobile-based version  
-- Real-time notifications and alerts  
-- Map-based disaster visualization  
-- Online payment gateway integration  
-- Cloud deployment and scalability  
-
----
-
 # 📜 License
 
 This project is provided **for educational and demonstration purposes**.
